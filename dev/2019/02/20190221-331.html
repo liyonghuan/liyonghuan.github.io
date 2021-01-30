@@ -26,7 +26,7 @@
 <meta property="og:description" content="&amp;emsp;&amp;emsp;在使用wordpress建站的过程中，总会遇到一些需要定制的功能，如回复邮件提醒，指定位置插入内容，添加验证码，赞赏功能等等。今天添加赞赏功能的时候需要将赞赏的代码插入到文章的结尾处，于是Get了这么一个wordpress知识点，在此分享出来供大家参考以及自己备忘。而后又随便添加了版权声明的内容，不亦说乎。 实现代码 添加内容到文章顶部  12345678910functi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-28T17:52:36.504Z">
+<meta property="article:modified_time" content="2021-01-29T19:48:42.141Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="Wordpress">
 <meta property="article:tag" content="自定义">
@@ -326,6 +326,15 @@
 
   
   
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">实现代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">代码解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-dev/2019/02/20190221-331" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -444,6 +453,15 @@
       <a href="/dev/2019/02/20190221-332.html" title="「WP教程」WordPress通过自定义字段控制指定页面功能的开关"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

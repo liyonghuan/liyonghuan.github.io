@@ -26,7 +26,7 @@
 <meta property="og:description" content="前言&amp;emsp;&amp;emsp;这段时间处于待业状态中，所以就自己捣鼓些东西，学习学习有趣的算法。因为对于文件的校验可以通过CRC、SHA和MD5等方式进行，所以有了一个想法，做一个文件校验的网站和应用，提供一套服务给广大用户校验文件的正确性。&amp;emsp;&amp;emsp;因此，对于这几种校验的算法，当然要了解一下，于是从CRC开始着手。想起当初学习base64编码的时候，感觉这些算法还是挺有意思的，可以玩">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-06-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-28T17:56:51.159Z">
+<meta property="article:modified_time" content="2021-01-29T19:48:42.132Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="CRC">
 <meta property="article:tag" content="Java">
@@ -327,6 +327,15 @@
 
   
   
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81CRC%E5%8F%82%E6%95%B0%E6%A8%A1%E5%9E%8B%E5%A6%82%E4%B8%8B"><span class="toc-number">3.</span> <span class="toc-text">常见CRC参数模型如下:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA%E5%AE%9E%E7%8E%B0CRC32%E6%A3%80%E9%AA%8C%E7%AE%97%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">JAVA实现CRC32检验算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-dev/2019/06/20190618-552" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -662,6 +671,15 @@
       <a href="/essay/2019/05/20190511-541.html" title="理幻"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   
