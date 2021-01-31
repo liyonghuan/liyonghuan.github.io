@@ -42,7 +42,7 @@ site:
 
 # config
 config:
-  skin: # 主题颜色 theme-black theme-blue theme-green theme-purple
+  skin: theme-black # 主题颜色 theme-black theme-blue theme-green theme-purple
   layout: main-center # 布局方式 main-left main-center main-right
   toc: true # 是否开启文章章节目录导航
   menu_highlight: false # 是否开启当前菜单高亮显示
@@ -51,11 +51,11 @@ config:
 
 # Pagination
 pagination:
-  number: false
+  number: true
   prev: 
-    alwayShow: true
+    alwayShow: false
   next:
-    alwayShow: true
+    alwayShow: false
 
 # Sidebar
 sidebar: right
@@ -83,18 +83,18 @@ fancybox: false
 # Search
 search:
   insight: true # you need to install `hexo-generator-json-content` before using Insight Search
-  baidu: false # you need to disable other search engines to use Baidu search
+  baidu: true # you need to disable other search engines to use Baidu search
 
 # Donate
 donate:
-  enable: false
+  enable: true
   # 微信打赏
   wechatpay:
-    qrcode: 
+    qrcode: ../images/donate/qrcode-wechatpay.png
     title: 微信支付
   # 支付宝打赏
   alipay: 
-    qrcode:  
+    qrcode: ../images/donate/qrcode-alipay.jpg
     title: 支付宝
 
 # Share
@@ -160,7 +160,7 @@ douban:
 # PV
 pv:
   busuanzi:
-    enable: false  # 不蒜子统计
+    enable: tree  # 不蒜子统计
   leancloud:
     enable: false  # leancloud统计
     app_id: # leancloud <AppID>
