@@ -4,8 +4,8 @@ menu:
 #  Archives: archives  # 归档
   #Categories: categories  # 分类
 #  Tags: tags  # 标签
-  Essay: ./categories/心情随笔/
-  Dev: ./categories/开发之路/
+  Essay: ./categories/essay/
+  Dev: ./categories/dev/
   Repository: repository  # github repositories
   #Books: books  # 豆瓣书单
   Links: links  # 友链

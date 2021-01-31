@@ -92,3 +92,5 @@ copyright:
   theme_by: Theme by
   base_on: base on
   powered_by: Powered by
+category:
+  dev: Dev

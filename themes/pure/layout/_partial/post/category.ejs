@@ -5,7 +5,10 @@
       show_count: false,
       class: 'article-category',
       style: 'none',
-      separator: '►'
+      separator: '►',
+      transform(category) {
+        return __('category.' + category);
+      }
     }) %>
   </span>
 <% } %>
