@@ -45,7 +45,7 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 
 
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -442,24 +442,11 @@
     
     <nav class="bar bar-footer clearfix" data-stick-bottom>
         <div class="bar-inner">
-        <ul class="pager pull-left">
+        <div class="pager pull-left">
             
-            <li class="prev disabled">
-                <a href="javascript:;">
-                    <i class="icon icon-angle-left"></i>
-                    上一页
-                </a>
-            </li>
+            <span class="page-number current">1</span><a class="page-number" href="/categories/dev/page/2/">2</a><a class="extend next" rel="next" href="/categories/dev/page/2/">下一页</a>
             
-            
-            <li class="next">
-                <a href="/categories/dev/page/2/">
-                    下一页
-                    <i class="icon icon-angle-right"></i>
-                </a>
-            </li>
-            
-        </ul>
+        </div>
         <div class="total-article bar-right">Page 1 of 2</div>
         </div>
     </nav>
@@ -520,6 +507,16 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 <script src="/js/insight.js"></script>
 
 
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
 
 
 
