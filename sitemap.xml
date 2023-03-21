@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.klavor.com/music/20190511-540.html</loc>
+    <loc>https://www.klavor.com/about/index.html</loc>
     
-    <lastmod>2023-03-20</lastmod>
+    <lastmod>2023-03-21</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.klavor.com/repository/index.html</loc>
+    
+    <lastmod>2023-03-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.klavor.com/music/20190511-540.html</loc>
     
     <lastmod>2023-03-20</lastmod>
     
@@ -38,13 +45,6 @@
   
   <url>
     <loc>https://www.klavor.com/music/20190220-320.html</loc>
-    
-    <lastmod>2023-03-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.klavor.com/about/index.html</loc>
     
     <lastmod>2023-03-20</lastmod>
     
