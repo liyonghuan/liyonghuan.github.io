@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>物业客户管理信息系统（七）之员工主窗体~6 | Klavor&#39;s Blog</title>
+  <meta name="description" content="哈哈哈，这是物业客户关系管理信息系统员工主窗体最后一部分的代码了，发完了这部分我就睡觉啦，都这么晚了，寝室已经是夜深人也静了。然后也没什么好说的了，如果对代码那部分不熟悉或者不明白的可以留言给我，我看到了会给你解释的，也希望对各位大学做课程设计的小伙伴有所帮助哈。下图是我的物业客户关系管理信息系统员工主窗体的成品图，呵呵呵，一不小心暴露了自己的电话号码和地址了，求不骚扰，嘻嘻。 123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物业客户管理信息系统（七）之员工主窗体~6">
+<meta property="og:url" content="https://www.klavor.com/dev/20150502-784.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="哈哈哈，这是物业客户关系管理信息系统员工主窗体最后一部分的代码了，发完了这部分我就睡觉啦，都这么晚了，寝室已经是夜深人也静了。然后也没什么好说的了，如果对代码那部分不熟悉或者不明白的可以留言给我，我看到了会给你解释的，也希望对各位大学做课程设计的小伙伴有所帮助哈。下图是我的物业客户关系管理信息系统员工主窗体的成品图，呵呵呵，一不小心暴露了自己的电话号码和地址了，求不骚扰，嘻嘻。 123456789">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2_jYCcpXXXXXNXXXXXXXXXXXX_!!760675169.png">
+<meta property="article:published_time" content="2015-05-01T16:54:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:02:52.094Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="物业管理系统">
+<meta property="article:tag" content="Cshape">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="信息系统">
+<meta property="article:tag" content="课程设计">
+<meta property="article:tag" content="员工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2_jYCcpXXXXXNXXXXXXXXXXXX_!!760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150502-784.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/05/20150502-784" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      物业客户管理信息系统（七）之员工主窗体~6
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150502-784.html" class="article-date">
+	  <time datetime="2015-05-01T16:54:00.000Z" itemprop="datePublished">2015-05-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C#</a>, <a class="article-tag-link-link" href="/tags/Cshape/" rel="tag">Cshape</a>, <a class="article-tag-link-link" href="/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/" rel="tag">信息系统</a>, <a class="article-tag-link-link" href="/tags/%E5%91%98%E5%B7%A5/" rel="tag">员工</a>, <a class="article-tag-link-link" href="/tags/%E7%89%A9%E4%B8%9A%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" rel="tag">物业管理系统</a>, <a class="article-tag-link-link" href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/" rel="tag">课程设计</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150502-784.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>哈哈哈，这是物业客户关系管理信息系统员工主窗体最后一部分的代码了，发完了这部分我就睡觉啦，都这么晚了，寝室已经是夜深人也静了。然后也没什么好说的了，如果对代码那部分不熟悉或者不明白的可以留言给我，我看到了会给你解释的，也希望对各位大学做课程设计的小伙伴有所帮助哈。下图是我的物业客户关系管理信息系统员工主窗体的成品图，呵呵呵，一不小心暴露了自己的电话号码和地址了，求不骚扰，嘻嘻。<br><img src="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2_jYCcpXXXXXNXXXXXXXXXXXX_!!760675169.png" alt="物业客户管理信息系统（七）之员工主窗体~6"/></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br></pre></td><td class="code"><pre><span class="line">//以下是导航图标动作—————————————————————————————  </span><br><span class="line">        private void picbox_shouye_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_shouye.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_shouye.Image = Image.FromFile(“images/sy_mouse.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        private void picbox_shouye_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(picbox_shouye.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_shouye.Image = Image.FromFile(“images/sy.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_shouye_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_shouye.Tag = “1”;  </span><br><span class="line">            picbox_shouye.Image = Image.FromFile(“images/sy_select.png”);  </span><br><span class="line">            picbox_yezhu.Tag = “0”;  </span><br><span class="line">            picbox_yezhu.Image = Image.FromFile(“images/yz.png”);  </span><br><span class="line">            picbox_yuangong.Tag = “0”;  </span><br><span class="line">            picbox_yuangong.Image = Image.FromFile(“images/yg.png”);  </span><br><span class="line">            picbox_yewu.Tag = “0”;  </span><br><span class="line">            picbox_yewu.Image = Image.FromFile(“images/yw.png”);  </span><br><span class="line">            picbox_guanyu.Tag = “0”;  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            splitcon1.Tag = “sy”;  </span><br><span class="line">            UpdateComboBox();  </span><br><span class="line">            UpdateTreeview();  </span><br><span class="line">            treeview_left_AfterSelect(sender, e);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yezhu_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yezhu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yezhu.Image = Image.FromFile(“images/yz_mouse.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yezhu_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yezhu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yezhu.Image = Image.FromFile(“images/yz.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yezhu_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_shouye.Tag = “0”;  </span><br><span class="line">            picbox_shouye.Image = Image.FromFile(“images/sy.png”);  </span><br><span class="line">            picbox_yezhu.Tag = “1”;  </span><br><span class="line">            picbox_yezhu.Image = Image.FromFile(“images/yz_select.png”);  </span><br><span class="line">            picbox_yuangong.Tag = “0”;  </span><br><span class="line">            picbox_yuangong.Image = Image.FromFile(“images/yg.png”);  </span><br><span class="line">            picbox_yewu.Tag = “0”;  </span><br><span class="line">            picbox_yewu.Image = Image.FromFile(“images/yw.png”);  </span><br><span class="line">            picbox_guanyu.Tag = “0”;  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            splitcon1.Tag = “yz”;  </span><br><span class="line">            UpdateComboBox();  </span><br><span class="line">            UpdateTreeview();  </span><br><span class="line">            treeview_left_AfterSelect(sender, e);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yuangong_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yuangong.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yuangong.Image = Image.FromFile(“images/yg_mouse.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yuangong_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yuangong.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yuangong.Image = Image.FromFile(“images/yg.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yuangong_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_shouye.Tag = “0”;  </span><br><span class="line">            picbox_shouye.Image = Image.FromFile(“images/sy.png”);  </span><br><span class="line">            picbox_yezhu.Tag = “0”;  </span><br><span class="line">            picbox_yezhu.Image = Image.FromFile(“images/yz.png”);  </span><br><span class="line">            picbox_yuangong.Tag = “1”;  </span><br><span class="line">            picbox_yuangong.Image = Image.FromFile(“images/yg_select.png”);  </span><br><span class="line">            picbox_yewu.Tag = “0”;  </span><br><span class="line">            picbox_yewu.Image = Image.FromFile(“images/yw.png”);  </span><br><span class="line">            picbox_guanyu.Tag = “0”;  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            splitcon1.Tag = “yg”;  </span><br><span class="line">            UpdateComboBox();  </span><br><span class="line">            UpdateTreeview();  </span><br><span class="line">            treeview_left_AfterSelect(sender, e);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yewu_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yewu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yewu.Image = Image.FromFile(“images/yw_mouse.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yewu_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_yewu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yewu.Image = Image.FromFile(“images/yw.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_yewu_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_shouye.Tag = “0”;  </span><br><span class="line">            picbox_shouye.Image = Image.FromFile(“images/sy.png”);  </span><br><span class="line">            picbox_yezhu.Tag = “0”;  </span><br><span class="line">            picbox_yezhu.Image = Image.FromFile(“images/yz.png”);  </span><br><span class="line">            picbox_yuangong.Tag = “0”;  </span><br><span class="line">            picbox_yuangong.Image = Image.FromFile(“images/yg.png”);  </span><br><span class="line">            picbox_yewu.Tag = “1”;  </span><br><span class="line">            picbox_yewu.Image = Image.FromFile(“images/yw_select.png”);  </span><br><span class="line">            picbox_guanyu.Tag = “0”;  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            splitcon1.Tag = “yw”;  </span><br><span class="line">            UpdateTreeview();  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_guanyu_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_guanyu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_guanyu.Image = Image.FromFile(“images/gy_mouse.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_guanyu_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (picbox_guanyu.Tag.ToString() == “0”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_guanyu_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            //picbox_shouye.Tag = “0”;  </span><br><span class="line">            picbox_shouye.Image = Image.FromFile(“images/sy.png”);  </span><br><span class="line">            //picbox_yezhu.Tag = “0”;  </span><br><span class="line">            picbox_yezhu.Image = Image.FromFile(“images/yz.png”);  </span><br><span class="line">            //picbox_yuangong.Tag = “0”;  </span><br><span class="line">            picbox_yuangong.Image = Image.FromFile(“images/yg.png”);  </span><br><span class="line">            //picbox_yewu.Tag = “0”;  </span><br><span class="line">            picbox_yewu.Image = Image.FromFile(“images/yw.png”);  </span><br><span class="line">            //picbox_guanyu.Tag = “1”;  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy_select.png”);  </span><br><span class="line">            //splitcon1.Tag = “gy”;  </span><br><span class="line">            About aboutme = new About();        //新建关于本软件的窗体类  </span><br><span class="line">            aboutme.ShowDialog();       //运行新创建的窗体  </span><br><span class="line">            picbox_guanyu.Image = Image.FromFile(“images/gy.png”);  </span><br><span class="line">            if (picbox_yezhu.Tag.ToString() == “1”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yezhu.Image = Image.FromFile(“images/yz_select.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">            else if (picbox_yuangong.Tag.ToString() == “1”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yuangong.Image = Image.FromFile(“images/yg_select.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">            else if (picbox_yewu.Tag.ToString() == “1”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_yewu.Image = Image.FromFile(“images/yw_select.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">            else  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_shouye.Image = Image.FromFile(“images/sy_select.png”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        private int Iskaifashang()  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (treeview_left.SelectedNode == null)      //判断是否选中了树节点  </span><br><span class="line">            &#123;  </span><br><span class="line">                return -1;  </span><br><span class="line">            &#125;  </span><br><span class="line">            int iskaifashang;  </span><br><span class="line">            DataSet DSet = SQLClass.getDataSet(“select id from kaifashang where id = ‘” + treeview_left.SelectedNode.Name + “‘ and gongsi = ‘” + treeview_left.SelectedNode.Text + “‘”, “开发商信息表”);  </span><br><span class="line">            DataTable dt = DSet.Tables[“开发商信息表”];  </span><br><span class="line">            if(dt.Rows.Count &gt; 0)  </span><br><span class="line">            &#123;  </span><br><span class="line">                iskaifashang = 1;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else  </span><br><span class="line">            &#123;  </span><br><span class="line">                iskaifashang = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            return iskaifashang;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        public void UpdateComboBox()  </span><br><span class="line">        &#123;  </span><br><span class="line">            combox.Items.Clear();  </span><br><span class="line">            switch(splitcon1.Tag.ToString())  </span><br><span class="line">            &#123;  </span><br><span class="line">                case “sy”:  </span><br><span class="line">                    combox.Items.Add(“住房编号”);  </span><br><span class="line">                    combox.Items.Add(“楼层”);  </span><br><span class="line">                    combox.Items.Add(“住房配置”);  </span><br><span class="line">                    combox.Items.Add(“业主名称”);  </span><br><span class="line">                    combox.Items.Add(“状态”);  </span><br><span class="line">                    combox.Items.Add(“所属房产”);  </span><br><span class="line">                    combox.Items.Add(“开发商”);  </span><br><span class="line">                    combox.SelectedIndex = 0;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yz”:  </span><br><span class="line">                    combox.Items.Add(“业主编号”);  </span><br><span class="line">                    combox.Items.Add(“姓名”);  </span><br><span class="line">                    combox.Items.Add(“性别”);  </span><br><span class="line">                    combox.Items.Add(“身份证号”);  </span><br><span class="line">                    combox.Items.Add(“权限”);  </span><br><span class="line">                    combox.Items.Add(“用户名”);  </span><br><span class="line">                    combox.SelectedIndex = 0;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yg”:  </span><br><span class="line">                    combox.Items.Add(“员工编号”);  </span><br><span class="line">                    combox.Items.Add(“姓名”);  </span><br><span class="line">                    combox.Items.Add(“性别”);  </span><br><span class="line">                    combox.Items.Add(“部门”);  </span><br><span class="line">                    combox.Items.Add(“岗位”);  </span><br><span class="line">                    combox.Items.Add(“权限”);  </span><br><span class="line">                    combox.Items.Add(“用户名”);  </span><br><span class="line">                    combox.SelectedIndex = 0;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yw”:  </span><br><span class="line">                    if(treeview_left.SelectedNode == null)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        return;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        switch(treeview_left.SelectedNode.Name)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            case “1”:  </span><br><span class="line">                                combox.Items.Add(“事务编号”);  </span><br><span class="line">                                combox.Items.Add(“事务名称”);  </span><br><span class="line">                                combox.Items.Add(“状态”);  </span><br><span class="line">                                combox.Items.Add(“负责人”);  </span><br><span class="line">                                combox.SelectedIndex = 0;  </span><br><span class="line">                                break;  </span><br><span class="line">                            case “2”:  </span><br><span class="line">                                combox.Items.Add(“申请编号”);  </span><br><span class="line">                                combox.Items.Add(“申请名称”);  </span><br><span class="line">                                combox.Items.Add(“申请人”);  </span><br><span class="line">                                combox.Items.Add(“状态”);  </span><br><span class="line">                                combox.Items.Add(“负责人”);  </span><br><span class="line">                                combox.SelectedIndex = 0;  </span><br><span class="line">                                break;  </span><br><span class="line">                            case “3”:  </span><br><span class="line">                                combox.Items.Add(“收费编号”);  </span><br><span class="line">                                combox.Items.Add(“收费事项”);  </span><br><span class="line">                                combox.Items.Add(“状态”);  </span><br><span class="line">                                combox.Items.Add(“缴费业主”);  </span><br><span class="line">                                combox.Items.Add(“负责人”);  </span><br><span class="line">                                combox.SelectedIndex = 0;  </span><br><span class="line">                                break;  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        public string givetempsql(string sql)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (checkbox.Checked)  </span><br><span class="line">            &#123;  </span><br><span class="line">                if(isonce)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    isonce = false;  </span><br><span class="line">                    needwhere = true;  </span><br><span class="line">                    if (splitcon1.Tag.ToString() == “yw”)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        if (treeview_left.SelectedNode == null)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            MessageBox.Show(“你当前的位置需要选中树节点后查询！”, “信息提示”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        else  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            sql = search.newsql(splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name);  </span><br><span class="line">                            sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name, needwhere);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        sql = search.newsql(splitcon1.Tag.ToString(), “0”);  </span><br><span class="line">                        sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), “0”, needwhere);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">                else  </span><br><span class="line">                &#123;  </span><br><span class="line">                    isonce = false;  </span><br><span class="line">                    needwhere = false;  </span><br><span class="line">                    if (splitcon1.Tag.ToString() == “yw”)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        if (treeview_left.SelectedNode == null)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            MessageBox.Show(“你当前的位置需要选中树节点后查询！”, “信息提示”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        else  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name, needwhere);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), “0”, needwhere);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else  </span><br><span class="line">            &#123;  </span><br><span class="line">                if (isonce)  </span><br><span class="line">                &#123;  </span><br><span class="line">  </span><br><span class="line">                    isonce = false;  </span><br><span class="line">                    needwhere = true;  </span><br><span class="line">                    if (splitcon1.Tag.ToString() == “yw”)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        if (treeview_left.SelectedNode == null)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            MessageBox.Show(“你当前的位置需要选中树节点后查询！”, “信息提示”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        else  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            sql = search.newsql(splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name);  </span><br><span class="line">                            sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name, needwhere);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        sql = search.newsql(splitcon1.Tag.ToString(), “0”);  </span><br><span class="line">                        sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), “0”, needwhere);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">                else  </span><br><span class="line">                &#123;  </span><br><span class="line">  </span><br><span class="line">                    isonce = false;  </span><br><span class="line">                    needwhere = true;  </span><br><span class="line">                    if (splitcon1.Tag.ToString() == “yw”)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        if (treeview_left.SelectedNode == null)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            MessageBox.Show(“你当前的位置需要选中树节点后查询！”, “信息提示”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        else  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            sql = search.newsql(splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name);  </span><br><span class="line">                            sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), treeview_left.SelectedNode.Name, needwhere);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        sql = search.newsql(splitcon1.Tag.ToString(), “0”);  </span><br><span class="line">                        sql = search.Searchsql(sql, combox.Text, txt_context.Text.Trim(), splitcon1.Tag.ToString(), “0”, needwhere);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            return sql;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void txt_context_Enter(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            txt_context.Tag = txt_context.Text;  </span><br><span class="line">            txt_context.Text = “”;  </span><br><span class="line">            txt_context.ForeColor = Color.Black;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void txt_context_KeyPress(object sender, KeyPressEventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(e.KeyChar == 13)  </span><br><span class="line">            &#123;  </span><br><span class="line">                picbox_search_Click(sender, e);  </span><br><span class="line">                e.Handled = true;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_search_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            listview_columns();  </span><br><span class="line">            tempsql = givetempsql(tempsql);  </span><br><span class="line">            tempint = 0;  </span><br><span class="line">            UpdateListview(tempsql);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void combox_TextChanged(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            switch(splitcon1.Tag.ToString())  </span><br><span class="line">            &#123;  </span><br><span class="line">                case “sy”:  </span><br><span class="line">                    switch(combox.Text)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        case “住房编号”:  </span><br><span class="line">                            txt_context.Text = “请输入住房编号！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “楼层”:  </span><br><span class="line">                            txt_context.Text = “请输入楼层！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “住房配置”:  </span><br><span class="line">                            txt_context.Text = “请输入住房配置！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “业主名称”:  </span><br><span class="line">                            txt_context.Text = “请输入业主名称！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “状态”:  </span><br><span class="line">                            txt_context.Text = “0:未入住 1:已迁入”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “所属房产”:  </span><br><span class="line">                            txt_context.Text = “请输入所属房产的名称！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “开发商”:  </span><br><span class="line">                            txt_context.Text = “请输入开发商名称！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yz”:  </span><br><span class="line">                    switch(combox.Text)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        case “业主编号”:  </span><br><span class="line">                            txt_context.Text = “请输入业主编号！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “业主姓名”:  </span><br><span class="line">                            txt_context.Text = “请输入业主姓名！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “性别”:  </span><br><span class="line">                            txt_context.Text = “请输入业主性别！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “身份证号”:  </span><br><span class="line">                            txt_context.Text = “请输入身份证号！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “权限”:  </span><br><span class="line">                            txt_context.Text = “0:未审核 1:已审核”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “用户名”:  </span><br><span class="line">                            txt_context.Text = “请输入业主用户名！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yg”:  </span><br><span class="line">                    switch(combox.Text)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        case “员工编号”:  </span><br><span class="line">                            txt_context.Text = “请输入员工编号！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “员工姓名”:  </span><br><span class="line">                            txt_context.Text = “请输入员工姓名！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “性别”:  </span><br><span class="line">                            txt_context.Text = “男 或 女！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “部门”:  </span><br><span class="line">                            txt_context.Text = “请输入部门名称！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “岗位”:  </span><br><span class="line">                            txt_context.Text = “请输入岗位名称！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “权限”:  </span><br><span class="line">                            txt_context.Text = “0:普通员工 1:管理员 2:超级管理员”;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “用户名”:  </span><br><span class="line">                            txt_context.Text = “请输入员工用户名！”;  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    break;  </span><br><span class="line">                case “yw”:  </span><br><span class="line">                    if(treeview_left.SelectedNode == null)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        return;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    switch(treeview_left.SelectedNode.Name)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        case “1”:  </span><br><span class="line">                            switch(combox.Text)  </span><br><span class="line">                            &#123;  </span><br><span class="line">                                case “事务编号”:  </span><br><span class="line">                                    txt_context.Text = “请输入事务编号！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “事务名称”:  </span><br><span class="line">                                    txt_context.Text = “请输入事项名称！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “状态”:  </span><br><span class="line">                                    txt_context.Text = “0:未完成 1:已完成”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “负责人”:  </span><br><span class="line">                                    txt_context.Text = “请输入员工姓名！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                            &#125;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “2”:  </span><br><span class="line">                            switch(combox.Text)  </span><br><span class="line">                            &#123;  </span><br><span class="line">                                case “申请编号”:  </span><br><span class="line">                                    txt_context.Text = “请输入申请编号！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “申请名称”:  </span><br><span class="line">                                    txt_context.Text = “请输入申请名称！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “申请人”:  </span><br><span class="line">                                    txt_context.Text = “请输入业主姓名！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “状态”:  </span><br><span class="line">                                    txt_context.Text = “0:未处理 1:已处理: 2:已完成”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “负责人”:  </span><br><span class="line">                                    break;  </span><br><span class="line">                            &#125;  </span><br><span class="line">                            break;  </span><br><span class="line">                        case “3”:  </span><br><span class="line">                            switch(combox.Text)  </span><br><span class="line">                            &#123;  </span><br><span class="line">                                case “收费编号”:  </span><br><span class="line">                                    txt_context.Text = “请输入收费编号！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “收费事项”:  </span><br><span class="line">                                    txt_context.Text = “请输入收费事项！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “状态”:  </span><br><span class="line">                                    txt_context.Text = “0:未缴费 1:已缴费”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “缴费业主”:  </span><br><span class="line">                                    txt_context.Text = “请输入业主名称！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                                case “负责人”:  </span><br><span class="line">                                    txt_context.Text = “请输入员工名称！”;  </span><br><span class="line">                                    break;  </span><br><span class="line">                            &#125;  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">            txt_context.ForeColor = Color.Gray;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void txt_context_Leave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(txt_context.Text == “”)  </span><br><span class="line">            &#123;  </span><br><span class="line">                txt_context.Text = txt_context.Tag.ToString();  </span><br><span class="line">                txt_context.ForeColor = Color.Gray;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        //统计代码  </span><br><span class="line">        public void Tongji()  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(treeview_left.SelectedNode == null)  </span><br><span class="line">            &#123;  </span><br><span class="line">                switch(splitcon1.Tag.ToString())  </span><br><span class="line">                &#123;  </span><br><span class="line">                    case “sy”:  </span><br><span class="line">                        DataSet kfsDSet = SQLClass.getDataSet(“select count(id) from kaifashang”, “查询信息表”);  </span><br><span class="line">                        DataTable kfsdt = kfsDSet.Tables[“查询信息表”];  </span><br><span class="line">                        DataSet fcDSet = SQLClass.getDataSet(“select count(id) from fangchan”, “查询信息表”);  </span><br><span class="line">                        DataTable fcdt = fcDSet.Tables[“查询信息表”];  </span><br><span class="line">                        DataSet zfDSet = SQLClass.getDataSet(“select count(id) from zhufang”, “查询信息表”);  </span><br><span class="line">                        DataTable zfdt = zfDSet.Tables[“查询信息表”];  </span><br><span class="line">                        MessageBox.Show(“开发商” + kfsdt.Rows[0][0].ToString() + “家,楼房” + fcdt.Rows[0][0].ToString() + “栋,住房” + zfdt.Rows[0][0].ToString() + “间”, “查询结果”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        break;  </span><br><span class="line">                    case “yz”:  </span><br><span class="line">                        DataSet yzDSet = SQLClass.getDataSet(“select count(id),quanxian from yezhu group by quanxian”, “查询信息表”);  </span><br><span class="line">                        DataTable yzdt = yzDSet.Tables[“查询信息表”];  </span><br><span class="line">                        int yznum = Convert.ToInt32(yzdt.Rows[0][0].ToString()) + Convert.ToInt32(yzdt.Rows[1][0]);  </span><br><span class="line">                        MessageBox.Show(“共计已注册业主” + yznum + “人,已审核” + yzdt.Rows[1][0].ToString() + “人，未审核” + yzdt.Rows[0][0].ToString() + “人”, “查询结果”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        break;  </span><br><span class="line">                    case “yg”:  </span><br><span class="line">  </span><br><span class="line">                        DataSet ygDSet = SQLClass.getDataSet(“select count(id),quanxian from yezhu group by quanxian”, “查询信息表”);  </span><br><span class="line">                        DataTable ygdt = ygDSet.Tables[“查询信息表”];  </span><br><span class="line">  </span><br><span class="line">                        //int ygnum = Convert.ToInt32(ygdt.Rows[0][0].ToString()) + Convert.ToInt32(ygdt.Rows[1][0].ToString()) + Convert.ToInt32(ygdt.Rows[2][0].ToString());  </span><br><span class="line">                        MessageBox.Show(ygdt.Rows.Count.ToString(), “查询结果”, MessageBoxButtons.OK, MessageBoxIcon.Information);  </span><br><span class="line">                        break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else  </span><br><span class="line">            &#123;  </span><br><span class="line">                switch(splitcon1.Tag.ToString())  </span><br><span class="line">                &#123;  </span><br><span class="line">                    case “sy”:  </span><br><span class="line">                        break;  </span><br><span class="line">                    case “yz”:  </span><br><span class="line">                        break;  </span><br><span class="line">                    case “yg”:  </span><br><span class="line">                        break;  </span><br><span class="line">                    case “yw”:  </span><br><span class="line">                        break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void pictureBox1_Click(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            changeuser = true;  </span><br><span class="line">            this.Close();  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_search_MouseHover(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_search.Image = Image.FromFile(“images/search_mouse.png”);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void picbox_search_MouseLeave(object sender, EventArgs e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            picbox_search.Image = Image.FromFile(“images/search.png”);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        //public void Chaxun(string sql)  </span><br><span class="line">        //&#123;  </span><br><span class="line">        //    DataSet DSet = SQLClass.getDataSet(sql, “查询信息表”);  </span><br><span class="line">        //    DataTable dt = DSet.Tables[“查询信息表”];  </span><br><span class="line">        //    if(dt.Rows.Count &gt; 0)  </span><br><span class="line">        //    &#123;  </span><br><span class="line">        //        for (int i = 0; i &lt; dt.Rows.Count; i++)  </span><br><span class="line">        //        &#123;  </span><br><span class="line">  </span><br><span class="line">        //        &#125;  </span><br><span class="line">        //    &#125;  </span><br><span class="line">        //&#125;  </span><br><span class="line">  </span><br><span class="line">        //以下两个函数是关于导出EXCEL表格的，是通过网上直接找到使用的，尚未理解。  </span><br><span class="line">        public void ExportToExecl()     //导出excel  </span><br><span class="line">        &#123;  </span><br><span class="line">            System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();  </span><br><span class="line">            sfd.DefaultExt = “xls”;  </span><br><span class="line">            sfd.Filter = “Excel文件(*.xls)|*.xls”;  </span><br><span class="line">            if (sfd.ShowDialog() == DialogResult.OK)  </span><br><span class="line">            &#123;  </span><br><span class="line">                DoExport(this.listview_right, sfd.FileName);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        private void DoExport(ListView listView, string strFileName)  </span><br><span class="line">        &#123;  </span><br><span class="line">            int rowNum = listView.Items.Count;  </span><br><span class="line">            int columnNum = listView.Items[0].SubItems.Count;  </span><br><span class="line">            int rowIndex = 1;  </span><br><span class="line">            int columnIndex = 0;  </span><br><span class="line">            if (rowNum == 0 || string.IsNullOrEmpty(strFileName))  </span><br><span class="line">            &#123;  </span><br><span class="line">                return;  </span><br><span class="line">            &#125;  </span><br><span class="line">            if (rowNum &gt; 0)  </span><br><span class="line">            &#123;  </span><br><span class="line">                Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.ApplicationClass();  </span><br><span class="line">                if (xlApp == null)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    MessageBox.Show(“无法创建excel对象，可能您的系统没有安装excel”);  </span><br><span class="line">                    return;  </span><br><span class="line">                &#125;  </span><br><span class="line">                xlApp.DefaultFilePath = “”;  </span><br><span class="line">                xlApp.DisplayAlerts = true;  </span><br><span class="line">                xlApp.SheetsInNewWorkbook = 1;  </span><br><span class="line">                Microsoft.Office.Interop.Excel.Workbook xlBook = xlApp.Workbooks.Add(true);  </span><br><span class="line">                //将ListView的列名导入Excel表第一行  </span><br><span class="line">                foreach (ColumnHeader dc in listView.Columns)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    columnIndex++;  </span><br><span class="line">                    xlApp.Cells[rowIndex, columnIndex] = dc.Text;  </span><br><span class="line">                &#125;  </span><br><span class="line">                //将ListView中的数据导入Excel中  </span><br><span class="line">                for (int i = 0; i &lt; rowNum; i++)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    rowIndex++;  </span><br><span class="line">                    columnIndex = 0;  </span><br><span class="line">                    for (int j = 0; j &lt; columnNum; j++)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        columnIndex++;  </span><br><span class="line">                        //注意这个在导出的时候加了“\t” 的目的就是避免导出的数据显示为科学计数法。可以放在每行的首尾。  </span><br><span class="line">                        xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text) + “\t”;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">                //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。  </span><br><span class="line">                xlBook.SaveAs(strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);  </span><br><span class="line">                xlApp = null;  </span><br><span class="line">                xlBook = null;  </span><br><span class="line">                MessageBox.Show(“OK”);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150502-784.html" title="物业客户管理信息系统（七）之员工主窗体~6" target="_blank" rel="external">https://www.klavor.com/dev/20150502-784.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150504-786.html" title="吐槽百度云加速：不是所有人都能做加速 百度您还是歇歇吧"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150502-772.html" title="物业客户管理信息系统（七）之员工主窗体~5"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="物业客户管理信息系统（七）之员工主窗体~6[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

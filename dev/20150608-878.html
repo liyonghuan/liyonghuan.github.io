@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>正则表达式练习：一次心血来潮的采集事件 | Klavor&#39;s Blog</title>
+  <meta name="description" content="昨天晚上心血来潮，由于寝室的厕所灯坏了，所以需要报修，我们学校有网络报修的服务，因此就通过网络报修了寝室的厕所灯，然后，突然想要看看这些报修的人里面有没有自己认识的人。随后我便花了一整晚的时间在写PHP的采集程序，做要是为了采集报修系统里面的简单的报修人信息，但是当晚没有能够完成，于是就睡觉去了。 第二天一大早起床便兴匆匆的又开始了写这段采集的小程序，昨天网上已经将正则表达式写好了，虽然不是很完美">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式练习：一次心血来潮的采集事件">
+<meta property="og:url" content="https://www.klavor.com/dev/20150608-878.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="昨天晚上心血来潮，由于寝室的厕所灯坏了，所以需要报修，我们学校有网络报修的服务，因此就通过网络报修了寝室的厕所灯，然后，突然想要看看这些报修的人里面有没有自己认识的人。随后我便花了一整晚的时间在写PHP的采集程序，做要是为了采集报修系统里面的简单的报修人信息，但是当晚没有能够完成，于是就睡觉去了。 第二天一大早起床便兴匆匆的又开始了写这段采集的小程序，昨天网上已经将正则表达式写好了，虽然不是很完美">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB25fR0dXXXXXXvXpXXXXXXXXXX-760675169.png">
+<meta property="article:published_time" content="2015-06-08T13:23:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:36:21.342Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="正则表达式">
+<meta property="article:tag" content="采集">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="报修系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB25fR0dXXXXXXvXpXXXXXXXXXX-760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150608-878.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/06/20150608-878" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则表达式练习：一次心血来潮的采集事件
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150608-878.html" class="article-date">
+	  <time datetime="2015-06-08T13:23:00.000Z" itemprop="datePublished">2015-06-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%8A%A5%E4%BF%AE%E7%B3%BB%E7%BB%9F/" rel="tag">报修系统</a>, <a class="article-tag-link-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a>, <a class="article-tag-link-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>, <a class="article-tag-link-link" href="/tags/%E9%87%87%E9%9B%86/" rel="tag">采集</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150608-878.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>昨天晚上心血来潮，由于寝室的厕所灯坏了，所以需要报修，我们学校有网络报修的服务，因此就通过网络报修了寝室的厕所灯，然后，突然想要看看这些报修的人里面有没有自己认识的人。随后我便花了一整晚的时间在写PHP的采集程序，做要是为了采集报修系统里面的简单的报修人信息，但是当晚没有能够完成，于是就睡觉去了。<br><img src="http://img01.taobaocdn.com/imgextra/i1/760675169/TB25fR0dXXXXXXvXpXXXXXXXXXX-760675169.png" alt=" 正则表达式练习：一次心血来潮的采集事件.png" /></p>
+<p>第二天一大早起床便兴匆匆的又开始了写这段采集的小程序，昨天网上已经将正则表达式写好了，虽然不是很完美的正则表达式，不过毕竟刚开始都是从笨拙到精练的，还是需要慢慢来的。一整个早上都卡在了数据库插入数据上，一直没能够成功。原本以为会是正则表达式部分花费时间多的，但是却没想到是数据库插入数据部分的代码卡住了。不过后来发现只是一个低级的错误，因为填写的数据库名称错误了而已。</p>
+<p>以下是本次编写的采集代码，其实我应该写一个类的，那样可以增加代码重用，提高效率，一直采用这种面向过程的方式编程不是好习惯啊，等毕业答辩后开始认真的写几个常用的类，还要写一个真正纯自己编写的网站程序。哈哈，希望能够做到。</p>
+<div class="dp-highlighter">
+<div class="bar"></div>
+<ol class="dp-c" start="1">
+    <li class="alt">&lt;!DOCTYPE html&gt;</li>
+    <li class="">&lt;html lang=<span class="string">"zh-CN"</span>&gt;</li>
+    <li class="alt">&lt;head&gt;</li>
+    <li class="">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</li>
+    <li class="alt">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width initial-scale=1.0, user-scalable=yes"</span>&gt;</li>
+    <li class="">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"10;url=http://localhost/index.php?id=&lt;?php echo $_GET['id'] + 1; ?&gt;"</span>&gt;</li>
+    <li class="alt">&lt;title&gt;正则表达式练习-采集结果&lt;/title&gt;</li>
+    <li class="">&lt;body&gt;</li>
+    <li class="alt">&lt;?php</li>
+    <li class="">mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">""</span>);</li>
+    <li class="alt">mysql_select_db(<span class="string">"hfut"</span>);</li>
+    <li class=""></li>
+    <li class="alt">    <span class="vars">$startid</span> = <span class="vars">$_GET</span>['id'] * 100 + 1;</li>
+    <li class="">    <span class="vars">$endid</span> = <span class="vars">$_GET</span>['id'] * 100 + 101;</li>
+    <li class="alt"><span class="keyword">for</span>(<span class="vars">$i</span> = <span class="vars">$startid</span>; <span class="vars">$i</span> &lt; <span class="vars">$endid</span>; <span class="vars">$i</span>++){</li>
+    <li class="">    <span class="vars">$getcontents</span> = <span class="func">file_get_contents</span>('网址?id='.<span class="vars">$i</span>);</li>
+    <li class="alt">    <span class="keyword">if</span>(preg_match(<span class="string">"/报修编号:([0-9]+)/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$baoxiubianhao</span>))</li>
+    <li class="">    {</li>
+    <li class="alt">        preg_match(<span class="string">"/当前状态：(.*)&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$dangqianzhuangtai</span>);</li>
+    <li class="">        preg_match(<span class="string">"/故障位置：(.*)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$guzhangweizhi</span>);</li>
+    <li class="alt">        preg_match(<span class="string">"/报修ip：([0-9.]*)&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$baoxiuip</span>);</li>
+    <li class="">        preg_match(<span class="string">"/报 修 人：(.{0,15})&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$baoxiuren</span>);</li>
+    <li class="alt">        preg_match(<span class="string">"/故障类型：(.*)&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$guzhangleixing</span>);</li>
+    <li class="">        preg_match(<span class="string">"/故障描述：(.*)&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$guzhangmiaoshu</span>);</li>
+    <li class="alt">        preg_match(<span class="string">"/报修时间：((.{0,15})(\n)?(.{0,5}))&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$baoxiushijian</span>);</li>
+    <li class="">        preg_match(<span class="string">"/预约日期：(.*)&lt;/"</span>,<span class="vars">$getcontents</span>,<span class="vars">$yuyueshijian</span>);</li>
+    <li class="alt"></li>
+    <li class="">            <span class="vars">$sql</span> = <span class="string">"insert into repair (baoxiubianhao,dangqianzhuangtai,guzhangweizhi,baoxiuip,baoxiuren,guzhangleixing,guzhangmiaoshu,baoxiushijian,yuyueshijian) values ('$baoxiubianhao[1]','$dangqianzhuangtai[1]','$guzhangweizhi[1]','$baoxiuip[1]','$baoxiuren[1]','$guzhangleixing[1]','$guzhangmiaoshu[1]','$baoxiushijian[1]','$yuyueshijian[1]')"</span>;</li>
+    <li class="alt"></li>
+    <li class="">            <span class="keyword">if</span>(mysql_query(<span class="vars">$sql</span>)){</li>
+    <li class="alt">                <span class="func">echo</span> <span class="string">"成功！&lt;/ br&gt;"</span>;</li>
+    <li class="">            }<span class="keyword">else</span>{</li>
+    <li class="alt">                <span class="func">echo</span> <span class="string">"失败！&lt;/ br&gt;"</span>;</li>
+    <li class="">            }</li>
+    <li class="alt">    }<span class="keyword">else</span>{</li>
+    <li class="">        <span class="func">echo</span> <span class="string">"该ID没有数据！&lt;/ br&gt;"</span>;</li>
+    <li class="alt">    }</li>
+    <li class=""></li>
+    <li class="alt">}</li>
+    <li class=""></li>
+    <li class="alt">?&gt;</li>
+    <li class=""></li>
+    <li class="alt">&lt;/body&gt;</li>
+    <li class="">&lt;/html&gt;</li>
+</ol>
+</div>
+代码写好后，花了一整个下午采集数据，第一次采集的时候出现了算法错误，当i越大的时候采集的数量就会越小，最后变为0。不过后来发现了问题后就进行了修改，现在的算法是正确可行的了。通过这一次的练习，我对正则表达式的了解又更进一步了，每一次进步都是迈向成功的新里程碑。
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150608-878.html" title="正则表达式练习：一次心血来潮的采集事件" target="_blank" rel="external">https://www.klavor.com/dev/20150608-878.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150609-849.html" title="Winform Chart控件控制图之滚动条可放大与缩小图表功能代码（C# 语言）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150608-876.html" title="通过批处理方式查询局域网内在线电脑IP"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="正则表达式练习：一次心血来潮的采集事件[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

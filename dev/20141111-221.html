@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>实用的Eclipse插件大全（续） | Klavor&#39;s Blog</title>
+  <meta name="description" content="和上次的那一部分都是关于Eclipse插件的，具体我都没怎么注意看，之前找这个插件只是为了找到能够用来编写Swing的插件，后来用了WindowBuilder插件，感觉还可以。 第二部分： Properties EditorProperties Editor 编辑java的属性文件，并可以自动存盘为Unicode格式 Colorer TakeColorer Take 能为在Eclipse中打开的各">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实用的Eclipse插件大全（续）">
+<meta property="og:url" content="https://www.klavor.com/dev/20141111-221.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="和上次的那一部分都是关于Eclipse插件的，具体我都没怎么注意看，之前找这个插件只是为了找到能够用来编写Swing的插件，后来用了WindowBuilder插件，感觉还可以。 第二部分： Properties EditorProperties Editor 编辑java的属性文件，并可以自动存盘为Unicode格式 Colorer TakeColorer Take 能为在Eclipse中打开的各">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-11-11T04:36:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T07:51:30.544Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="Eclipse">
+<meta property="article:tag" content="插件">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20141111-221.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2014/11/20141111-221" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      实用的Eclipse插件大全（续）
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20141111-221.html" class="article-date">
+	  <time datetime="2014-11-11T04:36:00.000Z" itemprop="datePublished">2014-11-11</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Eclipse/" rel="tag">Eclipse</a>, <a class="article-tag-link-link" href="/tags/%E6%8F%92%E4%BB%B6/" rel="tag">插件</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20141111-221.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>和上次的那一部分都是关于Eclipse插件的，具体我都没怎么注意看，之前找这个插件只是为了找到能够用来编写Swing的插件，后来用了WindowBuilder插件，感觉还可以。</p>
+<p>第二部分：</p>
+<p>Properties Editor<br>Properties Editor 编辑java的属性文件，并可以自动存盘为Unicode格式</p>
+<p>Colorer Take<br>Colorer Take 能为在Eclipse中打开的各种类型源代码文件按语法着色。支持150多种语言。</p>
+<p>XMLBuddy<br>XMLBuddy 编辑xml文件</p>
+<p>Code Folding<br>Code Folding 加入多种代码折叠功能（比eclipse自带的更多）</p>
+<p>Easy Explorer<br>Easy Explorer 打开在eclipse中选定文件所在的目录。</p>
+<p>Fat Jar<br>Fat Jar 打包插件，可以方便的完成各种打包任务，可以包含外部的包等</p>
+<p>RegEx Test<br>RegEx Test 测试正则表达式</p>
+<p>Jigloo GUI Builder<br>Jigloo GUI Builder ＪＡＶＡ的ＧＵＩ编辑插件</p>
+<p>Profiler<br>Profiler 性能跟踪、测量工具，能跟踪、测量ＢＳ程序</p>
+<p>AdvanQas<br>AdvanQas 提供对if/else等条件语句的提示和快捷帮助（自动更改结构等)</p>
+<p>Log4E<br>Log4E Log4j插件，提供各种和Log4j相关的任务，如为方法、类添加一个logger等</p>
+<p>VSSPlugin<br>VSSPlugin VSS插件</p>
+<p>Implementors<br>当追踪方法代码时，Eclipse默认是转到方法的接口类，而接口中是只有方法名称没有具体的实现代码，此插件提供了追踪到具体实现类的实现代码的功能。</p>
+<p>Call Hierarchy<br>Call Hierarchy 显示一个方法的调用层次</p>
+<p>EclipseTidy<br>EclipseTidy基于HTML Tidy提供校验和格式化HTML/XML文件的功能</p>
+<p>Checkclipse<br>Checkclipse 检查代码的风格、写法是否符合规范</p>
+<p>Hibernate Synchronizer<br>Hibernate Synchronizer Hibernate插件，自动映射等</p>
+<p>VeloEclipse<br>Velocity插件在线更新地址: <a target="_blank" rel="noopener" href="http://log4e.jayefem.de/update">http://log4e.jayefem.de/update</a></p>
+<p>EditorList<br>方便的列出所有打开的Editor</p>
+<p>MemoryManager<br>内存占用率的监视</p>
+<p>TomcatPlugin<br>支持Tomcat插件</p>
+<p>lomboz<br>Lomboz是Eclipse的一个J2EE的插件，它将很多Java应用服务器、J2EE组件和Web应用开发集成到Eclipse中，可以帮助Java开发者使用Eclipse建立、测试、部署J2EE应用。 -支持JSP编写，包括：语法着色和语法检查。<br>EclipseQuote</p>
+<p>EclipseQuote是为Eclipse IDE 提供的插件，可以用于监视股市行情的走势。它可以在eclipse 视图中显示股票报价。可以增加新股票，更新价格，点击完成功能。<br>JSEclipse</p>
+<p>可以编辑JavaScript 文件，支持语法突出显示和包括了一些常用的面向对象的方法。支持的面向对象的功能有：构造函数，类方法，实例方法，类变量等等。支持代码错误提示，警靠报告等。<br>CSS Editor</p>
+<p>CSS Editor (Eclipse Plugin)这是一个为Eclipse 提供的插件，可以编辑复杂的CSS功能。<br>eclipse UML</p>
+<p>UML建模插件功能其全。<br>commonclipse</p>
+<p>commonclipse 是为jakarta commons-lang用户提供的eclipse 插件。它可以使用commons-lang生成器自动生成下列方法：toString(), hashCode(), equals(Object), compareTo(Object)。<br>AntView</p>
+<p>AntView 是一个elipse插件，可从Eclipse IDE中运行Ant建造文件。<br>StrutsIDE</p>
+<p>StrutsIDE是开发Struts框架开发工具。它提供了struts-config.xml配置文件的图形管理界面。<br>SQLExplorer</p>
+<p>SQLExplorer可以通过JDBC访问几乎任何一种数据库。同时也支持像Hibernate这样的工具访问数据库。<br>JSEditor</p>
+<p>JSEditor也是一个可以在eclipse下编写JavaScript的插件。<br>JFaceDBC</p>
+<p>是一个很好的SQL 控制台,支持各类主流数据库。<br>jMechanic</p>
+<p>jMechanic，一个分析Java程序的Eclipse插件。这个工具提供CPU Sampling和Heap Summary，进而让开发者调整程序的性能。当前最新版本为jMechanic 0.5.5，并提供了详细的安装使用文档。<br>AspectJ Eclipse插件</p>
+<p>Eclipse下的AspectJ 插件<br>EclipseHTMLEditor</p>
+<p>EclipseHTMLEditor是一个可以在Eclipse下编辑，校验HTML/ XML / JSP的插件。<br>EclipseVisualEditor(VE)</p>
+<p>利用VE可以在Eclipse下像用JBuilder一样开发用户图形界面。它支持SWT 与 Swing，但在安装这个插件之前需要安装EMF 与 GEF 插件。<br>Spindle</p>
+<p>在Eclipse环境下用于支持基于Tapestry 的开发，可以为开发者带来极大的便利。<br>NitroX Struts IDE</p>
+<p>NitroX Struts IDE是Struts框架的开发工具,它提供了 struts-config.xml配置文件的图形管理界面,Validation Frameworks 支持,Struts Tiles 支持。同时支持JSP IDE开发。不过不是免费使用的。<br>JDepend4Eclipse</p>
+<p>JDepend4Eclipse是一个提供在Eclipse开发环境下运行JDepend的插件。<br>JBoss Eclipse IDE</p>
+<p>JBoss Eclipse IDE是基于Eclipse环境的JBoss IDE,它具有以下特性:</p>
+<ul>
+<li>调试与监视Jboss服务器并控制服务器的整个生命周期(启动/停止);</li>
+<li>支持利用XDoclet 进行开发;</li>
+<li>提供一个很简单的方式来部署J2EE程序到JBoss服务器;</li>
+<li>提供许多向导(包括开发EJB, Servlet, WebServices等)帮助J2EE开发者:</li>
+<li>提供JSP, HTML, 与 XML编辑器.<br>Exadel Studio</li>
+</ul>
+<p>Exadel Studio一个开源,免费,强大的Web应用程序开发工具提供了与MyEclipse一样的功能。它在Eclipse 3.0.x上进行扩展，可以在Windows和Linux下运行。 Exadel Studio具备了很多的功能具体如下：<br>*支持许多框架的集成开发包括：JSF，Struts（1.2, 1.1），Spring Framework，Hibernate。<br>*支持Jsp编辑，预览（Struts, JavaServer Faces ,HTML这几种类型的JSP文件）。<br>*它还包括许多编辑器:<br>Graphical Properties editor,<br>Graphical TLD editor,<br>Graphical web.xml editor,<br>CSS editor,<br>JavaScript editor,<br>Image viewer,<br>XSD editor。<br>*数据库管理器（查看数据库中的数据，执行SQL语句）。<br>*支持启动/停止/重启/调试Tomcat, JBoss, JRun 和J2EE 1.4 服务器<br>*内嵌一个WEB浏览器<br>*支持超过20几种应用程序服务器的部署(使用ANT脚本),包括WebLogic, WebSphere,Resin<br>还有许多具体的功能可以到其主页查看<br>J2ME插件</p>
+<p>EclipseME是一个开源的Eclipse插件可以帮助开发J2ME MIDlets。EclipseME使得你不必担心J2ME所需的特殊环境而把焦点放开发你的程序上。<br>JOPE &amp; JOPE4J</p>
+<p>JOPE (JOnAS Plugin for Eclipse) 是一个开源的JOnAS服务器的Eclipse插件。JOPE4J (JOnAS Plugin for Eclipse for JOnAS Developers)是一个开源的利用JOnAS进行开发的Eclipse插件。<br>EclipseJDO</p>
+<p>利用这个Eclipse插件可以简单且快速地开发Transaction应用程序通过标准的JDO drivers.<br>Spring IDE for Eclipse</p>
+<p>Spring IDE for Eclipse在线安装网址:<br><a target="_blank" rel="noopener" href="http://springide.org/updatesite/">http://springide.org/updatesite/</a></p>
+<p>Eclipse Wiki Editor</p>
+<p>这是一个简单的个人WiKi.除了通常的wiki链接是链到网上的wiki(c2.com)之外还可以链接到Eclipse的工作环镜当中.<br>Eclipse-games</p>
+<p>这个项目把一些小游戏(扫雷，贪吃蛇，推箱子)当作Eclipse的插件,为开发工作提供娱乐活动。<br>Eclipse WTP</p>
+<p>WTP(Web Tools Platform )项目在eclipse平台上进行扩展，是一个开发J2EE Web应用程序的工具集。WTP包含以下工具：</p>
+<ul>
+<li>一个源码编辑器可以用来编辑HTML, Javascript, CSS, JSP, SQL, XML, DTD, XSD, 和WSDL。</li>
+<li>一个图形编辑器用来编辑XSD与WSDL。</li>
+<li>J2EE项目构建器和一个J2EE向导工具。</li>
+<li>一个Web服务创建向导和管理器，和WS-I 测试工具。</li>
+<li>一个数据库访问，查询工具等。<br>WTP由两个子项目构成:WST(Web标准工具集) 与JST(J2EE标准工具集)<br>QuickREx</li>
+</ul>
+<p>正则表达式测试插件.<br>CAP</p>
+<p>Code Analysis Plugin - CAP可以分析java程序的从属关系.它打开一个独立的透视图用不同的图表来显示分析结果.在线安装地址:<a target="_blank" rel="noopener" href="http://cap.xore.de/update/">http://cap.xore.de/update/</a><br>Preclipse</p>
+<p>Prevayler持久层框架在Eclipse下的插件<br>Struts Console</p>
+<p>Struts Console是一个免费的单独的Java Swing应用程序可以用来开发与管理基于Strust的应用程序.利用Struts Console可以可视化编辑JSP标签库,Struts,Tiles与Validator的配置文件.Struts Console为许多流行的Java IDE工具提供插件其中包括Eclipse.<br>HiberClipse</p>
+<p>HiberClipse 是一个Eclipse插件,可以用来从一个数据库连接中生成Hibernate映射文件并提供一个与Hibernate相结合的回程工具类似于 class2hbm,hbm2java和ddl2hbm.它同时也提供一个漂亮的实体关系图形视图.在eclipse3下安装需在线更新地址:<br><a target="_blank" rel="noopener" href="http://hiberclipse.sourceforge.net/siteupdate_3">http://hiberclipse.sourceforge.net/siteupdate_3</a><br>Quantum</p>
+<p>Quantum是一个数据库访问插件.它当前支持的数据库有:Postgres,MySQL,Adabas,DB2,Oracle与有JDBC驱动的数据库.它可以显示表格,视图并提供一个语法可高亮显示的SQL编辑器<br>XPath Explorer</p>
+<p>很好用的XPath表达式测试插件.<br>WOLips</p>
+<p>WOLips是一个Eclipse插件用来支持WebObjects应用程序与框架的开发.<br>Google Search Plugin</p>
+<p>Google Search Plugin:这个插件可以让你在Eclipse开发环境中使用Google搜索引擎进行搜索.<br>GotoFile</p>
+<p>这个插件可以在Eclipse工作区中通过输入部分文件名就能够准确快速地搜索到相应的文件.支持Eclipse Version: 2.x, 3.x, WSAD.所用的License: Free LGPL.<br>myWL</p>
+<p>myWL是一个可以在Eclipse中启动与管理BEA’s WebLogic Server(6.1, 7.1和8.1)的插件。因此可以容易地在</p>
+<p>BEA中调试，部署J2EE应用程序。<br>J2EE design pattern generator</p>
+<p>一个可以生成J2EE设计模式代码Eclipse插件并支持J2EE refactorings。它使用XML文件来存储设计模式描述。</p>
+<p>这个插件有一个友好的用户界面向导。支持的设计模式有:</p>
+<ul>
+<li>Front Controller -</li>
+<li>Session Facade -</li>
+<li>Service Activator -</li>
+<li>Service Locator -</li>
+<li>Composite Entity -</li>
+<li>Transfer Object Supporterd refactorings: -</li>
+<li>Hide Entity behind Session -</li>
+<li>Move business Logic to Facade -</li>
+<li>Iintroduce Front Controller<br>Subclipse</li>
+</ul>
+<p>Subclipse是一个用来在Eclipse IDE环境中支持Subversion的插件.Subversion是下一代版本(或源码)控制系统,它的目的是代替CVS下载.<br>Eclipse Instant Messenger</p>
+<p>Eclipse即时消息插件，它结合了一些常用的协议如：MSN,YAHOO,ICQ,AIM等。<br>FreeMarker Eclipse Plugin</p>
+<p>这个插件用来在Eclipse中支持FreeMarker模板语言.它包括语法高亮显示，语法错误提示、大纲视图等.<br>Spring Console</p>
+<p>Spring Console是一个免费独立的Java Swing应用程序用来管理和开发基于Spring的应用程序。利用Spring Console你可以可视化编辑Spring配置文件与JSP标签库文件.tld.它提供一个Eclipse下的插件。与Struts Console一样。<br>EclipseNSIS</p>
+<p>EclipseNSIS用来编辑,编译和测试NSIS脚本.<br>RSS View</p>
+<p>Eclipse RSS Reader</p>
+<p>Eclipse RSS Reader允许创建RSS频道，并在Eclipse工作区的透视图中阅读在线RSS新闻。<br>Bugdel</p>
+<p>Bugdel这个插件利用AOP编程在程序中插入调试代码。<br>WebLang</p>
+<p>WebLang 是一个代码生成器,用来生成一些Web组件包括:html,JSP页面,EJBs,MDBs,JMS,servlets,struts,clients, RMI对象等.它用一个编译器来编译一个以.la为扩展名的文件来生成代码或组件并可把这些组件部署到JBoss应用服务器中.这个编译器使用 JavaCC与Java_1.5语法.<br>Jigloo SWT/Swing GUI Builder</p>
+<p>Jigloo SWT/Swing GUI Builder是一个免费的不能用于商业用途的SWT/Swing构建工具。最新版本支持Eclipse3.1并改进对GridBag,JGoodies FormLayout和TableLayout的支持。<br>Winamp control plugin</p>
+<p>利用这个插件可以在Eclipse IDE中远程控制一个Winamp.<br>Gnutface</p>
+<p>Gnutface是一个gnutella客户端。它使用开源的limewire作为它的gnutella引擎。<br>GmailClipse</p>
+<p>GmailClipse是一个可在Eclipse3.x开发平台中查看和读取GMail邮件的插件还可以利用它来发送邮件，回复邮件，查看通信录.支持邮件缓存离线阅读，支持通过代理连接等。<br>Lepido</p>
+<p>Lepido 为Apache Cocoon web框架提供一个IDE和工具集用来简化利用此框架所进行地开发. 这个工具包括或将要包括利用向导来快速布署一个项目的结构并为在开发应用程序的过程中用到的各种复杂XML文件提供编辑器.Lepido还提供其它一些运 行期工具如调试器和剖析器.<br>Java.tri</p>
+<p>Java.tri是一个可扩展的开源J2EE代码生成器和MDA工具. Java.tri导入UML模型并生成一个完整的Hibernate-Struts Web应用程序或被用于生成你应用程序关键的部分.<br>Deployer</p>
+<p>Deployer是一个利用SSH把文件部署到远程服务器中的Eclipse插件.它使用SFtp协议来传输文件. 作者开发Deployer的初衷是为了避免当程序修改时每次都要手工上传Jar文件到服务器中.<br>IDE4Laszlo</p>
+<p>Laszlo集成开发环境.当前支持Eclipse 3.1.<br>Commons4E</p>
+<p>这 个Eclipse插件方便了利用Jakarta Commons组件所进行地开发.Commons4E根据用户选择的字段(fields)利用commons-lang builders来自动生成以下方法:toString(),hashcode(),equals(Object)和 compareTo(Object).<br>Commonclipse</p>
+<p>Commonclipse这个插件类似于Commons4E<br>Gild</p>
+<p>GILD(Groupware enabled Integrated Learning and Development)是一个用于程序开发教学与学习的Eclipse插件.Gild能够让教师把代码例子与课程资料相结合.<br>EditorList</p>
+<p>EditorList插件用于改进对Eclipse编辑器的管理.它提供一个视图用于在一个列表中显示所有Eclipse编辑器并能对编辑器按自己的要求进行分组.<br>Eclipse Version Tree</p>
+<p>Eclipse Version Tree这个插件提供一种以图形树的方式来显示CVS资源．<br>JodeEclipse</p>
+<p>Jode在Eclipse开发平台下的插件.<br>StrutsBox</p>
+<p>StrutsBox主要特点包括:<br>◆基于Eclipse3.1开发平台<br>◆一个用来编辑Struts配置文件的可视化编辑器<br>◆以图形的方式来显示Struts应用程序的Web Flow<br>◆一个可高亮显示语法的JSP编辑器<br>◆可利用向导来创建Struts项目与一个新的Struts form<br>◆支持Struts 1.0,1.1与1.2标准<br>Toby’s PL/SQL Editor</p>
+<p>利用这个插件可以轻松地开发和测试PL/SQL代码。<br>PHPeclipse</p>
+<p>这个插件包括的功能有:PHP语法分析,调试,代码格式化,大纲视图,代码模板定制等.<br>Groovy Eclipse Plugin</p>
+<p>这个插件允许你在Eclipse开发平台下编辑,编译和运行groovy scripts与classes.该插件只适用于Eclipse 3.1.<br>PyDev</p>
+<p>PyDev是一个允许用户利用Eclipse进行Python开发。它提供了一些很好的功能如：代码填空，语法高亮显示，语法分析，重构(refactor)和调试等等．<br>JSR220-ORM</p>
+<p>JSR220-ORM项目为JSR220(EJB3)与JSR243(JDO2)规范的实现提供一个可视化的开发工具.它将会追踪这些规范的变化,只要它们合并在一起变成一个公共的持久化标准,这个项目也将会为这个标准提供完全实现的工具.<br>Cobertura</p>
+<p>Cobertura是一个基于jcoverage的免费Java工具，它能够显示哪一部分代码被你的测试所覆盖,并可生成HTML或XML报告．</p>
+<p>Voice Tools project</p>
+<p>它为JSP/J2EE领域中的Voice Application提供一组基于Eclipse的开发工具.<br>MiddlegenIDE</p>
+<p>MiddlegenIDE 是一个Middlegen在Eclipse下的插件,它可生成映射文件,JavaBean源码,配置文件和导入相关的jar.而你所要做的只是配置好数据 库连接信息和选择要生成映射文件与Java类的数据库表.MiddlegenIDE当前版本只支持生成Hibernate映射文件与JavaBean源 码.<br>QOLdap</p>
+<p>QOLdap是一个Eclipse平台下LDAP目录浏览器．<br>EPIC</p>
+<p>EPIC是一个开源的Perl开发工具.支持语法高亮显示，快速语法检查，内容帮助，perldoc支持，源码格式，模板支持和一个Perl调试器.<br>FacesIDE</p>
+<p>FacesIDE是一个用于开发JSF的Eclispe插件.它可以可视化编辑faces-config.xml文件并且提供代码编辑与校验,预览JSF的JSP文件.FacesIDE包含MyFaces来作为JSF的实现.这个插件类似于StrutsIDE.<br>EclipseWork</p>
+<p>EclipseWork 是一个用于开发WebWork的一个插件.它有很多向导用于创建WebWork Action和利用Hibernate与Prevayler来为应用程序添加增删改查(CRUD)功能.EclipseWork还能生成 JSP,Velocity和Freemarker代码.EclipseWork还是一个可扩展的插件你可以编写自己的Eclipse向导而不需要了解 Eclipse插件API,你所要做地只是编辑XML和用于生成代码的Velocity模板.EclipseWork将会解析XML并打开这个自定义的向 导.在它主页上还提供许多Flash教程。<br>CDT</p>
+<p>C/C++在Eclipse平台下的开发工具．它提供的功能包括：C/C++编辑器(一些基本的功能：语法高亮显示,代码编辑等)，C/C++调试器,C/C++ Launcher，剖析器，内容提示，Makefile生成器等。<br>JyDT</p>
+<p>Jython开发工具。<br>Tapestry Palette</p>
+<p>Tapestry Palette构建在Spindle插件的基础上.这个插件为Tapestry开发者提供了以下功能:以tree-view的方式来显示在一个项目中所用 到的组件.可从tree-view拖放组件到一个页面中.可从远程以拖放的方式下载和安装组件并可直接使用.它还提供一个用于编辑组件参数的 property sheet等这里有一个展示该插件功能的Flash.<br>RDT</p>
+<p>RDT是一个用于Ruby开发的Eclipse插件.它提供的功能包括：语法高亮显示，快速语法分析，图形大纲，单元测试，内容提示，源码格式和一个正则表达式插件等。<br>ECP</p>
+<p>Eclipse CORBA Plugin (ECP)提供一个可针对CORBA IDL文件语法进行着色的编辑器。<br>RadRails</p>
+<p>RadRails是一个Ruby on Rails框架的IDE。Eclipse更新站点为<a target="_blank" rel="noopener" href="http://www.radrails.org/update%E3%80%82">http://www.radrails.org/update。</a><br>Eclipse 3.1.1 translations</p>
+<p>Eclipse 3.1.1和其它Eclipse工具( Visual Editor (VE) , UML2,GEF,EMF / XSD ,WTP等)发布各种语言支持包。其中包括支持中文的NLpack1包。<br>详细可查看以下网址：<br><a target="_blank" rel="noopener" href="http://eclipse.org/org/press-release/20051012nlscb.html">http://eclipse.org/org/press-release/20051012nlscb.html</a>.</p>
+<p>下载地址：<br>Windows 98/ME/2000/XP<br>NLpack1_FeatureOverlay-eclipse-SDK-3.1.1.zip<br>NLpack1-eclipse-SDK-3.1.1a-win32.zip</p>
+<p>Linux (x86/GTK 2)<br>NLpack1_FeatureOverlay-eclipse-SDK-3.1.1.zip<br>NLpack1-eclipse-SDK-3.1.1a-gtk.zip<br>eZing Builder</p>
+<p>eZing Builder是一个可以帮助你在很短的时间内开发一个J2EE或MIS应用程序的插件。它类似于PowerBuilder与Visual Web Developer ,但是它使用XQuery来访问XML-DB。<br>HtmlSave</p>
+<p>这是一个可以把Eclipse编辑器中Java源代码或其它语言的源代码存为HTMl格式的插件。<br>EcSplorer</p>
+<p>EcSplorer(Eclipse Simplified Explorer)是一个类似于 Windows Explorer的Eclipse插件，它可以帮助你在不退出Eclipse的环境下浏览本地文件系统。<br>All-In-One Eclipse</p>
+<p>All-In-One Eclipse是一个安装包，All-In-One Eclipse可以一次性安装Eclipse v3.1.1和NLPack1和其它插件(如：EMF,GEF,VE,TPTP,WTP 等).<br>下载页面:<a target="_blank" rel="noopener" href="https://sourceforge.jp/projects/aioec/files/?release_id=17527#17527">https://sourceforge.jp/projects/aioec/files/?release_id=17527#17527</a><br>JSPFormat</p>
+<p>JSPFormat插件用来美化/格式化JSP,HTML,Javascript源代码．<br>Appfuse Generator</p>
+<p>这个插件是一个代码生成器，它能够让开发者使用appfuse五个组合框架struts, jsf, spring, tapestry或webwork其中的一个来快速开发We应用程序。<br>ShellEd</p>
+<p>ShellEd是一个Eclipse平台下的shell脚本编辑器。它只支持Eclipse3.0以上的版本。<br>QuickImage</p>
+<p>这个插件提供了一个可以用来浏览图片的Eclipse编辑器。你可以一张一张进行浏览或以是缩略图的形式查看所有图片。它当前支持的图片格式包括.gif .jpg .jpeg .png .bmp .ico。<br>JInto</p>
+<p>这是一个资源文件编辑插件。<br>Violet UML Editor</p>
+<p>Violet UML Editor是一个强大的UML编辑器,易于使用,开发快捷.它能画出好看的类图,对象图,顺序图,状态图和use-case图。这个插件把Violet嵌入到Eclipse中。<br>Office Integration Editor</p>
+<p>这个插件利用免费Office(OpenOffice.org)的功能来扩展 Eclipse IDE。这个插件提供一个可以用来编辑所有OpenOffice.org文档类型的编辑器，除此之外还提供新建各种文档的向导。<br>ResourceBundle Editor</p>
+<p>ResourceBundle Editor是一个用于编辑本地化的属性文件(localized properties files)。它让你通一个屏幕就能够同时管理所有相关联属性文件中的key/value信息。它所具有的功能包括：自动为Keys分类，能够提示丢失掉 的，重复的，相似的values等．<br>Coverlipse</p>
+<p>Coverlipse这个Eclipse插件能够把JUnit测试的代码覆盖直观化。它的独到之处就是与Eclipse开发平台无缝结合。Coverlipse能够在一个JUnit运行之后马上显示覆盖结果并可把结果导成XML文件。<br>Format On Save</p>
+<p>这个简单的插件能够在代码保存时自动组织所有导入的类(organizes imports)和格式代码(formats code)。相当于在保存时进行Ctrl-Shift-O,Ctrl-Shift-F操作。这个插件需要Eclipse 3.1和3.2M1。<br>PiecesOfFlare</p>
+<p>在 Tomcat或Resin上进行开发时能够在保存时自动reload，你是否也希望在一些成熟的AppServer(如：JBoss)上进行开发时也有同 样的功能呢？PiecesOfFlare这个Eclipse插件能够让J2EE开发者在他们的项目中同步源代码目录与AppServer上的部署目录。这 个插件设计成允许在保存时自动部署JSP文件，但也可以用于其它任何类型的文件。<br>VNClipse</p>
+<p>VNClipse为Eclipse提供一个VNC实现。利用这个插件可以在Eclipse平台中管理远程计算机。当前的版本仍然是beta,它只兼容的Eclipse 3.1.0 (win32)。<br>Abator</p>
+<p>Abator 是一个用于iBATIS的代码生成器，它能够为iBATIS Sql Mapper(包括：SqlMap XML文件, Java domain classes, 和Java DAO classes)生成artifacts。Abator在DB2和MySql数据库上测试通过。</p>
+<p>Batino Browser</p>
+<p>Batino Browser是下一代rich web browser平台.它基于Eclipse技术.<br>Maven 1.0 Eclipse Plugin</p>
+<p>这个插件提供生成Eclipse项目文件((.classpath与.project 文件)的功能。也可以通过配置Eclipse把Maven当成一个外部工具来使用。<br>Maven 2.x Plug-in for Eclipse</p>
+<p>Mergere是一个Maven 2.x Eclipse插件，它基于ASL2.0发布。<br>可通过以下网址进行在线更新:<br><a target="_blank" rel="noopener" href="http://m2eclipse.codehaus.org/">http://m2eclipse.codehaus.org/</a><br>以下是一个如何使用该插件的Flash Demo:<br><a target="_blank" rel="noopener" href="http://m2eclipse.codehaus.org/">http://m2eclipse.codehaus.org/</a><br>Maven_2.0_Plugin_for_Eclipse.html<br>你可以通过以下网址查看该插件的源码:<br><a target="_blank" rel="noopener" href="http://svn.codehaus.org/trunk/?root=m2eclipse">http://svn.codehaus.org/trunk/?root=m2eclipse</a><br>TeXlipse</p>
+<p>TeXlipse插件让Eclipse支持LaTeX 编辑。这个插件提供包括Latex和Bibtex编辑器，项目创建向导，完全的用户使用手册。 可用的功能有：语法提示和高亮显示等等。<br>Merve Tomcat Launcher Plugin</p>
+<p>Merve自带一个内嵌的Tomcat,利用该插件可在Eclipse平台中运行与调试Web应用程序。<br>ER Diagram Editor</p>
+<p>这个插件提供在Eclipse中设计与编辑实体关系(ER)图的功能。并能够根据ER图生成SQL和Hibernate代码。<br>PatternBox</p>
+<p>PatternBox是一个Java设计模式编辑器。它提供一个基于模板的代码生成器。这个基于XML的模板机制使得你能够定义自己的代码模板。PatternBox当前能够为16种GoF设计模式生成代码。<br>eLuzien</p>
+<p>eLuzien这个Eclipse插件设计用于集成OSGi(Open Services Gateway initiative) bundles的开发。eLuzien构建在Eclipse平台强大的功能之上并结合整个OSGi bundle开发过程。<br>Java Project Creation Customizer</p>
+<p>这个插件能够根据一些预先定义好的文件夹或文件来创建整个Java工程。这些文件或文件夹的设置在一个XML中配置。XML看起来如下：<br>AspectC/C++ Development Tools</p>
+<p>ACDT是在Eclipse中开发基于AspectC++程序的插件。AspectC++是用C/C++语言来实现AspectJ的一个项目。<br>GlassFish Plugin</p>
+<p>这 个GlassFish(下一代J2EE应用服务器)插件适用于Eclipse3.1。它基于WTP1.0(Eclipse Web Tool Platform )之上。这个插件还集成了Sun Application Server 8.1与8.2。GlassFish Plugin提供了EJB3.0,Java Persistence APIs和ORM映射的用法。<br>Spell Checker</p>
+<p>这是一个适用于Eclipse3.1平台的拼写检查程序插件，它可用于ava,JavaScript,JavaProperties,XML,HTML,JSP,与PHP的拼写检查。eSpell支持自定拼写字典，针对项目的特殊设置，检查键入的词语等。<br>Struts-It</p>
+<p>Struts-It为开发基于Struts的Web应用程序提供全面的支持。它基于Eclipse 3.1并能够很好的与WTP 0.7集成。Struts-It支持Struts1.1,1.2与JSTL。<br>SEDS Design Pattern Pugin</p>
+<p>这 个插件将使利用设计模式来开发Java应用程序变得更加容易。它内建一些基本的模式如Singleton,Factory等，但用户也可以配置其它模式。 SEDS Design Pattern Pugin内建的具体设计模式包括：Chain of Responsibility，Iterator，Mediator ，Memento ，Observer，Strategy，Command ，Factory Method，Prototype，Singleton，Holder，Bridge ，Composite，Facade，DAO，Type Safe Enumeration ，Visitor，Flyweight，Facade。<br>Weblogic Eclipse Plugin</p>
+<p>这个插件允许用户管理多个并发的Weblogic实例并依据这些实现例进行开发。用户能够管理服务器状态(Starting/Stopping)，管理部署(Deploy/Redeploy/Undeploy) 与调试部署到服务器上的Java资源。<br>myJSEditor</p>
+<p>myJSEditor 是一个JavaScript编辑器。它的功能包括：语法高亮显示，代码自动完成等。myJSEditor还对自定义的JavaScript对象有高亮显 示，代码自动完成的功能。这个插件主要是支持Rhino JavaScript引擎，但也能够兼容其它符合Ecma262标准的JavaScript引擎。<br>TestNG Eclipse plug-in</p>
+<p>TestNG的Eclipse支持插件，让你能够直接在Eclipes中运行测试。<br>Batik svg</p>
+<p>这个SVG插件基于Apache的Batik SVG框架。可以利用这个插件来查看和编辑SVG文件.此外还可以把文件导成JPEG,TIFF,PNG与PDF格式。在线更新地址为：<a target="_blank" rel="noopener" href="http://www.dlsc.com/updates">http://www.dlsc.com/updates</a><br>EclipseXUL</p>
+<p>EclipseXUL为Eclipse平台添加对XUL的支持。它的特性包括向导，编辑器，加载配置，在线帮助等。这个插件基于Eclipse Webtools工具。<br>Favorite Plugin</p>
+<p>这个插件的功能类似于浏览器中的收藏夹。<br>ConcernMapper</p>
+<p>ConcernMapper 这插件允许你把fields与methods组织到抽象的模块中叫作”Concern” 。简单地说就是ConcernMapper 能够按照适合自己需求的方式来改变一个软件系统模块,而不需要修改它们的实际结构或行为，它还可以保持代码关联各种concerns的持久记录。<br>Bytecode Outline plugin</p>
+<p>Bytecode Outline可以把当前的正在编辑Java的文件或者class文件直接显示出其相应的字节码出来，而且可以进行两个Java文件的字节码比较或者两个class文件的字节码比较或一个Java文件与一个class文件进行字节码的比较。<br>Eclipse Platform Extensions</p>
+<p>一组Eclipse插件提供了以下功能：<br>1.提供把文件名或完整的限定名(Qualified name)复制到剪贴板；<br>2.提供垃圾收集功能;<br>3.用命令提示符(Command Prompt)或资源管理或导航器方式打开所选文件或项目所在的位置。<br>4.提供重启Eclipse平台的菜单; 支持的Eclipse版包括3.0，3.1，3.2；<br>在线安装：<a target="_blank" rel="noopener" href="http://opensource.trajano.net/">http://opensource.trajano.net/</a><br>Eclim</p>
+<p>Eclim是一个Eclipse插件和一组vim插件。它能够把eclipse功能集成到vim文本编辑器中。<br>SaveDirtyEditors</p>
+<p>这个插件能够定时或当Eclipse失去焦点时自动进行保存。<br>EclipseShell</p>
+<p>对 于Eclipse用户来说动态语言的使用将变得更加便利因为EclipseShell在Eclipse工作台中集成了语言解释器并提供一个交互式的编辑 器，能实现自动完成(Auto-Complete)，基本语法的高亮显示等。EclipseShell支持的语言 有：Beanshell,JRuby/Ruby和Javascript。<br>SwitchUnit</p>
+<p>SwitchUnit能够在 class和它的测试案例之间进行快速切换。当编辑源代码时，可通过快捷键Ctrl+Shift+U就能够在当前所编辑的类与它相对应的测试案例之间进行 切换。一个类对应的测试案例名字可以是以Test开头或以Test结尾,也可以是自定义的前缀或后缀。这个插件类似于IntelliJ的TestDox插 件<br>Castor Plug-in</p>
+<p>这个项目的目的是把Castor,特别是Castor Source Generator工具集成到Eclipse平台。它能让开发者在一个友好，熟悉的环境中调用这个Generator而不必使用shell或Ant scripts。Castor是一个开源的数据绑定框架(Java-to-XML;Java-to-SQL persistence等)。<br>Subversive</p>
+<p>Subversive项目是一个崭新的Eclipse插件提供类似于对CVS支持一样的Subversion支持。它的主要用法是CVS用户所熟悉的。如：使用不同的连接方法连接到资源库；资源库浏览；检出；同步；更新；提交；解决冲突；添加忽略资源列表。<br>ClickIDE</p>
+<p>ClickIDE是Web框架Click的Eclipse开发插件。它在Eclipse与WTP的基础上进行扩展提供针对使用Click开发Web应用程序的一些功能。<br>项目创建向导<br>Click页面创建向导<br>Click配置文件可视化编辑器<br>把Click提供的一些文档集成到Eclipse帮助系统中<br>Quigen</p>
+<p>Quigen这个插件利用Velocity模板引擎来快速生成任何类型的文本内容。它不需要进行配置，所要做的只是利用它自带Velocity编辑器编写一个velocity 模板文件。<br>Jarsearch plugin</p>
+<p>Jarsearch Eclipse插件可以帮助开发者在Jar文件内查找classes。它主要用于解决JDT没办法在构建路径内自动建议classes的问题。 Jarsearch搜索范围不仅仅局限于Eclipse workspace,它能够扫描任何本地或远程虚拟本地文件系统。Jarsearch还能够搜索嵌套的jars文件如：嵌在ears,wars,sars 包的jar文件。Jarsearch能够把查找匹配的结果自动导到Java项目的构建路径中。<br>Wicket Bench</p>
+<p>Wicket Bench这个Eclipse插件允许重复利用JUnit测试装置器+Mocked测试组件在隔离应用程序其余部份的情况下单独运行Wicket组件。它还提供一个综合测试工具Selenium来对Wicket构件进行自动测试。<br>Wicked Shell</p>
+<p>Wicked Shell这个插件提供了一个集成的shell。因此可以直接在eclipse IDE平台中使用shell系统。<br>FreeMarker IDE</p>
+<p>FreeMarker IDE是一个FreeMarker(模板引擎)感知编辑器，支持：语法高亮显示(Syntax Hilighting)、内容辅助(Content Assist)、大纲视图(Outline View)。其主页上提供了如何使用该插件进行开发的Flash视频。FreeMarker还有另外一个插件FreeMarker Eclipse Plugin。<br>Columns Plug-in</p>
+<p>Columns Plug-in定义了’Column’的概念,并可在这个可编辑的Column对象上进行复制,粘贴,剪切,填充,大小写转换,搜索,替换等操作。<br>moreUnit</p>
+<p>moreUnit这个插件用于帮助开发单元测试。它能够修饰一个有测试案例的类。在编辑器中标记被测试的方法。在编辑器中通过菜单或快捷键跳到测试案例。在编辑器中通过菜单或快捷键为光标所在位置的方法生成一个测试方法存根。以下是修饰一个有测试案例类的截图：</p>
+<p>Zip browser</p>
+<p>这个插件能够在eclipse主窗口中显示zip文件(.zip、.jar、.war)的内容。<br>MNPZ JRun Launcher</p>
+<p>用于启动和调试JRun应用服务器的Eclipse插件。<br>在线更新地址：<a target="_blank" rel="noopener" href="http://www.monyplaza.net/eclipse/update">http://www.monyplaza.net/eclipse/update</a><br>AmaterasUML</p>
+<p>UML建模插件,可利用该插件来绘制UML类图和UML时序图。<br>Jetty Launcher</p>
+<p>Jetty Servlet容器Eclipse支持插件。<br>JBoss Cache IDE</p>
+<p>JBoss Cache IDE是JBoss Eclipse IDE下的一个子项目。这个插件的主要功能包括：可以在Eclipse中创建新的本地Cache实例、通过JMX连接到运行在JBoss应用服务器中的远 程Cache实例、查看Cache中Cache节点的内容等。<br>Eclipse Messenger</p>
+<p>即时消息插件,方便开发者交流。不需要任何其它应用程序。<br>CFEclipse</p>
+<p>CFEclipse是CFML标记语言的IDE。这个插件具有语法高亮显示,代码自动整理,一个内容大纲,代码查错,集成web浏览器用于快速预览等功能。支持Html4.01同时也支持javascrtpt,css,xml的代码高亮显示。<br>Universal Label Decorations</p>
+<p>这个插件能够依据配置对Package Explorer中的包图标和labels进行着色。<br>Rox</p>
+<p>Rox是一个开源的框架用于构建基于图形的应用程序。它是专门针对教学工作而设计的，比如图形运算法则的运行，定理验证。<br>VUML</p>
+<p>该Eclipse插件是一个可视化UML2.0编辑器。<br>Eclipse RMI Plugin</p>
+<p>这个插件让Eclipse中的Java项目能够编辑RMI。<br>Jupe</p>
+<p>Jupe是一个基于GEF和UML2框架的UML插件，它为UML类图创建，代码生成，逆向转换提供支持。Jupe支持利用鼠标创建UML类图，并把图导成XMI，加载和保存类图。支持基于源代码创建UML类图，并且源代码如果有变动将自动改变类图。<br>FOP Bridge</p>
+<p>这个插件能直接在eclipse平台中把FO文档转换成Apache FOP支持的任何一种格式。此外还支持TIFF格式的转换。<br>Googlipse</p>
+<p>支持Google Web Toolkit (GWT) 开发的Eclipse插件。<br>Teniga</p>
+<p>Teniga是一个Javascript编辑器插件。它提供运行期语法错误检查，内容大纲,代码提示和语法着色等功能。 它能够帮助你快速，轻松编写javascript代码。Teniga还支持动态扩展用户包。<br>Eclipse Trader</p>
+<p>Eclipse Trader是一个基于Eclipse RCP框架的股票交易分析系统。<br>java sdk docs for eclipse</p>
+<p>这 个插件把Java SDK文档(包括Java™ 2 SE 5.0 SDK (JDK 5.0) Docs、Java™ 2 SE 1.4.2 SDK Documentation、Java™ 2 EE 5.0 SDK API Docs)和其它一些文档(Apache Ant 1.6.5、陆续将添加Apache SOAP v2.3.1 Documentation、Apache Struts Framework、Xerces Java Parser 1.4.4、Xerces Java Parser 2.8.0、C++相关文档)集成到Eclipse帮助系统便于开发过程中浏览与搜索。<br>Bioclipse</p>
+<p>Bioclipse是一个基于RCP(Eclipse Rich Client Platform)应用于化学与生物领域的应用软件。<br>EclipseWork</p>
+<p>EclipseWork是一个代码生成插件。可以利用它从POJO’s或数据库的表格中快速生成你所需要的代码。EclipseWork根据XML文件创建自定义的代码生成向导，然后依据配置的Velocity模板来生成代码。<br>XFire Eclipse Plugin</p>
+<p>从XFire的WSDL文档生成代码的插件。该插件需要Eclipse 3.2和Java 5。<br>EasySQL</p>
+<p>EasySQL:Eclipse SQL插件。包含SQL编辑器和执行器,表格编辑器，数据导出工具。EasySQL设计成易于与其它插件相集成。如果在你的项目中需要数据库操作功能，可以考虑该插件。<br>ArgoEclipse</p>
+<p>这个插件把ArgoUML建模工具集成到Eclipse IDE中。支持UML1.4所有类图。<br>Netwiser</p>
+<p>Netwiser是唯一个网络软件开发平台。它包含一个易于使用的图形用户界面和一个C++框架来创建各种类型的网络应用软件。</p>
+<p>ColorEditor</p>
+<p>ColorEditor一个语法着色器。采用JEdit的语法高亮显示模式，支持超过140种不同的文件类型。<br>Topcased UML Edit</p>
+<p>UML2.1建模工具，支持9种模型图包括：UML用例图，类图，包图，顺序图，协作图，状态图，活动图，构件图，部署图。并提供Java与模型图的转换引擎。</p>
+<p>OJB_Plugin</p>
+<p>OJB_Plugin 能够显示数据库(HSQL,MS SQLServer,DB2,Oracle,MySQL等)中的表格。然后从这些表格获取数据，生成OJB repository.xml文件并基于该文件生成ddl文件和java classe。该插件的生成器基于eclipse的JET框架。在4.2.0版本中新增支持hibernate，支持直接拖拉表格至package explorer来创建POJO’s，也支持直接拖拉POJO’s至DB View来创建表格。<br>SWTEditor</p>
+<p>基于SWT开发的HTML WYSIWYG编辑器。<br>eRCP</p>
+<p>eRCP是一组扩展自Eclipse Rich Client Platform(RCP)组件用于嵌入式设备的组件集。<br>Core Runtime-Eclipse Core提供对OSGI和Extension Point Framework的支持。<br>eSWT-嵌入式SWT它是桌面SWT API的一个子集，为了部署地灵活性该API分成两部分：<br>1.Core eSWT-包含基础功能和简单的widget<br>2.Expanded eSWT-包括更多复杂的widget(Table,Tree,WebBrowser)和layout与dialog<br>SWT Mobile Extensions-一组符合移动设备规范的widget和dialog。<br>eJFace - 一组扩展自eSWT用于把eRCP应用程序与eRCP工作平台相集成，并提供更多更复杂的widget类似于面向MVC的视图。<br>eWorkbench-一个UI框架用于管理eRCP应用程序的启动与显示。<br>eUpdate-一个简化的API和界面可用于动态更新设备软件<br>microXML-一个小巧，快速的XML解析器支持SAX与DOM API。<br>eRCP当前支持的Nokia Series 80和Windows Mobile。<br>Green UML</p>
+<p>Green UML一个UML类图创建工具，主要是针对学生使用而设计。你可以利用Green UML从代码创建UML类图，或者通过UML类图来生代码。类图中的所有关联都是以插件的形式存在可动态增/删。Green支持把UML类图导出成jpg与gif的格式。<br>Tribix</p>
+<p>Tribix-Extended Emitters for BIRT提供一组可扩展的用于BIRT的Emitter包括PPT Emitter与XLS Emitter。以便让BIRT除了支持HTML和PDF格式之外，还可支持PPT与XLS格式。<br>xqIde</p>
+<p>xqIde是一个用于XQuery开发的Eclipse插件。<br>EoS</p>
+<p>这个插件可以让你选择用SWT或Swing来运行Eclipse，并挑选你喜欢的皮肤/外观。<br>ant4eclipse</p>
+<p>ant4eclipse提供一组Ant task用于读取Eclipse的配置文件并与Ant构建文件相结合。<br>Relo</p>
+<p>Relo是一个帮助开发人员研究大型代码库的好工具，它能够一步步的跟踪你所展开的代码包，并快速生成类似UML的类图。<br>Google Code Search</p>
+<p>Google Code Search插件。<br>下载：org.proteus.google.code.search-1.0.0.zip<br>Knopflerfish Eclipse Plugin</p>
+<p>这是OSGi R4框架Knopflerfish提供的一个辅助开发插件。<br>Multi Clipboard</p>
+<p>Multi Clipboard为Eclipse源代码编辑器提供一个可以把多次复制的内容保存起来的剪贴板，它不会像正常剪贴板一样只是保存最后一次复制的内容。 你可以设置该插件当Eclipse关闭时会把Multi Clipboard中的内容保存一个文件中，当Eclipse再次打开时会重新加载保存到文件中的内容。你还可以通过设置该插件把Multi Clipboard中的内容变成可编辑。<br>Velocity Web Edit</p>
+<p>Velocity Web Edit是一个Velocity与HTML感知编辑器。它的特点：<br>1.可定制的语法高亮显示<br>2.内容辅助(Velocity变量名，方法，属性，Javascript函数方法，Velocity Macro Directives，样式表名称)<br>3.Velocity大纲视图<br>4.HTML/XML大纲视图<br>5.智能代码缩排功能。<br>6.定义XML DTD等。<br>XulBooster</p>
+<p>XulBooster项目提供一个基于Eclipse平台的XUL集成开发环境。该项目包括多个编辑器和创建向导来辅助Xul开发.<br>elbe</p>
+<p>elbe(Eclipse LDAP Browser and Editor)是一个LDAP目录浏览和编辑的插件。包括：基于Tree结构的DIT浏览器，搜索结果编辑器，书签，Entry编辑器，Value编辑 器，Schema浏览器，更改日记查看器，LDIF编辑器，LDIF导入/导出，批操作。<br>PDF viewer</p>
+<p>PDF viewer添加一个PDF透视图到Eclipse平台中，用于打开PDF文件而不需要依赖任何第三方工具。<br>OWL VE</p>
+<p>OWL(Ontology Web Language)可视化编辑器。<br>Flux</p>
+<p>Flux 是一个支持采用模型驱动来设计一个Struts1.1 web应用程序的Eclipse插件。它能够从UML活动图生成struts-config.xml和struts-config-.xml配置文件。在 其主页和Eclipse帮助系统中有提供详细的用户使用手册。<br>Photran</p>
+<p>Photran是一个基于 Eclipse和CDT的Fortran语言IDE。它包括：语法高亮显示的编辑器。CVS支持。GUI到gdb支持。基于Makefile编译。编译器错误提取。<br>OpenXava Eclipse Plugins</p>
+<p>OpenXava Eclipse插件是一个数据库反转引擎可用于从现有的数据库表格创建OpenXava组件。这个插件联合OpenXava让你在几分钟之内从现有的数据 库+Eclipse就可以轻松开发出一个完整的J2EE应用程序。该插件支持: - 从Eclipse连到数据库取得数据库元数据。- 自定制代码生成。- 支持映射功能。<br>EasyEclipse for C and C++</p>
+<p>C和C++开发工具用于创建，编译，测试和调试C与C++程序。集成Subversion版本库支持。下载1.2.1：<br>EasyEclipse for Python</p>
+<p>Python与Jython开发工具用于创建，编译，测试和调试Python与Jython 程序。集成Subversion版本库支持。下载1.2.1：<br>EasyEclipse for Ruby and Rails</p>
+<p>用Ruby与Ruby On Rail开发应用程序的IDE。集成一个web服务器和数据库，支持Subversion版本库。<br>EasyEclipse Desktop Java</p>
+<p>用Swing或SWT开发Java GUI桌面应用程序的IDE。提供编辑，编译，运行，调试，测试，文档生成和打包等功能。<br>EasyEclipse Mobile Java</p>
+<p>用于开发和部署J2ME应用程序。<br>EasyEclipse for PHP</p>
+<p>用于开发，部署，调试，测试PHP应用程序集成一个We服务器和一个数据库。支持CVS与Subversion。<br>EasyEclipse Plugin Warrior</p>
+<p>用于开发和部署Eclipse插件，RCP与OSGi应用程序。<br>EasyEclipse Server Java</p>
+<p>这 个Eclipse分发包中包含许多插件用于管理各种应用服务器(Tomcat，JBoss，WebLogic)，一些流行框架的开发插件 (Hibernate,Spring,Struts,JSF)，J2EE开发工具(包括Servlets,JSPs,EJBs,Web Services)，一些普通文件(XML,HTML,JavaScript和CSS等)的编辑器和数据库管理工具。</p>
+<p>WAZAABI</p>
+<p>WAZAABI 这个开源GUI框架能够让你以一种简易的方式来开发胖客户端应用程序基于Eclipse RCP,XUL，SOAP与J2EE。 利用Wazaabi, Eclipse RCP UI不再是采用SWT开发而是使用XUI标准在XML文件中描述。 因此它能够减少UI组件与链到服务器端的业务逻辑组件之间的耦合。<br>ZipEditor</p>
+<p>这个插件支持在Eclipse中查看和操作zip压缩文档。它支持拖/放，打开/修改zip压缩文档中的文件。此外它也可以处理tar.gz格式。<br>JUtils ToString Generator</p>
+<p>这个插件能够同时为多个Java类生成预先设定好的toString()方法与构造函数。<br>AnyEdit</p>
+<p>AnyEdit 插件主要是提供一些代码编辑管理方面的功能，它把这些功能集成到Eclipse代码编辑器的上下文菜单，Eclipse的主菜单和编辑器的工具条中。 AnyEdit提供的功能包括：着色区分代码中的tab与space，同时对多个文件或整个目录进行tab与space相互转换，保存代码时自动移除 tab与space，在Eclipse全局工具条中添加”全部保存”,”打开文件”等按纽，大小写转换，为jsp等文件增加Open file under cursor功能(打开选定的Java文件),为xml,tld,jsp等文件增加Open type under cursor功能(打开选定的Java类型),把像thisIsMyFieldName这样的变量名转换/还原成 this_is_my_field_name。<br>JAutodoc</p>
+<p>JAutodoc是一个能够自动为你的源代码加上Javadoc注释的Eclipse插件。<br>SpketIDE</p>
+<p>SpketIDE 提供很多功能用于帮助Mozilla Extensions开发人员提高开发效率。其强大的JavaScript编辑器提供了像代码自动补全，目录大纲，代码(包括XML代码)折叠，语法(包 括XUL/XBL语法)高亮显示，XPCOM组件视图这些功能都有助于提高开发人员编写JavaScript代码的效率。此外SpketIDE还是 Yahoo!UI组件的一个辅助开发工具。<br>Eclipse Verilog editor</p>
+<p>Eclipse Verilog editor是使用Verilog或VHDL语言进行硬件开发的一个辅助工具。它提供语法高亮显示，目录大纲视图，代码自动补全，代码模板，代码格式化，调试等功能。<br>EclEmma</p>
+<p>EclEmma 是一个基于EMMA的Java代码覆盖工具。它的目的是让你可以在Eclipse工作平台中使用强大的Java代码覆盖工具EMMA。EclEmma是非 侵入式的不需要修改你的项目或执行其它任何安装，它能够在工作平台中启动像运行JUnit测试一样直接对代码覆盖进行分析。覆盖结果将立即被汇总并在 Java源代码编辑器中高亮显示。<br>Markdown Text Editor</p>
+<p>Markdown Text Editor是一个用于流行文本格式化语言Markdown的编辑器<br>Cusp</p>
+<p>Cusp是一个用于Lipse开发的IDE。它提供一个项目管理器，一个用于导航的代码结构目录，代码编辑器(具有：语法高亮显示，括号匹配，自动补全等功能)。<br>Elvyx</p>
+<p>Elvyx是一个监控与剖析JDBC活动的工具。<br>File Arranger</p>
+<p>File Arranger是一个基于Eclipse RCP开发的文件管理器。<br>EclipseXSLT</p>
+<p>构建在Eclipse WTP之上的XSLT支持插件，包括一个可定制的XML目录大纲，一个xpath查询视图等等。<br>log4eclipse</p>
+<p>log4eclipse打开一个端口(默认是4445)， 监听SocketAppender输入流，然后在一个表格中显示日记事件， 并根据它们的日记级别高亮显示。<br>JCommander</p>
+<p>JCommander是一个采用Eclipse RCP开发的多平台文件管理器。<br>jMaki Eclipse Plugin</p>
+<p>jMaki（一个ajax框架支持Java与PHP） Eclipse插件。</p>
+<p>XPairtise</p>
+<p>XPairtise为分布结对编程提供了一个平台。该插件提供共享编辑，项目同步，共享程序和测试执行，用户管理，内置对话交流和一个共享白板。<br>LDAP Studio</p>
+<p>LDAP Studio是一个基于Eclipse RCP开发LDAP工具平台。由几个Eclipse(OSGi)插件包括：LDAP Browser Plugin和Schemas Editor Plugin组成，所以LDAP Studio易于通过插件进行扩展。LDAP Studio适用于任何LDAP服务器，但它是专门设计用于Apache Directory Server。<br>Google Gadget Eclipse plugin</p>
+<p>这 个插件能够把所有Google Gadgets(即”Google小工具”)集成到你的Eclipse平台中。默认内置三个Google Gadget：Google Calender，Google Talk，Google Map。但你可以通过在plugin.xml中增加一个扩展来添加任何你所喜欢Google Gadget。<br>ASDT</p>
+<p>ASDT：Actionscript 开发工具。它提供一个具有语法着色显示，语法检查，内容援助等功能的编辑器和其它一些用来创建ActionScript2.0和编译SWF文件所需要的所 有辅助工具。构建器和日记功能可以用来调试和部署完全采用ActionScript2.0编写的项目。<br>eclipse-jmx</p>
+<p>eclipse-jmx这个插件可用于通过JMX和它的RMI连接器Connector来管理Java应用程序。<br>dbTier</p>
+<p>dbTier这个Eclipse插件封装了Hibernate组件并为Eclipse RCP应用程序提供统一的数据访问接口。<br>Schematron Eclipse Plugin</p>
+<p>Schematron Eclipse插件用于创建和编辑ISO Schematron Schema文件，也能够依据XML文档进行schema校验。<br>GMapWTP</p>
+<p>Google Maps JavaScript API让你可以把Google Maps集成在你的网页中，Eclipse WTP支持javascript代码提示功能，但没办法提示Google Maps Javascript API。GMapWTP是一个可以让Eclipse WTP支持Google Map API的工具。<br>GearsWTP</p>
+<p>Google Gears是一个开源的浏览器扩展，用于让开发人员可以开发可离线/脱机运行的web应用程序。Eclipse WTP支持 javascript代码提示功能，但没有办法提示Google Gears提供的Javascript API。GearsWTP就是一个可以让Eclipse WTP支持Google Gears API提醒功能的工具。该工具类似于GMapWTP。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20141111-221.html" title="实用的Eclipse插件大全（续）" target="_blank" rel="external">https://www.klavor.com/dev/20141111-221.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20141112-225.html" title="Eclipse快捷大全"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20141111-219.html" title="实用的Eclipse插件大全"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="实用的Eclipse插件大全（续）[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

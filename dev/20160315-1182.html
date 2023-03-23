@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>PHP学习笔记 | Klavor&#39;s Blog</title>
+  <meta name="description" content="———-基础介绍———- Web开发标准:Web标准是由万维网联盟W3C(World Wide WebConsortium，http:&#x2F;&#x2F;www.w3.org)创建于1994年，研究Web规范和指导方针,致力于推动Web发展，保证各种Web技术能很好地协同工作，它的工作是对Web进行标准化，创建并维护WWW标准。 脚本:是批处理文件的延伸，是一种纯文本保存的程序，一般来说的计算机脚本程序是确定的一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP学习笔记">
+<meta property="og:url" content="https://www.klavor.com/dev/20160315-1182.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="———-基础介绍———- Web开发标准:Web标准是由万维网联盟W3C(World Wide WebConsortium，http:&#x2F;&#x2F;www.w3.org)创建于1994年，研究Web规范和指导方针,致力于推动Web发展，保证各种Web技术能很好地协同工作，它的工作是对Web进行标准化，创建并维护WWW标准。 脚本:是批处理文件的延伸，是一种纯文本保存的程序，一般来说的计算机脚本程序是确定的一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-03-14T16:12:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T16:58:46.572Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20160315-1182.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2016/03/20160315-1182" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP学习笔记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20160315-1182.html" class="article-date">
+	  <time datetime="2016-03-14T16:12:00.000Z" itemprop="datePublished">2016-03-15</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/PHP/" rel="tag">PHP</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20160315-1182.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>———-基础介绍———-</p>
+<p>Web开发标准:Web标准是由万维网联盟W3C(World Wide Web<br>Consortium，<a target="_blank" rel="noopener" href="http://www.w3.org)创建于1994年,研究web规范和指导方针,致力于推动web发展,保证各种web技术能很好地协同工作,它的工作是对web进行标准化,创建并维护www标准./">http://www.w3.org)创建于1994年，研究Web规范和指导方针,致力于推动Web发展，保证各种Web技术能很好地协同工作，它的工作是对Web进行标准化，创建并维护WWW标准。</a></p>
+<p>脚本:是批处理文件的延伸，是一种纯文本保存的程序，一般来说的计算机脚本程序是确定的一系列控制计算机进行运算操作动作的组合，在其中可以实现一定的逻辑分支等。</p>
+<p>-常见的脚本语言:PHP\HTML\CSS\JAVASCRIPT\VBSCRIPT\ACTIONSCRIPT\SHELL\PYTHON\RUBY\JAVAFX\LUA\AUTOLT</p>
+<p>-特性</p>
+<p>–语法和结构通常比较简单</p>
+<p>–学习和使用通常比较简单</p>
+<p>–通常以容易修改程序的“解释”作为运行方式，而不需要“编译”</p>
+<p>–程序的开发产能优于运行效能</p>
+<p>以非IE标准开发后兼容IE。</p>
+<p>Linux下的安装方式</p>
+<p>-源码包安装</p>
+<p>-rpm包安装</p>
+<p>-集成软件安装</p>
+<p>–xampp</p>
+<p>–wampserver</p>
+<p>windows安装的两种方式</p>
+<p>-单个下载安装</p>
+<p>-集成环境安装</p>
+<p>———-PHP介绍———-</p>
+<p>PHP(Hypertext<br>Preprocess缩写)超级文本预处理器</p>
+<p>-服务器端脚本运行</p>
+<p>-命令行脚本</p>
+<p>-客户端图形界面(GUI)程序</p>
+<p>PHP特点:</p>
+<p>-是开放源代码的，服务器端的脚本语言</p>
+<p>-独立于操作系统，可以运行在几乎所有系统中</p>
+<p>-支持大部分的服务器</p>
+<p>-支持大量的数据库</p>
+<p>-可以创建图像</p>
+<?php ?>
+
+<? ?>
+
+<?=$str ?>
+
+<p>&lt;% %&gt;</p>
+<script
+language="php"></script>
+
+<p>short_open_tag = on;    //开启短标签，不建议开启</p>
+<p>在一个文件的结尾只是PHP语句的情况下建议不写”?&gt;”结束标记</p>
+<p>———-PHP中的变量———-</p>
+<p>变量的命名:</p>
+<p>-变量名字以”$”开始</p>
+<p>-变量的名称声明时一定要有意义</p>
+<p>-不合法的变量名:不能以数字开头，在变量中不允许用运算符(关键字作为变量名称不影响，因为PHP中变量以”$”开头)</p>
+<p>-变量名称区分大小写(驼峰式命名方式)</p>
+<p>var_dump():打印,查看变量类型和值的函数</p>
+<p>empty():判断变量是否为空</p>
+<p>unset():释放变量</p>
+<p>isset():判断变量是否存在</p>
+<p>可变变量</p>
+<p>-$hello =<br>“world”;</p>
+<p>-$$hello = “!”;</p>
+<p>-$world的值为”!”;</p>
+<p>引用变量</p>
+<p>-$a =100;</p>
+<p>-$b =<br>&amp;$a;    //$b获得了$a的地址值，因此，$b会随着$a的变化而变化</p>
+<p>1.只有变量才有地址，也就是只有变量才能有引用</p>
+<p>2.一个变量发生变化，另一个变量的值也会变化</p>
+<p>3.在使用unset()函数时，如果有引用关系，只是解除了这种引用关系，至删除一个变量，另一个依然还存在</p>
+<p>4.如果两个变量是引用关系，一个变，另一个也变；如果给其中一个应用，不是普通的值，而是一个新的引用，则改变引用关系</p>
+<p>float((0.1<br>+0.7) * 10) 通常会返回7，因此如果确实需要更高的精度，应该使用任意精度数学函数或者gmp函数</p>
+<p>{}:花括号在双引号内将变量括起来可以</p>
+<p>定界符号声明字符串:</p>
+<p>$str =&lt;&lt;&lt;hello</p>
+<p>hello;</p>
+<p>-可以使用单引号使内容不解析</p>
+<p>$str =&lt;&lt;&lt;’hello’</p>
+<p>hello;</p>
+<p>PHP中的数组实际上是一个有序图。</p>
+<p>伪类型</p>
+<p>-number:代表整型和浮点型</p>
+<p>-mixed:代表所有类型</p>
+<p>-callback:这个参数可以传一个函数</p>
+<p>–一个PHP函数用函数名字符串来传递。可以传递任何内置的或者用户自定义的函数，除了array()、echo()、empty()、eval()、exit()、isset()、list()、print()和unset()。</p>
+<p>强制类型转换:</p>
+<p>-getType(变量);</p>
+<p>–setType(变量, 类型):强制转换类型，改变原变量的类型</p>
+<p>–(类型)变量:给新变量一个新类型，原变量不变。int\integer\bool\boolean\float\double\real\string\array\object</p>
+<p>–intval():返回一个整型的值</p>
+<p>–floatval():返回一个浮点型的值</p>
+<p>–strval():返回一个字符串的值</p>
+<p>-var_dump();</p>
+<p>自动类型转换:</p>
+<p>-$a = 10; $b = 24.5; $c =<br>$a + $b; var_dump($c);    //自动类型转换</p>
+<p>-$a =<br>“hello world!”; $b = 24; $c = $a + $b; var_dump($c);    //$c为整型，值为24</p>
+<p>-$a = “456e3sdflj 23<br>sdf”; $b = 100; $c = $a + $b;//e不是普通的字母</p>
+<p>布尔型与NULL    ——-&gt;    浮点型Float</p>
+<p>    |                            ^</p>
+<p>    |                            |</p>
+<p>    |                            |</p>
+<p>    v                            |</p>
+<p>整型Integer&lt;——-    字符串String</p>
+<p>变量类型判断:</p>
+<p>-is_bool():</p>
+<p>-is_int()\is_integer\is_long():</p>
+<p>-is_float()\is_double()\is_real():</p>
+<p>-is_string():</p>
+<p>-is_array():</p>
+<p>-is_object():</p>
+<p>-is_resource():</p>
+<p>-is_null():</p>
+<p>-is_scalar():</p>
+<p>-is_number():</p>
+<p>-is_callable():</p>
+<p>-bool<br>settype(mixed var, string type):将变量var的类型设置成type。</p>
+<p>———-PHP中的常量———-</p>
+<p>常量的值一旦声明就不会被改变。</p>
+<p>初始化静态段。</p>
+<p>1.常量是使用函数define()声明的。</p>
+<p>-define(“ROOT”,<br>“localhost”):ROOT为常量名,localhost是常量的值</p>
+<p>–直接使用常量名调用常量值或者使用constant()函数来调用</p>
+<p>-get_defined_constants():获取所有的常量</p>
+<p>2.如果常量没有声明，则常量名在使用时，会自动转为字符串</p>
+<p>-echo<br>ROOT;    //直接使用未声明常量自动转换为字符串比单双引号效率慢8倍</p>
+<p>-error_reporting(E_ALL<br>&amp; ~E_NOTICE):报告除了提示外的所有错误</p>
+<p>3.常量名称不要加$符号</p>
+<p>4.常量名称，默认是区分大小写的，习惯上全部大写</p>
+<p>5.可以使用define()第三个参数来决定是否让这个常量区分大小写，如果为true则不区分大小写。默认为false</p>
+<p>6.常量的值只支持标量数据类型</p>
+<p>7.常量不能使用unset()清除常量</p>
+<p>预定义常量:系统事先定义好的常量</p>
+<p>魔术常量:</p>
+<p><strong>LINE</strong>:当前行号</p>
+<p><strong>FILE</strong>:文件完整路径及文件名（PHP4.0.2起，总包含一个绝对路径，之前版本有时会包含一个相对路径）</p>
+<p><strong>DIR</strong>:文件所在目录</p>
+<p><strong>FUNCTION</strong>:函数名称（PHP4.3.0新加，PHP5中返回区分大小写，PHP4中返回小写）</p>
+<p><strong>CLASS</strong>:类的名称（PHP4.3.0新加）</p>
+<p><strong>METHOD</strong>:类的方法名（PHP5.0.0新加）</p>
+<p><strong>NAMESPACE</strong>:当前的命名空间（PHP5.3.0新增）</p>
+<p>-一些相关方法</p>
+<p>–get_class():</p>
+<p>–get_object_vars():</p>
+<p>–file_exists():</p>
+<p>–function_exists():</p>
+<p>———-运算符———-</p>
+<p>运算元:</p>
+<p>-一元运算符: +1 -1 ++ –</p>
+<p>-二元运算符: + 1 * / % &gt; &lt; = == ===</p>
+<p>-三元运算符: (运算元 ? 运算元 : 运算元)</p>
+<p>另外的分类方式:</p>
+<p>-算术运算符: + - * / % ++ –</p>
+<p>-赋值运算符: = += -= *= /= %= .=</p>
+<p>-比较运算符: &gt; &lt; &lt;&gt; == &gt;= &lt;= === != !==</p>
+<p>-逻辑运算符: &amp;&amp; || ！</p>
+<p>-位运算符: &amp; | ^ ~ &gt;&gt; &lt;&lt;</p>
+<p>-其他运算符: ?: @ =&gt; -&gt;</p>
+<p>%:PHP中将小数转为整数再求模</p>
+<p>,:echo “hello”,<br>“ “, “world”, “!”</p>
+<p>and\or\not\xor:逻辑运算符的另一种写法</p>
+<p>``:反引号是执行运算符，PHP将尝试将反引号中的内容作外壳命令来执行，并将其输入信息返回</p>
+<p>-exec():</p>
+<p>-system():</p>
+<p>instanceof():类型运算符，用来测定一个给定的对象是否来自指定的对象类</p>
+<p>运算符优先级:</p>
+<p>-非结合 new | new</p>
+<p>-左 [ | array()</p>
+<p>-非结合 ++ – | 递增或递减运算符</p>
+<p>-非结合 ! ~ - (int) (float) (string) (array) (object) @ | 类型</p>
+<p>-左 * / % | 算数运算符</p>
+<p>-左 + - . | 算数运算符和字符串运算符</p>
+<p>-左 &lt;&lt; &gt;&gt; | 位运算符</p>
+<p>-非结合 &lt; &lt;= &gt; &gt;= | 比较运算符</p>
+<p>-非结合 == != === !== | 比较运算符</p>
+<p>-左 &amp; | 位运算符和引用</p>
+<p>-左 ^ | 位运算符</p>
+<p>-左 | | 位运算符</p>
+<p>-左 &amp;&amp; | 逻辑运算符</p>
+<p>-左 || | 逻辑运算符</p>
+<p>-左 ?: | 三元运算符</p>
+<p>-左 = += -= *= /= .= %= &amp;= |= ^= &lt;&lt;= &gt;&gt;= | 赋值运算符</p>
+<p>-左 and | 逻辑运算符</p>
+<p>-左 xor | 逻辑运算符</p>
+<p>-左 or | 逻辑运算符</p>
+<p>-左 ， | 多处用到</p>
+<p>-建议使用()来指定优先级</p>
+<p>———-流程控制———-</p>
+<p>顺序结构</p>
+<p>分值结构（选择结构）</p>
+<p>-单一条件分支结构:if</p>
+<p>-双向条件分支结构:if else</p>
+<p>-多向条件分支结构:if elseif else; switch</p>
+<p>–switch中只支持 “整型” 和 “字符串” 类型</p>
+<p>-巢状条件分支</p>
+<p>循环结构</p>
+<p>-while语句</p>
+<p>-do…while语句，结尾必须以”;”结束</p>
+<p>-for语句</p>
+<p>-goto语句（PHP5.3之后又加回来了）</p>
+<p>–支持者</p>
+<p>—代码跳转快，方便</p>
+<p>—执行性能高</p>
+<p>–反对者</p>
+<p>—goto语句的大量使用是灾难，尤其是在后续的代码维护中，goto语句使得程序结构混乱，读起来很难懂。</p>
+<p>—由于goto语句可以灵活转跳，如果不加以限制，它的确会破坏结构化设计风格</p>
+<p>—goto语句经常带来错误或隐患，它可能跳过了某些对象的构造、变量的初始化、或者重要的计算等语句</p>
+<p>-特殊的流程控制语句</p>
+<p>–break:跳出本层循环</p>
+<p>–continue:结束本次循环，进入下次循环</p>
+<p>–exit:退出脚本，别名”die”，可以带一条消息作为参数</p>
+<p>———-函数———-</p>
+<p>函数(function)是一段完成指定任务的已命名代码块，函数可以遵照给它的一组值或参数完成特定的任务，并且可能返回一个值。在PHP中有两种函数，自定义函数与系统函数</p>
+<p>函数的优越性:</p>
+<p>-控制程序设计的复杂性</p>
+<p>-提高软件的可靠性</p>
+<p>-提高软件的开发效率</p>
+<p>-提高软件的可维护性</p>
+<p>-提高程序的可用性</p>
+<p>file_put_contents(路径, 内容):将指定的内容输出到指定的路径中</p>
+<p>自定义函数：</p>
+<p>-function<br>函数名([参数1[,参数2[,参数3[,…]]]]) { 函数体或称为方法体 [return<br>返回值]//如果需要有返回值时使用}</p>
+<p>-函数名不区分大小写，命名函数时不可使用已声明的函数，或者PHP内建的函数名称</p>
+<p>-参数:指用来把数值由函数外部传入函数体中，并用来加以运算处理的数据</p>
+<p>-返回值:当调用函数时需要它返回一些数值，那么就要函数体中ruturn语句实现。</p>
+<p>–runturn<br>返回值;//返回值也可以是一个表达式</p>
+<p>–exit();    //无返回值 void</p>
+<p>判断函数是否存在</p>
+<p>function_exists():判断函数是否存在，在函数调用之前可以进行判断函数是否存在</p>
+<p>在函数内部如果需要使用函数外的变量，需要使用global关键字，将外部变量引入</p>
+<p>变量的范围:</p>
+<p>-当主程序调用函数时，PHP会暂时停止目前主要程序流程的运行，并传递必要的运算参数给目标函数使用，以执行函数的程序代码片段</p>
+<p>-在函数执行结束后，函数会回传执行结果所得的数值，并将执行流程转回原本主程序终端的地方，继续执行运作</p>
+<p>变量的能见度:</p>
+<p>-意指在程序中的可作用范围。当一个变量执行赋值动作后，会随着声明局部的差异，而有不同的作用范围。大致上来说变量会一句声明的位置分为两种:局部变量和全局变量</p>
+<p>可以使用预定义的全局变量数组$GLOBALS获取全局变量列表。</p>
+<p>静态变量(static):</p>
+<p>-在函数中声明的静态变量，只在第一次调用时声明</p>
+<p>-第二次以后，一看是静态变量，就先到静态去中，看一i啊有没有这个变量，如果有就使用，而不去再声明</p>
+<p>-静态变量在同一个函数多次调用中共享</p>
+<p>无论是使用系统函数还是自定义函数，都需要了解函数的三要素:</p>
+<p>-功能描述</p>
+<p>-参数</p>
+<p>-返回值</p>
+<p>在函数中定义设置默认参数值的时候要从后往前；调用函数的时候实参要从前往后</p>
+<p>如果函数中未定义形参，那么调用函数的时候赋予实参不会报错。</p>
+<p>-func_get_args():获取传入的所有实参并返回一个数组。</p>
+<p>-func_num_args():获取实参的总个数</p>
+<p>-func_get_arg():获取指定索引的实参</p>
+<p>变量函数:通过变量()的方式来调用不确定的函数</p>
+<p>回调函数:在A函数中传入另一个B函数作为实参，一般这个实参的传递只需要传递B函数的函数名，在A函数中通过变量函数的方式调用B函数来实现相关功能</p>
+<p>-变量函数</p>
+<p>-使用变量函数声明和应用的回调函数</p>
+<p>-借助call_user_func_array()函数自定义回调函数</p>
+<p>–call_user_func_array(参数名, 数组):调用函数和将数组中的值作为实参传入到这个调用的函数中</p>
+<p>–call_user_func_array(数组, 数组):调用函数是传入两个数组作为参数，第一个数组包含类名或对象以及方法名；第二个数组则传的是第一个数组中的方法的值</p>
+<p>-类静态函数和对象的方法回调</p>
+<p>usort(数组, 排序函数):通过usort()函数进行排序，第一个参数为要排序的数组；第二个参数为排序的函数，即排序的标准方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"></span><br><span class="line">*遍历文件夹</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">$dirname = &quot;./phpmyadmin&quot;;</span><br><span class="line">function fordir($dirname) &#123;</span><br><span class="line">    $dir = opendir($dirname);</span><br><span class="line">    while ($file = readdir($dir)) &#123;</span><br><span class="line">        $file = $dirname.&#x27;/&#x27;.$file;</span><br><span class="line">        If (is_dir($file)) &#123;</span><br><span class="line">            echo &quot;目录：&#123;$file&#125;&lt;br /&gt;&quot;;</span><br><span class="line">            fordir($file);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &quot;文件：&#123;$file&#125;&lt;br /&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    //echo $file.&#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    closedir($dir);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>加载自定义的函数库</p>
+<p>include(文件路径):</p>
+<p>include_once(文件路径):</p>
+<p>require(文件路径):</p>
+<p>require_once(文件路径):</p>
+<p>Include_once()和require_once()函数:两个函数在脚本执行期间包括并运行指定文件。与include()语句及require()类似，唯一区别是如果该文件中的代码已经被包括了，则不会再次包括，只会包括一次。这两个函数应该用于在脚本执行期间同一个文件有可能被包括超过一次的情况下，以确保被包括多次产生函数重定义、变量重新赋值的错误不产生</p>
+<p>Include()和require()函数:require()将一个文件在预处理期间被导入，像把该文件粘贴到使用函数的地方。而include()几乎与require()等价，区别在于在脚本执行时包含，当处理失败时，include()产生一个警告而require()则导致一个致命错误</p>
+<p>一般情况下，可以直接包含时使用require()，需要通过判断包含时使用include()。</p>
+<p>匿名函数:$func = function() {};</p>
+<p>闭包函数也可以作为变量的值来使用。PHP会自动把表达式转换成内置类Closure的对象实例。把一个closure对象赋值给一个变量的方式与普通变量赋值的语法是一样的，最后也要加上分号</p>
+<p>变量前加&amp;可以使变量传址，是使其他方法中操作该变量时，它的原值也会改变</p>
+<p>PHP闭包的实现主要就是靠匿名函数</p>
+<p>-将匿名函数在普通函数中当作参数传入，也可以被返回。这就实现了一个简单的闭包</p>
+<p>-通俗的说，就是子函数可以使用富含数中的局部变量，这种行为就叫做闭包</p>
+<p>-闭包的特点:</p>
+<p>–作为一个函数变量的一个引用，当函数返回时，其处于激活状态</p>
+<p>–一个闭包就是当一个函数返回时，一个没有释放资源的栈区</p>
+<p>–其实上面两点可以合成一点，就是闭包函数返回时，该函数内部变量处于激活状态，函数所在的栈区依然保留</p>
+<p>-闭包外层是个函数</p>
+<p>-闭包内部都有函数</p>
+<p>-闭包会return内部函数</p>
+<p>-闭包返回的函数内部不能有return</p>
+<p>-执行闭包后，闭包内部变量会存在，而闭包内部函数的内部变量不会存在</p>
+<p>闭包的应用场景:</p>
+<p>-保护函数内的变量安全。外层函数中变量只有内部函数才能访问，而无法通过其他途经访问到，因此保护了外层函数中变量的安全性</p>
+<p>-在内存中维持一个变量。由于闭包，外层函数中的变量一直存在于内存中，因此每次执行，都会使用到</p>
+<p>高洛峰老师建议:PHP闭包的特性并没有太大惊喜，其实用CLASS就是可以实现类似甚至强大得多的功能，更不能和js的闭包相提并论，只能期待PHP以后对闭包支持的改进。不过匿名函数还是挺有用的，比如在使用array_filter()等之类的函数可以不用在外部声明回调函数了。目前还不稳定，不适用于正式开发</p>
+<p>use关键字使用外部变量:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function demo() &#123;</span><br><span class="line">    $a = 10;</span><br><span class="line">    $one = function($str) use ($a) &#123;</span><br><span class="line">        //如果想改变外部函数$a的值，则在use使用的变量名前加&amp;，如&amp;$a这种方式</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20160315-1182.html" title="PHP学习笔记" target="_blank" rel="external">https://www.klavor.com/dev/20160315-1182.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20160315-1187.html" title="Java网络编程：通过TCP协议传输一个对象到服务端"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20160308-1176.html" title="Java小程序：拷贝一个文件夹到新的位置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="PHP学习笔记[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程 | Klavor&#39;s Blog</title>
+  <meta name="description" content="作为站长，有时候一定会有想把自己喜欢的音乐推送给网友欣赏的冲动，但是想要在自己网站上放置音乐文件，不仅占用了较多的空间，而且还耗费了空间的流量，造成网站打开迟钝等影响用户的体验。有什么办法给自己网站添加音乐还不占用自己网站的流量和宽带呢?答案是使用第三方播放音乐插件，而今天本站长将给大家介绍一款好用的音乐播放插件，虾米播播。 虽然有了这么好的插件了，但是在使用过程中还是会出现一些不可预料的小毛病的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程">
+<meta property="og:url" content="https://www.klavor.com/dev/20150617-907.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="作为站长，有时候一定会有想把自己喜欢的音乐推送给网友欣赏的冲动，但是想要在自己网站上放置音乐文件，不仅占用了较多的空间，而且还耗费了空间的流量，造成网站打开迟钝等影响用户的体验。有什么办法给自己网站添加音乐还不占用自己网站的流量和宽带呢?答案是使用第三方播放音乐插件，而今天本站长将给大家介绍一款好用的音乐播放插件，虾米播播。 虽然有了这么好的插件了，但是在使用过程中还是会出现一些不可预料的小毛病的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2Up7TdXXXXXX5XXXXXXXXXXXX_!!760675169.png">
+<meta property="article:published_time" content="2015-06-17T07:03:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:46:03.833Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="虾米音乐">
+<meta property="article:tag" content="虾米播播">
+<meta property="article:tag" content="音乐插件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2Up7TdXXXXXX5XXXXXXXXXXXX_!!760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150617-907.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/06/20150617-907" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150617-907.html" class="article-date">
+	  <time datetime="2015-06-17T07:03:00.000Z" itemprop="datePublished">2015-06-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a>, <a class="article-tag-link-link" href="/tags/%E8%99%BE%E7%B1%B3%E6%92%AD%E6%92%AD/" rel="tag">虾米播播</a>, <a class="article-tag-link-link" href="/tags/%E8%99%BE%E7%B1%B3%E9%9F%B3%E4%B9%90/" rel="tag">虾米音乐</a>, <a class="article-tag-link-link" href="/tags/%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6/" rel="tag">音乐插件</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150617-907.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>作为站长，有时候一定会有想把自己喜欢的音乐推送给网友欣赏的冲动，但是想要在自己网站上放置音乐文件，不仅占用了较多的空间，而且还耗费了空间的流量，造成网站打开迟钝等影响用户的体验。有什么办法给自己网站添加音乐还不占用自己网站的流量和宽带呢?答案是使用第三方播放音乐插件，而今天本站长将给大家介绍一款好用的音乐播放插件，虾米播播。<br><img src="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2Up7TdXXXXXX5XXXXXXXXXXXX_!!760675169.png" alt=" 虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程.png" /></p>
+<p>虽然有了这么好的插件了，但是在使用过程中还是会出现一些不可预料的小毛病的。比如说，当你生成了一个播放列表、一份歌单之后，并且获取了代码，但是如果经过一段时间后，发现了新的音乐很好听，那么要想继续向虾米播播中添加歌曲貌似虾米音乐的生成代码中不能够记录你之前已经生成的歌曲。</p>
+<p>因此这里就需要对虾米音乐所提供的虾米播播插件代码进行稍微的更改，这样就能够快速的获取新的音乐而不破坏原来的歌单。是不是很棒？下面开始虾米播播插件的代码修改的教程。</p>
+<p><a target="_blank" rel="noopener" href="http://www.xiami.com/widget/12547695_1770501001,1770605249,1769872424,1772890755,1771253324,1774059976,1771635180,1772527938,1770500999,1771114564,1772094633,1771313797,1770273455,1773603702,1770501000,1770686825,1772322938,1771659001,1774059979,1771659004,1771659002,1771659006,1771659003,1774059980,1771659000,1770918120,1770501002,1770918119,1770918117,1769952243,1770605248,1771659005,1771658998,_300_346_FF8719_494949_0/multiPlayer.swf">http://www.xiami.com/widget/12547695_1770501001,1770605249,1769872424,1772890755,1771253324,1774059976,1771635180,1772527938,1770500999,1771114564,1772094633,1771313797,1770273455,1773603702,1770501000,1770686825,1772322938,1771659001,1774059979,1771659004,1771659002,1771659006,1771659003,1774059980,1771659000,1770918120,1770501002,1770918119,1770918117,1769952243,1770605248,1771659005,1771658998,_300_346_FF8719_494949_0/multiPlayer.swf</a></p>
+<p>首先以上提供的一条长长的URL链接地址进行解析，之后你会清楚这些URL链接中的字符分别代表什么意思了。</p>
+<p><a target="_blank" rel="noopener" href="http://www.xiami.com/widget/%E7%94%A8%E6%88%B7ID_%E6%AD%8C%E6%9B%B2%E7%BC%96%E5%8F%B7,(%E6%AD%8C%E6%9B%B2%E7%BC%96%E5%8F%B7,)_%E5%AE%BD%E5%BA%A6_%E9%AB%98%E5%BA%A6_%E5%89%8D%E8%83%8C%E6%99%AF%E8%89%B2_%E8%83%8C%E6%99%AF%E8%89%B2_%E6%92%AD%E6%94%BE%E6%A8%A1%E5%BC%8F%EF%BC%880%E4%B8%BA%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%EF%BC%8C1%E4%B8%BA%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%EF%BC%89/multiPlayer.swf">http://www.xiami.com/widget/用户ID_歌曲编号,(歌曲编号,)_宽度_高度_前背景色_背景色_播放模式（0为不自动播放，1为自动播放）/multiPlayer.swf</a></p>
+<p>用户ID就是指你在虾米音乐中注册的账户的ID号，如果你不知道可以填写本站张的ID，12547695。经过测试，这个ID号没有特别大的作用，但是还是需要有的，不然虾米播播解码URL的时候会出现错误。</p>
+<p>然后就是歌曲编号，歌曲编号是在生成虾米播播代码的时候里面自动生成的，如果你要向原有的虾米播播插件中添加新歌曲，可以到虾米音乐网站中生成新添加音乐的代码，并将添加到URL链接地址中，一首歌曲一个编号，是虾米音乐提供的，这个不能错了。而歌曲在虾米播播中的顺序就是歌曲编号排列的顺序。</p>
+<p>很好，下面继续介绍宽度和高度，不过这个也没什么好介绍的，根据你网站的大小进行设置，这个不多说了。</p>
+<p>至于前背景色和背景色的区别，前背景色是指播放器中，当前播放歌曲以及播放列表的背景颜色；而背景色则是指整个虾米播播的背景颜色。前背景颜色位于背景颜色的上一层，也就是有前背景颜色的地方不显示背景颜色。这一点尝试着修改一下就会明白了。代码同样可以通过虾米播播代码生成器生成，或者你懂的话直接输入也可以。</p>
+<p>播放模式指的是是否加载后便播放，1为加载后自动播放，0为不自动播放，需要手动播放。</p>
+<p>听了这么多应该豁然开朗了吧。</p>
+<p>如果你需要放置在网页中，则可以将链接填到下列代码中替换URL链接地址，并更改HTML代码的widtd和height，也就是宽度和高度的数值，和你URL中的设置成一样即可。</p>
+<p>&lt;embed src=”URL链接地址” type=”application/x-shockwave-flash” width=”宽度” height=”高度” wmode=”opaque”&gt;&lt;/embed&gt;</p>
+<p>如果是Javascript代码的话其中URL链接地址需要有些许改变。</p>
+<p>如下所示：</p>
+<p>&lt;script type=”text/javascript” src=”<a target="_blank" rel="noopener" href="http://www.xiami.com/widget/player-multi?uid=%E7%94%A8%E6%88%B7ID&amp;sid=%E6%AD%8C%E6%9B%B2%E7%BC%96%E5%8F%B7,(%E6%AD%8C%E6%9B%B2%E7%BC%96%E5%8F%B7,)&amp;width=%E5%AE%BD%E5%BA%A6&amp;height=%E9%AB%98%E5%BA%A6&amp;mainColor=%E5%89%8D%E8%83%8C%E6%99%AF%E8%89%B2&amp;backColor=%E8%83%8C%E6%99%AF%E8%89%B2&amp;autoplay=%E6%92%AD%E6%94%BE%E6%A8%A1%E5%BC%8F&amp;mode=js&quot;&gt;&lt;/script">http://www.xiami.com/widget/player-multi?uid=用户ID&amp;sid=歌曲编号,(歌曲编号,)&amp;width=宽度&amp;height=高度&amp;mainColor=前背景色&amp;backColor=背景色&amp;autoplay=播放模式&amp;mode=js&quot;&gt;&lt;/script</a>&gt;</p>
+<p>一看就懂，很简单是不是！再也不要发愁每次添加歌曲都要把所有的歌曲一个一个的添加了，这样还能节省不少时间呢。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150617-907.html" title="虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程" target="_blank" rel="external">https://www.klavor.com/dev/20150617-907.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/essay/20150615-911.html" title="2015年最新万宁市大中专毕业生档案接收地址和联系方式"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/investment/20150616-901.html" title="股票配资风险不可忽视 不要让自己毕生心血毁于一旦"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="虾米音乐：博客音乐插件“虾米播播”代码解析及使用教程[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

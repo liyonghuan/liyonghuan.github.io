@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>物业客户管理信息系统（七）之员工主窗体~1 | Klavor&#39;s Blog</title>
+  <meta name="description" content="该部分主要是主窗体代码的部分，因为我写的物业客户关系管理信息系统的主窗体的代码有点长，所以这里要分成多篇文章来进行发布。之前在写代码的时候过于匆忙，两个星期内完成的系统，而且还要设计界面等等的工作，于是编写的代码有点乱，而且代码没有写上注释，可能看起来有点不方便。其实刚开始的时候我的设想是每句重要的语句都加上注释的，但是写代码的时候实在没有心情搭理注释了，而且这两个星期的管理信息系统课程设计真的是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物业客户管理信息系统（七）之员工主窗体~1">
+<meta property="og:url" content="https://www.klavor.com/dev/20150501-759.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="该部分主要是主窗体代码的部分，因为我写的物业客户关系管理信息系统的主窗体的代码有点长，所以这里要分成多篇文章来进行发布。之前在写代码的时候过于匆忙，两个星期内完成的系统，而且还要设计界面等等的工作，于是编写的代码有点乱，而且代码没有写上注释，可能看起来有点不方便。其实刚开始的时候我的设想是每句重要的语句都加上注释的，但是写代码的时候实在没有心情搭理注释了，而且这两个星期的管理信息系统课程设计真的是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2YYN0cFXXXXbQXXXXXXXXXXXX_!!760675169.png">
+<meta property="article:published_time" content="2015-05-01T15:56:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T14:57:20.311Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="物业管理系统">
+<meta property="article:tag" content="Cshape">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="信息系统">
+<meta property="article:tag" content="课程设计">
+<meta property="article:tag" content="员工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2YYN0cFXXXXbQXXXXXXXXXXXX_!!760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150501-759.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/05/20150501-759" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      物业客户管理信息系统（七）之员工主窗体~1
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150501-759.html" class="article-date">
+	  <time datetime="2015-05-01T15:56:00.000Z" itemprop="datePublished">2015-05-01</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C#</a>, <a class="article-tag-link-link" href="/tags/Cshape/" rel="tag">Cshape</a>, <a class="article-tag-link-link" href="/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/" rel="tag">信息系统</a>, <a class="article-tag-link-link" href="/tags/%E5%91%98%E5%B7%A5/" rel="tag">员工</a>, <a class="article-tag-link-link" href="/tags/%E7%89%A9%E4%B8%9A%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" rel="tag">物业管理系统</a>, <a class="article-tag-link-link" href="/tags/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/" rel="tag">课程设计</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150501-759.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>该部分主要是主窗体代码的部分，因为我写的物业客户关系管理信息系统的主窗体的代码有点长，所以这里要分成多篇文章来进行发布。之前在写代码的时候过于匆忙，两个星期内完成的系统，而且还要设计界面等等的工作，于是编写的代码有点乱，而且代码没有写上注释，可能看起来有点不方便。其实刚开始的时候我的设想是每句重要的语句都加上注释的，但是写代码的时候实在没有心情搭理注释了，而且这两个星期的管理信息系统课程设计真的是满满的时间都在编程，而且在答辩的那天草草收尾了，也根本没有时间进行注释之类的事情了。<br><img src="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2YYN0cFXXXXbQXXXXXXXXXXXX_!!760675169.png" alt=" 物业客户管理信息系统（七）之员工主窗体~1"/></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.ComponentModel;</span><br><span class="line">using System.Data;</span><br><span class="line">using System.Data.SqlClient;</span><br><span class="line">using System.Drawing;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Threading.Tasks;</span><br><span class="line">using System.Windows.Forms;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">namespace WYMIS</span><br><span class="line">&#123;</span><br><span class="line">    public partial class Main_Yuangong_Form : Form</span><br><span class="line">    &#123;</span><br><span class="line">        SQL_Class SQLClass = new SQL_Class();       //创建一个SQL_Class对象SQLClass，用以调用SQL_Class类中的函数</span><br><span class="line">        TreeNode SelectNode = new TreeNode();       //创建一个TreeNode对象SelectNode，用以存储被选中的树节点</span><br><span class="line">        Zhuangtai_Class Zhuangtai = new Zhuangtai_Class();</span><br><span class="line">        Search_Class search = new Search_Class();</span><br><span class="line">        public static int tempint;</span><br><span class="line">        public static string tempsql;</span><br><span class="line">        public static bool iswhere;</span><br><span class="line">        public static bool isonce = true;</span><br><span class="line">        public static bool needwhere = true;</span><br><span class="line">        public bool changeuser;</span><br><span class="line">        //管理员信息变量————————–</span><br><span class="line">        public int glyid;       //管理员ID</span><br><span class="line">        public string glyxm;        //管理员姓名</span><br><span class="line">        public string glyxb;        //管理员性别</span><br><span class="line">        public string glybm;        //管理员部门</span><br><span class="line">        public string glygw;        //管理员岗位</span><br><span class="line">        public string glylx;        //管理员联系方式</span><br><span class="line">        public string glydz;        //管理员住址</span><br><span class="line">        public string glyyhm;       //管理员用户名</span><br><span class="line">        public int glyqx;       //管理员权限</span><br><span class="line">        public Main_Yuangong_Form()</span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line">        [DllImport(“user32.dll”)]</span><br><span class="line">        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wparam, int lparam);</span><br><span class="line">        protected override void OnMouseDown(MouseEventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            base.OnMouseDown(e);</span><br><span class="line">            if (e.Button == MouseButtons.Left)//按下的是鼠标左键            </span><br><span class="line">            &#123;</span><br><span class="line">                Capture = false;//释放鼠标使能够手动操作                </span><br><span class="line">                SendMessage(Handle, 0x00A1, 2, 0);//拖动窗体            </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //以下为重点代码——————————————————————–</span><br><span class="line">        public void listview_columns()     //列表的列项添加</span><br><span class="line">        &#123;</span><br><span class="line">            listview_right.Columns.Clear();</span><br><span class="line">            listview_right.Items.Clear();</span><br><span class="line">            //if (treeview_left.SelectedNode == null)      //判断是否选中了树节点</span><br><span class="line">            //&#123;</span><br><span class="line">            //    return;</span><br><span class="line">            //&#125;</span><br><span class="line">            switch(splitcon1.Tag.ToString())</span><br><span class="line">            &#123;</span><br><span class="line">                case “sy”:</span><br><span class="line">                    listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“1”, “住房编号”, 70);</span><br><span class="line">                    listview_right.Columns.Add(“2”, “楼层”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“3”, “住房配置”, 100);</span><br><span class="line">                    listview_right.Columns.Add(“4”, “业主名称”, 100);</span><br><span class="line">                    listview_right.Columns.Add(“5”,“状态”,50);</span><br><span class="line">                    listview_right.Columns.Add(“6”,“所属房产”,100);</span><br><span class="line">                    listview_right.Columns.Add(“7”, “费用”, 100);</span><br><span class="line">                    break;</span><br><span class="line">                case “yz”:</span><br><span class="line">                    listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“1”, “业主编号”, 70);</span><br><span class="line">                    listview_right.Columns.Add(“2”, “姓名”, 100);</span><br><span class="line">                    listview_right.Columns.Add(“3”, “性别”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“4”, “联系方式”, 100);</span><br><span class="line">                    listview_right.Columns.Add(“5”, “住址”,150);</span><br><span class="line">                    listview_right.Columns.Add(“6”, “身份证号”,100);</span><br><span class="line">                    listview_right.Columns.Add(“7”, “权限”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“9”, “费用”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“8”, “用户名”, 70);</span><br><span class="line">                    break;</span><br><span class="line">                case “yg”:</span><br><span class="line">                    listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“1”, “员工编号”, 70);</span><br><span class="line">                    listview_right.Columns.Add(“2”, “姓名”, 100);</span><br><span class="line">                    listview_right.Columns.Add(“3”, “性别”, 50);</span><br><span class="line">                    listview_right.Columns.Add(“4”, “岗位”,100);</span><br><span class="line">                    listview_right.Columns.Add(“5”, “联系方式”,100);</span><br><span class="line">                    listview_right.Columns.Add(“6”, “地址”, 150);</span><br><span class="line">                    listview_right.Columns.Add(“7”, “权限”, 80);</span><br><span class="line">                    listview_right.Columns.Add(“8”, “用户名”, 50);</span><br><span class="line">                    break;</span><br><span class="line">                case “yw”:</span><br><span class="line">                    if(treeview_left.SelectedNode == null)</span><br><span class="line">                    &#123;</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line">                    switch (treeview_left.SelectedNode.Name)</span><br><span class="line">                    &#123;</span><br><span class="line">                        case “1”:</span><br><span class="line">                            listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“1”, “事务编号”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“2”, “事务名称”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“3”, “任务时间”, 80);</span><br><span class="line">                            listview_right.Columns.Add(“4”, “状态”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“5”, “负责人”,70);</span><br><span class="line">                            listview_right.Columns.Add(“6”, “备注”,100);</span><br><span class="line">                            break;</span><br><span class="line">                        case “2”:</span><br><span class="line">                            listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“1”, “申请编号”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“2”, “申请名称”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“3”, “申请人”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“4”, “申请时间”, 80);</span><br><span class="line">                            listview_right.Columns.Add(“5”, “状态”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“6”, “受理时间”, 80);</span><br><span class="line">                            listview_right.Columns.Add(“7”, “负责人”,100);</span><br><span class="line">                            listview_right.Columns.Add(“8”, “完成时间”,80);</span><br><span class="line">                            listview_right.Columns.Add(“9”, “费用”, 50);</span><br><span class="line">                            break;</span><br><span class="line">                        case “3”:</span><br><span class="line">                            listview_right.Columns.Add(“0”, “序号”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“1”, “收费编号”, 70);</span><br><span class="line">                            listview_right.Columns.Add(“2”, “收费事项”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“3”, “金额”, 50);</span><br><span class="line">                            listview_right.Columns.Add(“4”, “类型”,70);</span><br><span class="line">                            listview_right.Columns.Add(“5”, “缴费时间”,80);</span><br><span class="line">                            listview_right.Columns.Add(“6”, “缴费业主”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“7”, “负责人”, 100);</span><br><span class="line">                            listview_right.Columns.Add(“8”, “备注”, 100);</span><br><span class="line">                            break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void Main_Yuangong_Form_Load(object sender, EventArgs e)        //加载窗体函数</span><br><span class="line">        &#123;</span><br><span class="line">            lab_title.Text = this.Text + ” – “ + lab_title.Text;</span><br><span class="line">            lab_glyxm.Text += glyxm;</span><br><span class="line">            lab_glyxb.Text += glyxb;</span><br><span class="line">            lab_glygw.Text = glybm + ” “ + glygw;</span><br><span class="line">            lab_glylx.Text += glylx;</span><br><span class="line">            lab_glydz.Text += glydz;</span><br><span class="line">            lab_glyyhm.Text += glyyhm;</span><br><span class="line">            //设置加载窗体时首页图片的选中</span><br><span class="line">            //picbox_shouye.Image = Image.FromFile(“images/sy_select.png”);</span><br><span class="line">            //picbox_shouye.Tag = “1”;</span><br><span class="line">            //UpdateTreeview();</span><br><span class="line">            //this.listview_right.ContextMenuStrip = conMenuStr_list_1;</span><br><span class="line">            picbox_shouye_Click(sender, e);</span><br><span class="line">        &#125;</span><br><span class="line">        //更新树节点——————————————</span><br><span class="line">        private void UpdateTreeview()       //加载treeview根节点下面的子节点</span><br><span class="line">        &#123;</span><br><span class="line">            isonce = true;</span><br><span class="line">            treeview_left.Nodes.Clear();</span><br><span class="line">            listview_columns();</span><br><span class="line">            switch(splitcon1.Tag.ToString())</span><br><span class="line">            &#123;</span><br><span class="line">                case “sy”:</span><br><span class="line">                    DataSet TreeSet = SQLClass.getDataSet(“select id,gongsi from kaifashang”, “房产开发商”);</span><br><span class="line">                    DataTable treedt = TreeSet.Tables[“房产开发商”];      //创建一个DataTable对象</span><br><span class="line">                    if (treedt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        for (int i = 0; i &lt; treedt.Rows.Count; i++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            //创建一个TreeNode对象，并对node的属性进行赋值</span><br><span class="line">                            TreeNode node = new TreeNode(treedt.Rows[i][1].ToString(), 1, 2);</span><br><span class="line">                            node.Name = treedt.Rows[i][0].ToString();</span><br><span class="line">                            treeview_left.Nodes.Add(node);     //把node添加到根节点上</span><br><span class="line">                            DataSet sonTreeSet = SQLClass.getDataSet(“Select id,jianzu from fangchan where kaifashangid = ‘” + treedt.Rows[i][0] + “‘”, “楼盘信息表”);</span><br><span class="line">                            DataTable sontreedt = sonTreeSet.Tables[“楼盘信息表”];</span><br><span class="line">                            if (sontreedt.Rows.Count &gt; 0)</span><br><span class="line">                            &#123;</span><br><span class="line">                                for (int j = 0; j &lt; sontreedt.Rows.Count; j++)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    TreeNode sonnode = new TreeNode(sontreedt.Rows[j][1].ToString(), 1, 2);</span><br><span class="line">                                    sonnode.Name = sontreedt.Rows[j][0].ToString();</span><br><span class="line">                                    treeview_left.Nodes[i].Nodes.Add(sonnode);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                case “yz”:</span><br><span class="line">                    for (int i = 0; i &lt; 2; i++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        string sort = Zhuangtai.YezhuQuanxian(i.ToString());</span><br><span class="line">                        TreeNode node = new TreeNode(sort, 1, 2);</span><br><span class="line">                        node.Name = i.ToString();</span><br><span class="line">                        treeview_left.Nodes.Add(node);</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                case “yg”:      //当面板为员工时</span><br><span class="line">                    DataSet ygDSet = SQLClass.getDataSet(“select bumen from gangwei group by bumen”,“部门信息表”);</span><br><span class="line">                    DataTable ygdt = ygDSet.Tables[“部门信息表”];</span><br><span class="line">                    if (ygdt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        for (int i = 0; i &lt; ygdt.Rows.Count; i++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            TreeNode ygnode = new TreeNode(ygdt.Rows[i][0].ToString(), 1, 2);</span><br><span class="line">                            ygnode.Name = i.ToString();</span><br><span class="line">                            treeview_left.Nodes.Add(ygnode);     //把node添加到根节点上</span><br><span class="line">                            DataSet gwDSet = SQLClass.getDataSet(“select id,gangwei from gangwei where bumen = ‘” + ygdt.Rows[i][0].ToString() + “‘”, “岗位信息表”);</span><br><span class="line">                            DataTable gwdt = gwDSet.Tables[“岗位信息表”];</span><br><span class="line">                            if(gwdt.Rows.Count &gt; 0)</span><br><span class="line">                            &#123;</span><br><span class="line">                                for (int j = 0; j &lt; gwdt.Rows.Count; j++)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    TreeNode gwnode = new TreeNode(gwdt.Rows[j][1].ToString(), 1, 2);</span><br><span class="line">                                    gwnode.Name = gwdt.Rows[j][0].ToString();</span><br><span class="line">                                    treeview_left.Nodes[i].Nodes.Add(gwnode);     //把node添加到根节点上</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                case “yw”:</span><br><span class="line">                    for (int i = 0; i &lt; 3; i++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        string sort = Zhuangtai.Yewu((i + 1).ToString());</span><br><span class="line">                        TreeNode node = new TreeNode(sort, 1, 2);</span><br><span class="line">                        node.Name = (i + 1).ToString();</span><br><span class="line">                        treeview_left.Nodes.Add(node);</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //更新列表————————–</span><br><span class="line">        private void UpdateListview(string sql)     //加载listview中的数据，其中sql参数表示传递的SQL的语句</span><br><span class="line">        &#123;</span><br><span class="line">           DataSet DSet = SQLClass.getDataSet(sql, “数据库信息表”);</span><br><span class="line">           DataTable dt = DSet.Tables[“数据库信息表”];        //创建一个DataTable对象</span><br><span class="line">           switch (splitcon1.Tag.ToString())</span><br><span class="line">            &#123;</span><br><span class="line">                case “sy”:</span><br><span class="line">                    if (dt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            tempint++;</span><br><span class="line">                            string zhuangtai = Zhuangtai.Zhufang(dt.Rows[i][4].ToString());</span><br><span class="line">                            string yezhu;</span><br><span class="line">                            if (dt.Rows[i][3].ToString() != “”)</span><br><span class="line">                            &#123;</span><br><span class="line">                                yezhu = Zhuangtai.YezhuName(dt.Rows[i][3].ToString(), true);</span><br><span class="line">                            &#125;</span><br><span class="line">                            else</span><br><span class="line">                            &#123;</span><br><span class="line">                                yezhu = “”;</span><br><span class="line">                            &#125;</span><br><span class="line">                            string fcname = Zhuangtai.FangchanName(dt.Rows[i][5].ToString(), true);</span><br><span class="line">                            //定义一个string数组item，按listview中列的顺序存放数据</span><br><span class="line">                            string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), yezhu, zhuangtai, fcname, dt.Rows[i][6].ToString() + “元” &#125;;</span><br><span class="line">                            //创建一个ListView对象newitem，并对newitem的属性进行赋值</span><br><span class="line">                            ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                            newitem.ImageIndex = 9;     //设置数据行的图标</span><br><span class="line">                            listview_right.Items.Add(newitem);      //把newitem添加到listview中</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">               case “yz”:</span><br><span class="line">                    if (dt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            tempint++;</span><br><span class="line">                            string yzquanxian = Zhuangtai.YezhuQuanxian(dt.Rows[i][6].ToString());</span><br><span class="line">                            //定义一个string数组item，按listview中列的顺序存放数据</span><br><span class="line">                            string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), dt.Rows[i][3].ToString(), dt.Rows[i][4].ToString(), dt.Rows[i][5].ToString(), yzquanxian, dt.Rows[i][9].ToString() + “元”, dt.Rows[i][7].ToString() &#125;;</span><br><span class="line">                            //创建一个ListView对象newitem，并对newitem的属性进行赋值</span><br><span class="line">                            ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                            newitem.ImageIndex = 9;     //设置数据行的图标</span><br><span class="line">                            listview_right.Items.Add(newitem);      //把newitem添加到listview中</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">               case “yg”:</span><br><span class="line">                    if (dt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            tempint++;</span><br><span class="line">                            string ygquanxian = Zhuangtai.YuangongQuanxian(dt.Rows[i][6].ToString());</span><br><span class="line">                            string yggw = Zhuangtai.GangweiName(dt.Rows[i][3].ToString(), true);</span><br><span class="line">                            //定义一个string数组item，按listview中列的顺序存放数据</span><br><span class="line">                            string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), yggw, dt.Rows[i][4].ToString(), dt.Rows[i][5].ToString(), ygquanxian, dt.Rows[i][7].ToString() &#125;;</span><br><span class="line">                            //创建一个ListView对象newitem，并对newitem的属性进行赋值</span><br><span class="line">                            ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                            newitem.ImageIndex = 9;     //设置数据行的图标</span><br><span class="line">                            listview_right.Items.Add(newitem);      //把newitem添加到listview中</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">               case “yw”:</span><br><span class="line">                    if (dt.Rows.Count &gt; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        switch (treeview_left.SelectedNode.Name)</span><br><span class="line">                        &#123;</span><br><span class="line">                            case “1”:</span><br><span class="line">                                for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    tempint++;</span><br><span class="line">                                    string rczhuangtai = Zhuangtai.Richang(dt.Rows[i][3].ToString());</span><br><span class="line">                                    string ygxm = Zhuangtai.YuangongName(dt.Rows[i][4].ToString(), true);</span><br><span class="line">                                    string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), rczhuangtai, ygxm, dt.Rows[i][5].ToString() &#125;;</span><br><span class="line">                                    ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                                    newitem.ImageIndex = 9;       //设置数据行的图标</span><br><span class="line">                                    listview_right.Items.Add(newitem);</span><br><span class="line">                                &#125;</span><br><span class="line">                                break;</span><br><span class="line">                            case “2”:</span><br><span class="line">                                for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    tempint++;</span><br><span class="line">                                    string ywzhuangtai = Zhuangtai.Fuwu(dt.Rows[i][4].ToString());</span><br><span class="line">                                    string yzxm = Zhuangtai.YezhuName(dt.Rows[i][2].ToString(),true);</span><br><span class="line">                                    string ygxm = Zhuangtai.YuangongName(dt.Rows[i][6].ToString(),true);</span><br><span class="line">                                    string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), yzxm, dt.Rows[i][3].ToString(), ywzhuangtai, dt.Rows[i][5].ToString(), ygxm, dt.Rows[i][7].ToString(), dt.Rows[i][8].ToString() + “元” &#125;;</span><br><span class="line">                                    ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                                    newitem.ImageIndex = 9;       //设置数据行的图标</span><br><span class="line">                                    listview_right.Items.Add(newitem);</span><br><span class="line">                                &#125;</span><br><span class="line">                                break;</span><br><span class="line">                            case “3”:</span><br><span class="line">                                for (int i = 0; i &lt; dt.Rows.Count; i++)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    tempint++;</span><br><span class="line">                                    string leixing = Zhuangtai.Shoufei_leixing(dt.Rows[i][3].ToString());</span><br><span class="line">                                    string yz = Zhuangtai.YezhuName(dt.Rows[i][5].ToString(), true);</span><br><span class="line">                                    string yg = Zhuangtai.YuangongName(dt.Rows[i][6].ToString(),true);</span><br><span class="line">                                    string[] item = &#123; tempint.ToString(), dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString() + “元”, leixing, dt.Rows[i][4].ToString(), yz, yg, dt.Rows[i][7].ToString() &#125;;</span><br><span class="line">                                    ListViewItem newitem = new ListViewItem(item);</span><br><span class="line">                                    newitem.ImageIndex = 9;       //设置数据行的图标</span><br><span class="line">                                    listview_right.Items.Add(newitem);</span><br><span class="line">                                &#125;</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150501-759.html" title="物业客户管理信息系统（七）之员工主窗体~1" target="_blank" rel="external">https://www.klavor.com/dev/20150501-759.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150502-761.html" title="物业客户管理信息系统（七）之员工主窗体~2"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/investment/20150429-721.html" title="坑！高昂的新浪微操盘费用提高持股成本（下）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="物业客户管理信息系统（七）之员工主窗体~1[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

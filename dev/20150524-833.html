@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Wordpress免插件手工添加新用户注册页面验证码（极验验证）教程 | Klavor&#39;s Blog</title>
+  <meta name="description" content="你有没有遇到过不设置验证码会被机器人到网站疯狂的注册垃圾帐号的经历？反正我是有过的，后来实在是无法忍受了，就下了一个印象码的插件来防止机器人的注册，不过这个印象码的插件已经很久不更新了，并且与我的网站的主题有些不兼容，总是会使页面错乱，但是没有办法，没有其他的验证码软件可以使用。 经过一段时间的观察，自从使用了印象码的插件之后就没有机器人再来我网站上注册垃圾信息了，但是最近的一件事情坚定了我要换掉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wordpress免插件手工添加新用户注册页面验证码（极验验证）教程">
+<meta property="og:url" content="https://www.klavor.com/dev/20150524-833.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="你有没有遇到过不设置验证码会被机器人到网站疯狂的注册垃圾帐号的经历？反正我是有过的，后来实在是无法忍受了，就下了一个印象码的插件来防止机器人的注册，不过这个印象码的插件已经很久不更新了，并且与我的网站的主题有些不兼容，总是会使页面错乱，但是没有办法，没有其他的验证码软件可以使用。 经过一段时间的观察，自从使用了印象码的插件之后就没有机器人再来我网站上注册垃圾信息了，但是最近的一件事情坚定了我要换掉">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2sOwDcFXXXXatXpXXXXXXXXXX_!!760675169.png">
+<meta property="article:published_time" content="2015-05-23T16:47:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:20:07.777Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="Wordpress">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="极验验证">
+<meta property="article:tag" content="用户注册">
+<meta property="article:tag" content="验证码">
+<meta property="article:tag" content="免插件">
+<meta property="article:tag" content="印象码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2sOwDcFXXXXatXpXXXXXXXXXX_!!760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150524-833.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/05/20150524-833" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Wordpress免插件手工添加新用户注册页面验证码（极验验证）教程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150524-833.html" class="article-date">
+	  <time datetime="2015-05-23T16:47:00.000Z" itemprop="datePublished">2015-05-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Wordpress/" rel="tag">Wordpress</a>, <a class="article-tag-link-link" href="/tags/%E5%85%8D%E6%8F%92%E4%BB%B6/" rel="tag">免插件</a>, <a class="article-tag-link-link" href="/tags/%E5%8D%B0%E8%B1%A1%E7%A0%81/" rel="tag">印象码</a>, <a class="article-tag-link-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a>, <a class="article-tag-link-link" href="/tags/%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81/" rel="tag">极验验证</a>, <a class="article-tag-link-link" href="/tags/%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C/" rel="tag">用户注册</a>, <a class="article-tag-link-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150524-833.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>你有没有遇到过不设置验证码会被机器人到网站疯狂的注册垃圾帐号的经历？反正我是有过的，后来实在是无法忍受了，就下了一个印象码的插件来防止机器人的注册，不过这个印象码的插件已经很久不更新了，并且与我的网站的主题有些不兼容，总是会使页面错乱，但是没有办法，没有其他的验证码软件可以使用。</p>
+<p>经过一段时间的观察，自从使用了印象码的插件之后就没有机器人再来我网站上注册垃圾信息了，但是最近的一件事情坚定了我要换掉印象码验证码插件。一个朋友给我的博客的文章中留言了说怎么验证码内容也是广告，其实不是我想要设置广告，关键是这个验证码插件就是只有广告啊，而且是我目前找到的最好的验证形式的插件了，虽然我还找到了一个更好的叫极验验证的插件，但是这个插件启用之后就登录不了了，登录的时候网页页面会白屏，然后最终没能够登录成功，不过在后面我会教大家手工在主题文件的名叫functions的文件中添加修改代码完成注册界面验证的教程。关于登录界面的验证目前本站长还没有能够测试成功，不过在之后把这个问题解决之后会继续更新，欢迎持续关注。</p>
+<p>因此此时，我将印象码插件给停用和删除了，接下来找了很多插件，发现了大家都说叫si-captcha-for-wordpress的wordpress插件做得不错，后来用了一下，感觉的确做得不错，不过对于我的网站还是有一定的问题，不知道是不是因为主题的缘故，在评论界面中如果输入的验证码错误则网页的界面布局会变得特别混乱。</p>
+<p>si-captcha-for-wordpress插件使用不成功，那就算了吧，此时我又想起了极验验证，这个验证服务是我在站长网站上看到它们在用，所以我也就尝试了一下，不过wordpress的插件不怎么好用，启用后会白屏等，导致登录后台失败等原因。不过极验验证的disucz上的插件做得还是很不错的，目前我的Discuz搭建的论坛网站就是用的极验验证。</p>
+<p>先来说说极验验证的好处吧。</p>
+<p>首先，极验验证的验证方式很新颖，如果你是用过站长或者是音悦台的用户，你可能就会知道这种验证模式，就是验证码是一张图片，而上面有一块拼图，需要拖动拼图到指定位置。</p>
+<p>其次，极验验证的这种界面设计得很美观，即使你的验证码是广告，看起来也是那么的让人舒服而不会产生反感抵触情绪。</p>
+<p>其三，通过极验验证还可以赚取一定的广告费用，目前我还没有具体了解付费的方式，但是我知道的是当你点击验证图片上的链接，极验验证后台会记录点击数，有可能就是根据这些点击数来付费的把。不过不管怎么样，即使没有费用，我还是很愿意使用极验验证的，况且极验验证还很人性的给站长选择是否启用广告，一些不喜欢广告的站长可以自行选择，这一点很不错。除此之外，极验验证还有一个功能，就是添加自己的图片作为验证图片，这里就不再累述了。</p>
+<p>最后一点，我对极验验证很有好感，而且验证很直观、简易、好用，不管怎么看，极验验证是各位站长最佳之选，我这里可不是做广告，如果不信你可以体验一下在本文中进行评论，你就会接触到极验验证码了，你一定会很满意的。</p>
+<p>说了这么多“废话”，现在开始真正的极验验证码添加到wordpress中的教程了，本篇文章仅仅只讲述为注册新用户界面添加极验验证验证码的教程，因为目前我只搞定了注册界面和评论界面的验证码。</p>
+<p>首先你需要到极验验证下载SDK和申请ID、KEY。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.geetest.com/docs/sdk/build/html/sections/php.html">http://www.geetest.com/docs/sdk/build/html/sections/php.html</a></p>
+<p>或者直接打开：<a target="_blank" rel="noopener" href="https://github.com/GeeTeam/gt-php-sdk">https://github.com/GeeTeam/gt-php-sdk</a></p>
+<p>本站下载地址：<a target="_blank" rel="noopener" href="http://yunpan.cn/cwZY6pTMAGVVn">http://yunpan.cn/cwZY6pTMAGVVn</a> （提取码：c36e）</p>
+<p>下载好后将解压出里面的文件，并将其中的名为class.geetest.php的文件上传到你的主题的目录下，一般主题目录的位置是/wp-content/themes/当前使用主题文件夹/。</p>
+<p>一般情况下我们需要修改你当前所使用的wordpress主题文件夹目录下的functions.php文件，我目前使用的wordpress主题是Ality（我觉得是做得很不错的一款主题）。要修改的functions文件位置为/wp-content/themes/Ality/functions.php，如果你是其他的主题则修改的文件位置是/wp-content/themes/当前使用主题文件夹/functions.php。下载一份到本地，并先备份一份后，打开这个文件（你也可以直接从wordpress后台进行修改）。<br>并在文件中结尾的?&gt;之前添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// WordPress 注册表单添加验证图片  </span><br><span class="line">function add_security_question() &#123;  </span><br><span class="line">    ?&gt;  </span><br><span class="line">    &lt;p&gt;  </span><br><span class="line">    &lt;?php  </span><br><span class="line">    require_once(“class.geetest.php”);  </span><br><span class="line">    $geetest = new Geetest();  </span><br><span class="line">    $geetest-&gt;set_captchaid(“此处改成极验验证申请到的ID”);  </span><br><span class="line">    if ($geetest-&gt;register()) &#123;  </span><br><span class="line">    echo $geetest-&gt;get_widget(“float”);//若采用弹出式，要添加第二个参数（提交按钮的id）  </span><br><span class="line">    &#125; else &#123;  </span><br><span class="line">        echo “use your own captcha HTML web code!”;//这里输出网站原有验证码  </span><br><span class="line">    &#125;  </span><br><span class="line">    ?&gt;  </span><br><span class="line">    &lt;/p&gt;  </span><br><span class="line">    &lt;br /&gt;  </span><br><span class="line">    &lt;br /&gt;  </span><br><span class="line">    &lt;?php  </span><br><span class="line">&#125;  </span><br><span class="line">add_action( ‘register_form’, ‘add_security_question’ );  </span><br><span class="line">  </span><br><span class="line">//检验输入的验证码是否正确  </span><br><span class="line">function add_security_question_validate( $sanitized_user_login, $user_email, $errors) &#123;  </span><br><span class="line">    require_once(“class.geetest.php”);  </span><br><span class="line">    $geetest = new Geetest();  </span><br><span class="line">    $geetest-&gt;set_privatekey(“此处改成极验验证申请到的KEY”);  </span><br><span class="line">  </span><br><span class="line">    if (isset($_POST[‘geetest_challenge’]) &amp;&amp; isset($_POST[‘geetest_validate’]) &amp;&amp; isset($_POST[‘geetest_seccode’])) &#123;  </span><br><span class="line">        $result = $geetest-&gt;validate($_POST[‘geetest_challenge’], $_POST[‘geetest_validate’], $_POST[‘geetest_seccode’]);  </span><br><span class="line">        if ($result == TRUE) &#123;  </span><br><span class="line">            echo ‘Yes!’;  </span><br><span class="line">        &#125; else if ($result == FALSE) &#123;  </span><br><span class="line">            return $errors-&gt;add( ‘prooffail’, ‘&lt;strong&gt;错误&lt;/strong&gt;: 请将拼图滑倒正确位置。’  );  </span><br><span class="line">        &#125; else &#123;  </span><br><span class="line">            echo ‘FORBIDDEN’;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; else &#123;  </span><br><span class="line">        echo “use your own captcha validate “;  </span><br><span class="line">        //网站原有验证码的验证  </span><br><span class="line">        //$result = your_own_captcha_validate()  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">add_action( ‘register_post’, ‘add_security_question_validate’, 10, 3 );  </span><br></pre></td></tr></table></figure>
+<p>将代码中的ID和KEY改成你在极验验证中申请到的对应的ID和KEY即可。</p>
+<p>修改好后保存并上传到你的服务器覆盖原文件，这时你的网站注册页面已经可以出现了极验验证啦，并且你可以正常的使用他了，也不会出现白屏的现象哦。</p>
+<p>在极验验证官网<a target="_blank" rel="noopener" href="http://www.geetest.com/">http://www.geetest.com/</a><br><img src="http://img03.taobaocdn.com/imgextra/i3/760675169/TB2sOwDcFXXXXatXpXXXXXXXXXX_!!760675169.png" alt=" Wordpress免插件手工添加注册页面验证码（极验验证）教程"/></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150524-833.html" title="Wordpress免插件手工添加新用户注册页面验证码（极验验证）教程" target="_blank" rel="external">https://www.klavor.com/dev/20150524-833.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150529-851.html" title="极验验证：Wordpress登录页面手工添加验证码完美教程 免安装插件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150522-828.html" title="Wordpress评论回复自动提醒功能部分参数解释"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="Wordpress免插件手工添加新用户注册页面验证码（极验验证）教程[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

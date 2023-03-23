@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>揭露新浪微操盘玩法攻略中的陷阱 | Klavor&#39;s Blog</title>
+  <meta name="description" content="新浪微操盘官方的实盘池T+1的规则，如果详细阅读的话你就会发现其中有很多地方很坑了。比如宣称T+1的形式，但是其实根本就不是A股意义上的T+1，而且在新浪微操盘的宣传视频中宣传着今天买明天卖，但是没有明确告诉用户第二天必须卖，对于第一次使用的用户来说可能是风险无限的，而且新用户可能对该规则不是很熟悉的情况下使用了新浪微操盘购买了某支股票，但是第二天微跌了，但是用户如果想要继续持有该股，那么就需要卖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="揭露新浪微操盘玩法攻略中的陷阱">
+<meta property="og:url" content="https://www.klavor.com/investment/20150428-709.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="新浪微操盘官方的实盘池T+1的规则，如果详细阅读的话你就会发现其中有很多地方很坑了。比如宣称T+1的形式，但是其实根本就不是A股意义上的T+1，而且在新浪微操盘的宣传视频中宣传着今天买明天卖，但是没有明确告诉用户第二天必须卖，对于第一次使用的用户来说可能是风险无限的，而且新用户可能对该规则不是很熟悉的情况下使用了新浪微操盘购买了某支股票，但是第二天微跌了，但是用户如果想要继续持有该股，那么就需要卖">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB22IpxcFXXXXaiXXXXXXXXXXXX-760675169.png">
+<meta property="article:published_time" content="2015-04-28T13:38:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T14:49:16.176Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="新浪微操盘">
+<meta property="article:tag" content="攻略">
+<meta property="article:tag" content="玩法">
+<meta property="article:tag" content="陷阱">
+<meta property="article:tag" content="风险">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img03.taobaocdn.com/imgextra/i3/760675169/TB22IpxcFXXXXaiXXXXXXXXXXXX-760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/investment/20150428-709.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-investment/2015/04/20150428-709" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      揭露新浪微操盘玩法攻略中的陷阱
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/investment/20150428-709.html" class="article-date">
+	  <time datetime="2015-04-28T13:38:00.000Z" itemprop="datePublished">2015-04-28</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/investment/">investment</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%94%BB%E7%95%A5/" rel="tag">攻略</a>, <a class="article-tag-link-link" href="/tags/%E6%96%B0%E6%B5%AA%E5%BE%AE%E6%93%8D%E7%9B%98/" rel="tag">新浪微操盘</a>, <a class="article-tag-link-link" href="/tags/%E7%8E%A9%E6%B3%95/" rel="tag">玩法</a>, <a class="article-tag-link-link" href="/tags/%E9%99%B7%E9%98%B1/" rel="tag">陷阱</a>, <a class="article-tag-link-link" href="/tags/%E9%A3%8E%E9%99%A9/" rel="tag">风险</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/investment/20150428-709.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>新浪微操盘官方的实盘池T+1的规则，如果详细阅读的话你就会发现其中有很多地方很坑了。比如宣称T+1的形式，但是其实根本就不是A股意义上的T+1，而且在新浪微操盘的宣传视频中宣传着今天买明天卖，但是没有明确告诉用户第二天必须卖，对于第一次使用的用户来说可能是风险无限的，而且新用户可能对该规则不是很熟悉的情况下使用了新浪微操盘购买了某支股票，但是第二天微跌了，但是用户如果想要继续持有该股，那么就需要卖出股票然后再重新买入，也就是说，新浪微操盘会再次收取一定的交易综合费，这无疑是增加了持股成本。</p>
+<p>而且！！！而且新浪微操盘的买一点还需要缴纳账户管理费用，而新浪微操盘实盘池则如果盈利的话还需要缴纳20%的费用！20%！！！你知道这个数字是多大吗！！！就如同新浪微操盘给出的实例（2500-199.5)*20%=460.1，为了计算这个数字我还拿出了计算器来计算，太TMD大了这数字！这都是血汗钱啊！</p>
+<p>除此之外，还有哪些风险？！首先新浪微操盘设置的止损点8%或11%，但是新浪微操盘会让你交一定量的保证金，也就是当亏损达到8%或11%的时候新浪微操盘会强行平仓，这时候你的钱已经没有了，卖出股票的钱全都是新浪微操盘的，全部都是！！</p>
+<p>而且两个实例中，完全不是合理的，为毛计算盈利的时候用了2500元，亏损却用500元来计算！！你这不是在欺骗股民吗？让股民觉得盈利比亏损的几率大，但是事实上股市并非如此，而且第二天必须卖，投机性更强了，风险也更大了！</p>
+<p>不要再让股民付出血汗钱来做这种傻事了！！</p>
+<p>&nbsp;</p>
+<p>——————————-以下内容为新浪微操盘官方实盘池游戏规则—————————————</p>
+<p>一、实盘池T+1玩法介绍</p>
+<p>新浪微操盘提供实盘资金和交易通道，玩家通过操盘宝支付交易综合费并承诺对或有操盘亏损进行有限赔付义务后，以申购或兑换方式获取1万元至9万元实盘T＋1操作权和操盘利润分配权。</p>
+<p>新浪微操盘实盘池T+1倡导T+1交易模式，通过将持股期缩短至极限，最大程度规避市场不确定风险，并配合严格的止盈止损机制，有效杜绝贪婪与恐惧的人性弱点，以此提升每一位操盘者的操盘胜算率！该玩法主要操盘特色如下：</p>
+<p>1.单笔实盘额度1万-9万元；</p>
+<p>2.支持市价委托和挂单委托两种方式；</p>
+<p>3.执行10%结算止盈和-8%或-11%中止止损；</p>
+<p>4.收益80%归玩家所有；</p>
+<p>二、如何参与</p>
+<p>对于擅长短线交易且缺少资金的玩家来说，实盘池T+1玩法最适合不过。玩家仅需支付交易综合费39.9元/万元实盘，同时根据所选的中止止损（-8%或-11%）方案，冻结亏损赔付金800元/万元实盘或1100元/万元实盘，即可获得最高9万元实盘T+1操作权。</p>
+<p>例如：玩家申购实盘额度为3万元，选择-8%中止止损，那么仅需支付119.70元（39.9元<em>3）交易综合费，同时冻结亏损赔付金2400元（800元</em>3）。费用速算表如下：<br><img src="http://img03.taobaocdn.com/imgextra/i3/760675169/TB22IpxcFXXXXaiXXXXXXXXXXXX-760675169.png" alt="揭露新浪微操盘玩法攻略中的陷阱" /></p>
+<p>（注：实盘券兑换的实盘中止止损固定为-5%，无需冻结亏损赔付金，无需承担操盘亏损，但需要支付交易综合费）</p>
+<p>&nbsp;</p>
+<p>三、操作流程</p>
+<p>1、申购实盘（T日）</p>
+<p>申购时间：00:00-14:55</p>
+<p>申购金额：1万-9万元，1万元整数倍</p>
+<p>支付：交易综合费39.9元/万实盘</p>
+<p>冻结：亏损赔付金=申购实盘金额*中止止损率</p>
+<p>获得：申购实盘金额T+1日操作权和收益分配权</p>
+<p>2、买入股票（T日）</p>
+<p>交易品种：沪、深A股，创业板（仅限选择中止止损-11%时），不包括ST、*ST类和当日禁买股</p>
+<p>买入时间：9:30:00-15:00:00（深市股票不参与尾盘竞价）</p>
+<p>委托方式：市价委托和挂单委托</p>
+<p>买入限制：单笔限买入1-3只股票</p>
+<p>特别说明：禁买股指当日无涨跌幅限制个股、当日触及跌停板的股票、当时跌幅超过-8%的股票、因各种因素可能导致T+1日无法正常卖出的股票，包括但不限于已发布停牌、已发布退市公告或有潜在退市风险个股和异动个股等。当日禁买股系统实时公布。</p>
+<p>3、卖出股票（T+1日）</p>
+<p>卖出时间：9:30:00-14:54:59</p>
+<p>超时未卖：系统按14:55:00-15:00:00间最低价自动平仓</p>
+<p>中止止损：操盘浮亏触及或击穿所选中止止损率时，系统自动止损</p>
+<p>涨停挂单：股价触及涨停，系统自动卖出申报（如未成交需要玩家自行撤单）</p>
+<p>突发停牌：系统按停牌前收盘价卖出</p>
+<p>&nbsp;</p>
+<p>四、结算</p>
+<p>1、操盘盈利分配</p>
+<p>当玩家参与实盘池T+1操盘盈利时，操盘盈利会优先补偿交易综合费，并以现金的方式进入玩家收益账户，余额的80%作为玩家现金收益亦进入玩家收益账户，与此同时，亏损赔付金全额解冻并原路返还。</p>
+<p>案例：玩家T日，</p>
+<p>申购实盘：5万元</p>
+<p>中止止损：-11%</p>
+<p>支付：交易综合费199.5元（39.9元*5）</p>
+<p>冻结：亏损赔付金5500元（1100元*5）</p>
+<p>买入股票：300***</p>
+<p>买入价格：10.00元</p>
+<p>买入数量：5000股</p>
+<p>玩家T+1日，</p>
+<p>卖出股票：300***</p>
+<p>卖出价格：10.50元</p>
+<p>卖出数量：5000股</p>
+<p>玩家操盘盈利为2500元（10.50<em>5000-10.00</em>5000），其中优先补偿交易综合费199.5元进入玩家收益账户，补偿后余额的80%[(2500-199.5)*80%=1840.4元]作为玩家现金收益亦进入玩家收益账户，亏损赔付金5500元全额解冻。</p>
+<p>2、操盘亏损赔付</p>
+<p>玩家操盘亏损时，将从亏损赔付金中等额扣减操盘亏损额，扣减后余额解冻并原路返还。</p>
+<p>案例：玩家T日，</p>
+<p>申购实盘：5万元</p>
+<p>中止止损：-8%</p>
+<p>支付：交易综合费199.5元（39.9元*5）</p>
+<p>冻结：亏损赔付金4000元（800元*5）</p>
+<p>买入股票：600***</p>
+<p>买入价格：10.00元</p>
+<p>买入数量：5000股</p>
+<p>玩家T+1日，</p>
+<p>卖出股票：600***</p>
+<p>卖出价格：9.90元</p>
+<p>卖出数量：5000股</p>
+<p>玩家操盘亏损为500元（9.90<em>5000-10.00</em>5000），扣减玩家亏损赔付金500元，扣减后余额3500元（4000-500）原路返还。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/investment/20150428-709.html" title="揭露新浪微操盘玩法攻略中的陷阱" target="_blank" rel="external">https://www.klavor.com/investment/20150428-709.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/investment/20150429-651.html" title="坑！高昂的新浪微操盘费用提高持股成本（上）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150425-678.html" title="注册StsrtSSL 免费SSL证书申请完美教程之三"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="揭露新浪微操盘玩法攻略中的陷阱[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

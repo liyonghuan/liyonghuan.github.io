@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎 | Klavor&#39;s Blog</title>
+  <meta name="description" content="一个网站有很多重要的文件，其中sitemap网站地图以及robots（可以说是机器人向导或者蜘蛛向导吧）。这两个文件对搜索引擎的收录会产生很大的影响，如果设置得不好的话，将会照成重复收录同类型内容而降低搜索引擎的权重，另外还有一种糟糕的情况就是我遇到的，设置了错误的robots导致搜索引擎不收录网站的内容。 对于搜索引擎不收录我网站的内容是由于robots.txt文件造成的这个原因是我最近才发现的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎">
+<meta property="og:url" content="https://www.klavor.com/dev/20150603-857.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="一个网站有很多重要的文件，其中sitemap网站地图以及robots（可以说是机器人向导或者蜘蛛向导吧）。这两个文件对搜索引擎的收录会产生很大的影响，如果设置得不好的话，将会照成重复收录同类型内容而降低搜索引擎的权重，另外还有一种糟糕的情况就是我遇到的，设置了错误的robots导致搜索引擎不收录网站的内容。 对于搜索引擎不收录我网站的内容是由于robots.txt文件造成的这个原因是我最近才发现的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2GLohcVXXXXcyXXXXXXXXXXXX_!!760675169.png">
+<meta property="article:published_time" content="2015-06-03T08:57:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:29:36.640Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="360">
+<meta property="article:tag" content="Bing">
+<meta property="article:tag" content="SEO">
+<meta property="article:tag" content="Robots">
+<meta property="article:tag" content="搜狗">
+<meta property="article:tag" content="搜索引擎">
+<meta property="article:tag" content="搜索引擎优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2GLohcVXXXXcyXXXXXXXXXXXX_!!760675169.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150603-857.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/06/20150603-857" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150603-857.html" class="article-date">
+	  <time datetime="2015-06-03T08:57:00.000Z" itemprop="datePublished">2015-06-03</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/360/" rel="tag">360</a>, <a class="article-tag-link-link" href="/tags/Bing/" rel="tag">Bing</a>, <a class="article-tag-link-link" href="/tags/Robots/" rel="tag">Robots</a>, <a class="article-tag-link-link" href="/tags/SEO/" rel="tag">SEO</a>, <a class="article-tag-link-link" href="/tags/%E6%90%9C%E7%8B%97/" rel="tag">搜狗</a>, <a class="article-tag-link-link" href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" rel="tag">搜索引擎</a>, <a class="article-tag-link-link" href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/" rel="tag">搜索引擎优化</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150603-857.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>一个网站有很多重要的文件，其中sitemap网站地图以及robots（可以说是机器人向导或者蜘蛛向导吧）。这两个文件对搜索引擎的收录会产生很大的影响，如果设置得不好的话，将会照成重复收录同类型内容而降低搜索引擎的权重，另外还有一种糟糕的情况就是我遇到的，设置了错误的robots导致搜索引擎不收录网站的内容。<br><img src="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2GLohcVXXXXcyXXXXXXXXXXXX_!!760675169.png" alt="SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎.png"/></p>
+<p>对于搜索引擎不收录我网站的内容是由于robots.txt文件造成的这个原因是我最近才发现的，还好我偶尔会使用搜索引擎网站提供给站长的工具。而这一次我是在使用Bing的站长管理工具的过程中发现的问题。当时我看到Bing、搜狗和360的收录量特别少，我就觉得奇怪，然后我通过Bing的Bingbot提取功能测试了我网站上的不同类型的链接，之后发现首页是可以正常的提取出来的，但是详细的文章页面，也就是正文页面，却提示被Robots.txt阻止了，但是我还是觉得比较奇怪的，因为我之前通过百度、谷歌两大搜索引擎的robots校验工具对我的robots.txt的规则进行了检验，百度、谷歌两大搜索引擎均提示正文和分类以及首页是可以正常收录的，但是为什么到Bing这里却是提示阻止了呢？</p>
+<p>随后，我有点不相信，又再次的到百度站长工具中再一次的进行了检验，发现百度的确显示的我设置的robots.txt文件是正常的，可以正常收录我设置的网页和排除我不希望被收录的网页。</p>
+<p>实在是没有了办法，于是只好通过单个搜索引擎的限制的方法来解决这个问题。但是我一直想不明白的是ROBOTS不是一个标准吗？语法什么的应该都是一样的，但是竟然对其他的搜索引擎起到了不同的效果，我也是醉了。</p>
+<p>下面的robots详细教程，网上有很多，也不算是原创，就是整理有条来让人可以轻易的看明白。</p>
+<p>第一步：新建一个名称为robots.txt的文件。</p>
+<p>第二步：在文件中添加User-agent： *</p>
+<p>其中<em>号表示所有的搜索引擎蜘蛛，如果你需要针对某一个单独的搜索引擎的蜘蛛进行设置，你也可以将</em>号改为搜索引擎的蜘蛛名称。</p>
+<p>从网上各种论坛和搜索引擎官方的站长工具文档中查看搜索引擎蜘蛛的名称大致如下：</p>
+<p><span style="color: #ff0000;">百度</span></p>
+<p>百度蜘蛛：Baiduspider</p>
+<p>百度图片：Baiduspider-image</p>
+<p>百度视频：Baiduspider-video</p>
+<p>百度新闻：Baiduspider-news</p>
+<p>百度WAP：Baiduspider-mobile</p>
+<p><span style="color: #ff0000;">谷歌</span></p>
+<p>谷歌蜘蛛：Googlebot</p>
+<p>谷歌图片：Googlebot-Mobile</p>
+<p><span style="color: #ff0000;">360</span></p>
+<p>360蜘蛛：360Spider</p>
+<p><span style="color: #ff0000;">SOSO</span></p>
+<p>SOSO蜘蛛：Sosospider</p>
+<p><span style="color: #ff0000;">搜狗</span></p>
+<p>Sogou web spider</p>
+<p>Sogou inst spider</p>
+<p>Sogou spider</p>
+<p>Sogou blog</p>
+<p>Sogou News Spider</p>
+<p>Sogou Orion spider</p>
+<p>根据网上的说法，搜狗蜘蛛可以统称为Sogou。</p>
+<p><span style="color: #ff0000;">有道</span></p>
+<p>YoudaoBot</p>
+<p>YodaoBot</p>
+<p><span style="color: #ff0000;">必应</span></p>
+<p>Bingbot</p>
+<p><span style="color: #ff0000;">一搜（神马搜索）</span></p>
+<p>YisouSpider</p>
+<p>根据博主查的资料，在UC官网论坛中，被称为神马搜索，蜘蛛名为Yisouspider。</p>
+<p><span style="color: #ff0000;">Alexa</span></p>
+<p>ia_archiver</p>
+<p><span style="color: #ff0000;">宜搜</span></p>
+<p>EasouSpider</p>
+<p><span style="color: #ff0000;">即刻</span></p>
+<p>JikeSpider</p>
+<p>注意：这里需要注意的一点，就是User-agent：和*号之间是有一个空格的，虽然不知道这个空格是不是真的对整个robots.txt规则有所影响，但是我查看了很多robots.txt文件均是有空格的，所以大家尽量也留个空格出来，避免出现意外的情况。</p>
+<p>第三步：声明网站地图sitemap文件的位置，如果你网站没有sitemap网站地图文件则可以直接跳过这一步。</p>
+<p>Sitemap: <a target="_blank" rel="noopener" href="http://www.lihuan.com.cn/sitemap.xml">http://www.lihuan.com.cn/sitemap.xml</a></p>
+<p>Sitemap:后面是网站的sitemap的文件地址。</p>
+<p>第四步：设置搜索引擎的蜘蛛可以访问的链接。</p>
+<p>这里如果你希望搜索引擎的蜘蛛能够访问到网站所有的内容可以在User-agent： *下添加如Disallow:或者Allow: /。还是需要注意的是Allow:和Disallow：与后面的字符均需要留出一个空格。虽然不知道其影响，但是我看过的其他网站都是留有空格的。</p>
+<p>User-agent： *</p>
+<p>Allow: /</p>
+<p>或者</p>
+<p>User-agent： *</p>
+<p>Disallow:</p>
+<p>如果，你需要禁止搜索引擎的蜘蛛访问网站的某个目录的内容，则可以写成：</p>
+<p>User-agent: *</p>
+<p>Disallow: /admin/</p>
+<p>如果，你需要指定搜索引擎可以访问和收录某个的目录内容，则可以写成：</p>
+<p>User-agent: *</p>
+<p>Allow: /admin/</p>
+<p>如果，你需要指定搜索引擎不收录带参数的链接内容，则可以写成：</p>
+<p>User-agent: *</p>
+<p>Disallow: /<em>?</em></p>
+<p>基本上robots文件的基础设置语句就只有这些了。</p>
+<p>通过查询网上的资料发现还有专门指定搜索引擎针对图片的收录的Robot规则。</p>
+<p>允许抓取指定图片格式：</p>
+<p>Allow: .jpg$</p>
+<p>禁止抓取指定图片格式：</p>
+<p>Disallow: .jpg$</p>
+<p>这种方法我没有具体试过，所以不知道是不是真实有效，而且这种方法大部分情况下都不会被用到，只有真正希望网站图片不被收录才会使用，因此，没有太大的设置的必要。</p>
+<p>站长推荐：</p>
+<p>百度站长管理工具：zhanzhang.baidu.com</p>
+<p>谷歌站长管理工具：<a target="_blank" rel="noopener" href="http://www.google.com/webmasters/">www.google.com/webmasters/</a></p>
+<p>360站长管理工具：zhanzhang.haosou.com</p>
+<p>搜狗站长管理工具：zhanzhang.sogou.com</p>
+<p>Bing站长管理工具：<a target="_blank" rel="noopener" href="http://www.bing.com/webmaster/">www.bing.com/webmaster/</a></p>
+<p>神马站长管理工具：zhanzhang.sm.cn</p>
+<p>希望本篇文章能够给各位站长带来帮助，如果你有什么好的建议或意见请提出，如果本文内容有错误或不全的地方还请指出，谢谢各位的支持。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150603-857.html" title="SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎" target="_blank" rel="external">https://www.klavor.com/dev/20150603-857.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150603-863.html" title="世界排名网站Alexa网站信息管理教程"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150529-851.html" title="极验验证：Wordpress登录页面手工添加验证码完美教程 免安装插件"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="SEO大法之Robots设置教程：真的无法直视矫情的Bing、360、搜狗搜索引擎[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>教你如何移动文件到安卓手机米图M3手机中 | Klavor&#39;s Blog</title>
+  <meta name="description" content="你还在纠结不小心删除了米图M3内有用的应用而无法再次拷贝到手机系统里去吗？你还在为自己DIY手机风格而无法拷贝文件到手机系统去而苦恼吗？你还在为购买了这款米图M3手机而不知所措的蛋疼着吗？我现在为大家慢慢解决这些让你蛋碎一地，苦恼一生的问题吧。  今天我们要用到的手机应用软件有两款，一款是root软件，这里我个人推荐使用onekeyroot，因为我觉得我用过的root软件里面这款还是挺好用的，特别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你如何移动文件到安卓手机米图M3手机中">
+<meta property="og:url" content="https://www.klavor.com/dev/20140423-82.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="你还在纠结不小心删除了米图M3内有用的应用而无法再次拷贝到手机系统里去吗？你还在为自己DIY手机风格而无法拷贝文件到手机系统去而苦恼吗？你还在为购买了这款米图M3手机而不知所措的蛋疼着吗？我现在为大家慢慢解决这些让你蛋碎一地，苦恼一生的问题吧。  今天我们要用到的手机应用软件有两款，一款是root软件，这里我个人推荐使用onekeyroot，因为我觉得我用过的root软件里面这款还是挺好用的，特别">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://g.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=bf1a59a979ec54e745ec1a1b8903ea6d/b90e7bec54e736d1b10b589f99504fc2d5626909.jpg?referer=4f2c52799e82d158e2956c81d707&amp;x=.jpg">
+<meta property="og:image" content="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=e2cc9a2e9c510fb37c197792e908b9a8/7a899e510fb30f2446a63894ca95d143ad4b036c.jpg?referer=fc1867bf347adab464c72e736d23&amp;x=.jpg">
+<meta property="og:image" content="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=3beacf7aa1cc7cd9fe2d34dc093a5002/2fdda3cc7cd98d1096acd8a6233fb80e7bec9029.jpg?referer=1af42ab44b540923f37e574ed0e7&amp;x=.jpg">
+<meta property="og:image" content="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b30e402c85d6277fed12323d18036e0d/a08b87d6277f9e2f3307c99f1d30e924b899f373.jpg?referer=722ce850925298225c240cf33d11&amp;x=.jpg">
+<meta property="og:image" content="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1bd240e3af345982c18ae5973ccf4090/a044ad345982b2b75caded5333adcbef76099b73.jpg?referer=005b7549f21f3a2903dfe0fee511&amp;x=.jpg">
+<meta property="og:image" content="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1228ed54d5ca7bcb797bc72a8e321a5e/0df3d7ca7bcb0a4692395fae6963f6246b60af0a.jpg?referer=aaa6849f0ed79123b9f7a1440908&amp;x=.jpg">
+<meta property="og:image" content="http://d.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=7ca028b07d3e6709ba0045fa0bfcee00/c8177f3e6709c93dabe9da609d3df8dcd100540a.jpg?referer=eedc076a79899e5121990f249408&amp;x=.jpg">
+<meta property="og:image" content="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=32171c5dad51f3dec7b2b961a4d58122/fcfaaf51f3deb48f23557549f21f3a292df5786d.jpg?referer=9f4fc4b897cad1c889acc917b823&amp;x=.jpg">
+<meta property="og:image" content="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b5c2b68b13dfa9ecf92e561252eb863e/562c11dfa9ec8a1324368377f503918fa0ecc07d.jpg?referer=9ee8368d6259252dfa0028342013&amp;x=.jpg">
+<meta property="og:image" content="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1f0bf078abec8a13101a57e5c738e0b2/10dfa9ec8a1363272af716a4938fa0ec08fac70b.jpg?referer=9f0d81fe272dd42a061e349b2109&amp;x=.jpg">
+<meta property="og:image" content="http://c.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=d3232932d343ad4ba22e46c5b2392b92/c995d143ad4bd11379e063a558afa40f4bfb0573.jpg?referer=81c452bb8501a18ba9fc277f6312&amp;x=.jpg">
+<meta property="og:image" content="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=d534593eab014c081d3b28a03a407335/b999a9014c086e062185ebdc00087bf40ad1cb7c.jpg?referer=365613b8bc096b63d80e6b603512&amp;x=.jpg">
+<meta property="og:image" content="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b53a27fb1238534388cf8724a328c143/c75c10385343fbf2320172b4b27eca8065388f7c.jpg?referer=0525047ae51190ef58eca7efe912&amp;x=.jpg">
+<meta property="og:image" content="http://g.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=a902a20e8026cffc6d2abfb7893a3bad/42a98226cffc1e1794c558a64890f603738de92b.jpg?referer=7c9e1374552c11df87c68b1357e9&amp;x=.jpg">
+<meta property="og:image" content="http://b.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=3465aeed22a446237acaa567a8190333/4e4a20a4462309f7c9157985700e0cf3d7cad62b.jpg?referer=9f1bf19f5143fbf29c3b921312e9&amp;x=.jpg">
+<meta property="og:image" content="http://c.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=cb233cf3544e9258a23486ebacb9a065/dc54564e9258d10971de7d25d358ccbf6c814d6c.jpg?referer=0afc2269c1fdfc03bc6fd688ab22&amp;x=.jpg">
+<meta property="article:published_time" content="2014-04-23T11:31:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T07:19:56.293Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="米图M3">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://g.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=bf1a59a979ec54e745ec1a1b8903ea6d/b90e7bec54e736d1b10b589f99504fc2d5626909.jpg?referer=4f2c52799e82d158e2956c81d707&amp;x=.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20140423-82.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2014/04/20140423-82" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      教你如何移动文件到安卓手机米图M3手机中
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20140423-82.html" class="article-date">
+	  <time datetime="2014-04-23T11:31:00.000Z" itemprop="datePublished">2014-04-23</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="article-tag-link-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a>, <a class="article-tag-link-link" href="/tags/%E7%B1%B3%E5%9B%BEM3/" rel="tag">米图M3</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20140423-82.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>你还在纠结不小心删除了米图M3内有用的应用而无法再次拷贝到手机系统里去吗？你还在为自己DIY手机风格而无法拷贝文件到手机系统去而苦恼吗？你还在为购买了这款米图M3手机而不知所措的蛋疼着吗？我现在为大家慢慢解决这些让你蛋碎一地，苦恼一生的问题吧。  </p><p>今天我们要用到的手机应用软件有两款，一款是root软件，这里我个人推荐使用onekeyroot，因为我觉得我用过的root软件里面这款还是挺好用的，特别是这坑爹的米图M3手机；另外一款是文件管理器，我推荐使用X-plore，之前的删除米图M3的系统内置应用我用了Root Explorer这款手机应用，但是那个只对删除应用有效，要想移动文件的话恐怕有点难，我试过很多次都没能够成功。  </p><p>记住了，安装onekeyroot和X-plore这两款手机应用。如果你觉得或者实际上就是你现在所用的root软件已经很好用并且能够用了，那就可以忽略安装onekeyroot这款应用了，这时你只要安装X-plore就可以了。  </p><p>废话不多说，现在开始教大家怎么移动文件到米图M3手机中，今天我用修改系统文件中build.prop文件的版本信息为例。  </p><p>第一步：安装X-plore。（我是不是很啰嗦？很欠揍的感觉？你打我呀！嘻嘻。）  </p><p><img src="http://g.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=bf1a59a979ec54e745ec1a1b8903ea6d/b90e7bec54e736d1b10b589f99504fc2d5626909.jpg?referer=4f2c52799e82d158e2956c81d707&amp;x=.jpg"/>  </p><p>第二步：安装好后打开软件，出现在你眼前的就是下面这个界面。  </p><p><img src="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=e2cc9a2e9c510fb37c197792e908b9a8/7a899e510fb30f2446a63894ca95d143ad4b036c.jpg?referer=fc1867bf347adab464c72e736d23&amp;x=.jpg"/>  </p><p>第三步：点击右边的齿轮图标的那个设置的按钮进行权限的设置。此时我们看到的Root权限访问是普通用户（正常显示根目录，适用于所有设备）。  </p><p><img src="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=3beacf7aa1cc7cd9fe2d34dc093a5002/2fdda3cc7cd98d1096acd8a6233fb80e7bec9029.jpg?referer=1af42ab44b540923f37e574ed0e7&amp;x=.jpg"/>  </p><p>第四步：我们需要点击步骤三中的普通用户按钮。在出现的图示中我们可以看到超级用户+挂在可写（超级用户模式，允许更改只读文件夹），此时我们选中它便可以了。图如下。  </p><p><img src="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b30e402c85d6277fed12323d18036e0d/a08b87d6277f9e2f3307c99f1d30e924b899f373.jpg?referer=722ce850925298225c240cf33d11&amp;x=.jpg"/>  </p><p><img src="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1bd240e3af345982c18ae5973ccf4090/a044ad345982b2b75caded5333adcbef76099b73.jpg?referer=005b7549f21f3a2903dfe0fee511&amp;x=.jpg"/>  </p><p>当你选中了超级用户+挂载可写之后，你去点击root的目录你就会看到屏幕显示的请求获取ROOT权限的界面，选中不再询问并点击授权允许授权应用访问你的root权限。  </p><p><img src="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1228ed54d5ca7bcb797bc72a8e321a5e/0df3d7ca7bcb0a4692395fae6963f6246b60af0a.jpg?referer=aaa6849f0ed79123b9f7a1440908&amp;x=.jpg"/>  </p><p>这时，我们不要急急忙忙的就去改系统的内置文件，那是行不通的。问我为什么？因为它是米图M3呀！  </p><p>如果你心太急了，匆匆忙忙的就去修改系统内置文件的话，很有可能就会碰得一鼻子灰。就像我刚开始遇到的情况一样，但是这时你不要心急，既然有教程，那肯定是可以搞出点什么名堂的嘛，其实剩下的也都是很简单的了，经常玩弄安卓的朋友应该都懂的，不过既然是教程，那我就啰里啰唆的多说几句。  </p><p><img src="http://d.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=7ca028b07d3e6709ba0045fa0bfcee00/c8177f3e6709c93dabe9da609d3df8dcd100540a.jpg?referer=eedc076a79899e5121990f249408&amp;x=.jpg"/>  </p><p>第五步：这款软件有两个屏幕，点击一个手机图标的那个切换卡就可以左右切换了，我习惯在右边的选择卡中显示系统文件。首先我们要移动文件到SD卡中，当你看到所需要修改的系统文件的时候选中它。然后选择复制图标按钮。  </p><p><img src="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=32171c5dad51f3dec7b2b961a4d58122/fcfaaf51f3deb48f23557549f21f3a292df5786d.jpg?referer=9f4fc4b897cad1c889acc917b823&amp;x=.jpg"/>  </p><p>当你点击了复制按钮后会出现复制到XXX，一般情况下不要勾选那个移动模式（删除源文件），最后点击确定完成移动。（注意你移动的位置，如果此时的位置不是你所需要移动到的目标位置的话请先切换到另一个标签页并点击你要复制到的目录即可，这时在重复上面的复制步骤即可复制到相应位置）  </p><p><img src="http://h.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b5c2b68b13dfa9ecf92e561252eb863e/562c11dfa9ec8a1324368377f503918fa0ecc07d.jpg?referer=9ee8368d6259252dfa0028342013&amp;x=.jpg"/>  </p><p>复制好后的截图效果如下  </p><p><img src="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=1f0bf078abec8a13101a57e5c738e0b2/10dfa9ec8a1363272af716a4938fa0ec08fac70b.jpg?referer=9f0d81fe272dd42a061e349b2109&amp;x=.jpg"/>  </p><p>第六步：完成上面步骤后，接下来就是修改文件了。你可以选择通过这款应用来修改文件，也可以通过电脑来修改文件，这个可以根据你自己的需要而定。如果想通过这款X-plore手机应用来修改，那就长按刚才复制到SD卡中的文件（不是系统中的哦，那个改不掉），在出现的选项中选择编辑文本进行编辑工作。  </p><p><img src="http://c.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=d3232932d343ad4ba22e46c5b2392b92/c995d143ad4bd11379e063a558afa40f4bfb0573.jpg?referer=81c452bb8501a18ba9fc277f6312&amp;x=.jpg"/>  </p><p>第七步：编辑好后记得保存。（不要说我欠揍）  </p><p>第八步：选中文件，和前面一样的方法复制文件到系统里去，完成你要的复制工作。如图  </p><p><img src="http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=d534593eab014c081d3b28a03a407335/b999a9014c086e062185ebdc00087bf40ad1cb7c.jpg?referer=365613b8bc096b63d80e6b603512&amp;x=.jpg"/>  </p><p>这里如果你复制的文件多的话请勾选全部执行此操作（能不能别废话^_^）。点击覆盖完成最后的确定。  </p><p><img src="http://a.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=b53a27fb1238534388cf8724a328c143/c75c10385343fbf2320172b4b27eca8065388f7c.jpg?referer=0525047ae51190ef58eca7efe912&amp;x=.jpg"/>  </p><p>第九步：一般来说，复制好文件后都要修改一下文件的权限，我们也来改一改。我们要长按修改权限的文件，在弹出的菜单中选中权限这一项，这里我忘了截图了，不过也就算了。然后可以看到下图的情况。  </p><p><img src="http://g.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=a902a20e8026cffc6d2abfb7893a3bad/42a98226cffc1e1794c558a64890f603738de92b.jpg?referer=7c9e1374552c11df87c68b1357e9&amp;x=.jpg"/>  </p><p>我们把最右边的三个勾勾给勾掉，如下图  </p><p><img src="http://b.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=3465aeed22a446237acaa567a8190333/4e4a20a4462309f7c9157985700e0cf3d7cad62b.jpg?referer=9f1bf19f5143fbf29c3b921312e9&amp;x=.jpg"/>  </p><p>点击确定就完工啦。  </p><p>第十步：点赞吧。顺便附张我修改后的截图给大家看看啊。某人看到会不会高兴呢？  </p><p><img src="http://c.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=cb233cf3544e9258a23486ebacb9a065/dc54564e9258d10971de7d25d358ccbf6c814d6c.jpg?referer=0afc2269c1fdfc03bc6fd688ab22&amp;x=.jpg"/>  </p><p>本教程很简单，适用于像我一样的菜鸟级玩家，高手可以飘过。  </p><p>最后我们来说一下现在我遇到的问题还未解决的。目前的话，我发现用谷歌安装器安装的谷歌的一些应用都没办法用，比如google play，其实最关键的是我用上面的这个方法将其他手机的谷歌账户管理和谷歌的一系列应用拷贝到了系统中依然不能用，出现的情况是无法登陆谷歌账户，具体原因不明，望高手指点（可以通过评论、留言等方式告诉我哦）。</p>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20140423-82.html" title="教你如何移动文件到安卓手机米图M3手机中" target="_blank" rel="external">https://www.klavor.com/dev/20140423-82.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20141014-101.html" title="大学课后作业C语言编程之火车票管理系统"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20140410-80.html" title="教你如何删除安卓手机米图M3系统内置程序"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="教你如何移动文件到安卓手机米图M3手机中[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>C#编程：质量管理学中直方图算法类代码 | Klavor&#39;s Blog</title>
+  <meta name="description" content="昨天刚中期答辩过去，然后今天开始加快进度进行程序编写了，而论文中的算法目前只写到了直方图部分，所以今天就将直方图的算法写成C#的计算机语言方式。但是在这个过程中遇到了很多问题，因为我以前编程几乎不使用类，虽然我知道类很重要，可以简化程序，加快编写效率，和可重复利用等等的优点，但是一直以来我都是直接写在主程序里的，好一点的我会直接在主程序中写个函数，但是一般连函数我都懒得写，这也造成了我的技术一直没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#编程：质量管理学中直方图算法类代码">
+<meta property="og:url" content="https://www.klavor.com/dev/20150514-807.html">
+<meta property="og:site_name" content="Klavor&#39;s Blog">
+<meta property="og:description" content="昨天刚中期答辩过去，然后今天开始加快进度进行程序编写了，而论文中的算法目前只写到了直方图部分，所以今天就将直方图的算法写成C#的计算机语言方式。但是在这个过程中遇到了很多问题，因为我以前编程几乎不使用类，虽然我知道类很重要，可以简化程序，加快编写效率，和可重复利用等等的优点，但是一直以来我都是直接写在主程序里的，好一点的我会直接在主程序中写个函数，但是一般连函数我都懒得写，这也造成了我的技术一直没">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2qyhpcVXXXXayXpXXXXXXXXXX_!!760675169.jpg">
+<meta property="article:published_time" content="2015-05-14T12:23:00.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:23:34.537Z">
+<meta property="article:author" content="klavor.com">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="质量管理学">
+<meta property="article:tag" content="直方图">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="中期答辩">
+<meta property="article:tag" content="毕业论文">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2qyhpcVXXXXayXpXXXXXXXXXX_!!760675169.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.klavor.com/dev/20150514-807.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-dev">
+          <a href="/./categories/dev/">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">开发</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-investment">
+          <a href="/./categories/investment/">
+            
+            <i class="icon icon-clock"></i>
+            
+            <span class="menu-title">投资</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-essay">
+          <a href="/./categories/essay/">
+            
+            <i class="icon icon-star-fill"></i>
+            
+            <span class="menu-title">随笔</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-dev/2015/05/20150514-807" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#编程：质量管理学中直方图算法类代码
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/dev/20150514-807.html" class="article-date">
+	  <time datetime="2015-05-14T12:23:00.000Z" itemprop="datePublished">2015-05-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C#</a>, <a class="article-tag-link-link" href="/tags/%E4%B8%AD%E6%9C%9F%E7%AD%94%E8%BE%A9/" rel="tag">中期答辩</a>, <a class="article-tag-link-link" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" rel="tag">毕业论文</a>, <a class="article-tag-link-link" href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" rel="tag">直方图</a>, <a class="article-tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="article-tag-link-link" href="/tags/%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%AD%A6/" rel="tag">质量管理学</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20150514-807.html#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>昨天刚中期答辩过去，然后今天开始加快进度进行程序编写了，而论文中的算法目前只写到了直方图部分，所以今天就将直方图的算法写成C#的计算机语言方式。但是在这个过程中遇到了很多问题，因为我以前编程几乎不使用类，虽然我知道类很重要，可以简化程序，加快编写效率，和可重复利用等等的优点，但是一直以来我都是直接写在主程序里的，好一点的我会直接在主程序中写个函数，但是一般连函数我都懒得写，这也造成了我的技术一直没有什么好的提高。</p>
+<p>今晚我就趁着这次机会练练使用类的方式编写一下关于直方图数据处理的类文件，但是毕竟第一次，遇到了很多的问题，知道现在，有一些问题还是存在的。比如说类中的函数，也就是类中的方法，要使用什么样子的声明，是public还是protected又或者是private？刚开始我一直写的public声明，但是后来觉得外部基本引用不上，所以后来直接改成了private了，不知道这样子做对不对。还有一点就是之前我在类中的每一个方法都会有一个返回值，但是后来写着感觉这样引用好像很麻烦，毕竟这次的直方图数据处理，只需要拿出接过来便可以了，于是我开始取消了所有方法的返回值，改为了无返回值的方法，并在类中定义了多个属性，这些属性就是本次直方图数据处理中所需要的最终数据。</p>
+<p>但是这里又遇到了问题，如果我在程序中实例化了类，那么这些函数依旧是要一个一个的调用的，因此我后来想用构造函数来在调用的时候直接就通过构造函数调用所有的处理函数并令属性获取直方图需要的值，但是在写的过程中，我又犯了一个小错误，就是我发现了构造函数不起效果了，在实例的时候，本来该有的两个构造函数的参数不适用也可以实例化。后来很是郁闷，经过几次的检查才发现，原来构造函数不需要定义返回值类型，连void也不需要，使用了就是错误的了，使用void的话这个就变成了方法而不是构造函数了。</p>
+<p>最终，经过一个下午的艰苦奋斗，终于将这直方图的数据处理方法给搞定了。不是很优化的类，不过，的确能够完成直方图数据的处理工作。</p>
+<p>其中还有一点就是直方图数据的处理中，按照《质量管理学》中的计算公式，我测试了一下，使用课文中的样本数据和组数进行测试。最终发现如果使用课文中的简化公式求出来的值与原公式所求出的值相差比较大。刚开始我还以为是我编写计算方式错误了，后来经过两种公式的测试，终于发现并不是这样的，而是因为在两种不同公式下计算出现了误差的缘故，因此我将两种公式的计算方法都编写在类中了，并赋给不同的属性中，方便以后使用的选择。<br><img class=" aligncenter" src="http://img01.taobaocdn.com/imgextra/i1/760675169/TB2qyhpcVXXXXayXpXXXXXXXXXX_!!760675169.jpg" alt=" C#编程：质量管理学中直方图算法类代码" /></p>
+<p>以下是本次编写的直方图数据处理的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">namespace onlineSPC</span><br><span class="line">&#123;</span><br><span class="line">    class ValueClass</span><br><span class="line">    &#123;</span><br><span class="line">        public float[] xarr;       //传入的样本数据数组</span><br><span class="line">        public float xmax = 0;     //数组中的最大值</span><br><span class="line">        public float xmin = 0;     //数组中的最小值</span><br><span class="line">        public float diff = 0;     //最大值与最小值的差</span><br><span class="line">        public int group = 0;      //样本数据分组数</span><br><span class="line">        public float[] limitnum;       //限制界限,比数组数量大1</span><br><span class="line">        public int h = 0;      //组距</span><br><span class="line">        float simplex = 0;      //频数最大的组的中心值</span><br><span class="line">        public float[] cennum;     //中心值数组，和数组数量相同</span><br><span class="line">        public int[] fnum;     //频数数组，和数组数量相同</span><br><span class="line">        public float[] unum;       //简化中心值，和数组数量相同</span><br><span class="line">        public float xave = 0;     //样本数据平均数</span><br><span class="line">        public float snum;     //标准偏差</span><br><span class="line">        public float xx = 0;        //简化公式所求样本平均值</span><br><span class="line">        public float xs = 0;        //简化公式所求样本标准偏差</span><br><span class="line">        public ValueClass(float[] xvalue, int xgroup)       //带两个参数的构造函数，第一个参数是样本数据数组，第二个参数是分组数</span><br><span class="line">        &#123;</span><br><span class="line">            group = xgroup;</span><br><span class="line">            xarr = new float[xvalue.Count()];</span><br><span class="line">            xarr = xvalue;</span><br><span class="line">            reorderValue();</span><br><span class="line">            xMaxMin();</span><br><span class="line">            hValue();</span><br><span class="line">            limitNum();</span><br><span class="line">            cenNum();</span><br><span class="line">            fNum();</span><br><span class="line">            uNum();</span><br><span class="line">            xAverage();</span><br><span class="line">            sNum();</span><br><span class="line">            xX();</span><br><span class="line">            xS();</span><br><span class="line">        &#125;</span><br><span class="line">        private void reorderValue()        //将数组内的数字又小到大排序</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i = 1; i &lt; xarr.Count(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                for (int j = 0; j &lt; i; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (xarr[i] &gt;= xarr[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else if (xarr[i] &lt; xarr[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        float tempxvalue;</span><br><span class="line">                        tempxvalue = xarr[i];</span><br><span class="line">                        xarr[i] = xarr[j];</span><br><span class="line">                        xarr[j] = tempxvalue;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            xmax = xarr[xarr.Count() – 1];</span><br><span class="line">            xmin = xarr[0];</span><br><span class="line">        &#125;</span><br><span class="line">        private void xMaxMin()        //求得X的最大值与最小值的差</span><br><span class="line">        &#123;</span><br><span class="line">            diff = xmax – xmin;</span><br><span class="line">        &#125;</span><br><span class="line">        public void hValue()     //获取组距h的值,组距为整数</span><br><span class="line">        &#123;</span><br><span class="line">            int x = Convert.ToInt32(diff) % Convert.ToInt32(group);</span><br><span class="line">            if(x != 0)</span><br><span class="line">            &#123;</span><br><span class="line">                h = (Convert.ToInt32(diff) / Convert.ToInt32(group)) + 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                h = Convert.ToInt32(diff) / Convert.ToInt32(group);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void limitNum()     //求得各组限制界限的函数</span><br><span class="line">        &#123;</span><br><span class="line">            limitnum = new float[group + 1];</span><br><span class="line">            limitnum[0] = xmin – (h / 2);</span><br><span class="line">            for (int i = 1; i &lt; group + 1; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                limitnum[i] = limitnum[i – 1] + h;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void cenNum()       //求得中心值的函数</span><br><span class="line">        &#123;</span><br><span class="line">            cennum = new float[group];</span><br><span class="line">            for(int i = 0; i &lt; group; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                cennum[i] = (limitnum[i + 1] + limitnum[i]) / 2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void fNum()     //求得每组频数的函数</span><br><span class="line">        &#123;</span><br><span class="line">            fnum = new int[group];</span><br><span class="line">            int o = 0;      //第o组频数</span><br><span class="line">            for (int i = 0; i &lt; xarr.Count(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(xarr[i] &lt;= limitnum[o + 1])</span><br><span class="line">                &#123;</span><br><span class="line">                    fnum[o]++;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    o++;</span><br><span class="line">                    fnum[o]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void uNum()     //求得每组的简化中心值函数</span><br><span class="line">        &#123;</span><br><span class="line">            int o = 0;      //</span><br><span class="line">            for (int i = 1; i &lt; group; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (fnum[o] &gt; fnum[i])</span><br><span class="line">                &#123;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    o = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            simplex = cennum[o];</span><br><span class="line">            unum = new float[group];</span><br><span class="line">            for(int i = 0; i &lt; group; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                unum[i] = (cennum[i] – simplex) / h;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        private void xAverage()       //求一组数据的平均数</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i = 0; i &lt; xarr.Count(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                xave += xarr[i];</span><br><span class="line">            &#125;</span><br><span class="line">            xave /= xarr.Count();</span><br><span class="line">        &#125;</span><br><span class="line">        private void xX()       //通过简化公式求样本平均值的函数</span><br><span class="line">        &#123;</span><br><span class="line">            float suma = 0;</span><br><span class="line">            float sumb = 0;</span><br><span class="line">            for(int i = 0; i &lt; group; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                suma += (fnum[i] * unum[i]);</span><br><span class="line">                sumb += fnum[i];</span><br><span class="line">            &#125;</span><br><span class="line">            xx = simplex + h * (suma / sumb);</span><br><span class="line">        &#125;</span><br><span class="line">        private void sNum()     //通过标准公式求标准偏差的函数</span><br><span class="line">        &#123;</span><br><span class="line">            double sumxx = 0;</span><br><span class="line">            for(int i = 0; i &lt; xarr.Count(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                sumxx = Math.Pow(xarr[i] – xave,2);</span><br><span class="line">            &#125;</span><br><span class="line">            snum = Convert.ToSingle(Math.Sqrt(sumxx / xarr.Count()));</span><br><span class="line">        &#125;</span><br><span class="line">        private void xS()       //通过简化公式求标准偏差的函数</span><br><span class="line">        &#123;</span><br><span class="line">            float suma = 0;</span><br><span class="line">            float sumb = 0;</span><br><span class="line">            float sumc = 0;</span><br><span class="line">            for(int i = 0; i &lt; group; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                suma += (fnum[i] * Convert.ToSingle(Math.Pow(unum[i], 2)));</span><br><span class="line">                sumb += (fnum[i] * unum[i]);</span><br><span class="line">                sumc += fnum[i];</span><br><span class="line">            &#125;</span><br><span class="line">            xs = h * Convert.ToSingle(Math.Sqrt((suma / sumc) – Math.Pow((sumb / sumc), 2)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.klavor.com/dev/20150514-807.html" title="C#编程：质量管理学中直方图算法类代码" target="_blank" rel="external">https://www.klavor.com/dev/20150514-807.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liyonghuan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liyonghuan" target="_blank"><span class="text-dark">理幻</span><small class="ml-1x">全栈开发工程师</small></a></h3>
+        <div>Just do IT!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div class="giscus"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/dev/20150516-809.html" title="VisualStudioC#窗体CS文件恢复教程 电脑突然死机的痛"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/dev/20150513-805.html" title="PHP源码：Bing每日一图采集小程序"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn   collapsed  " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-alipay.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/qrcode-wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 klavor.com
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script src="https://giscus.klavor.com/client.js"
+        data-repo="liyonghuan/liyonghuan.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
+        data-category="General"
+        data-category-id="DIC_kwDOE9uths4CVAXO"
+        data-mapping="specific"
+        data-term="C#编程：质量管理学中直方图算法类代码[Klavor&#39;s Blog]"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="preferred_color_scheme"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>
