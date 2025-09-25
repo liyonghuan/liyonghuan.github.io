@@ -26,7 +26,7 @@
 <meta property="og:description" content="站长经常会遇到一些http状态码的问题。而所谓的404页就是服务器404重定向状态返回页面。数字404指的是404号状态码。一般常用到的有200号 状态码和404号状态码。200号表示网页被下载成功，而404号表示不能成功下载并产生错误。下面是HTTP状态码一览表。 1xx：请求收到，继续处理2xx：操作成功收到，分析、接受3xx：完成此请求必须进一步处理4xx：请求包含一个错误语法或不能完成5x">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-12-10T17:17:00.000Z">
-<meta property="article:modified_time" content="2023-03-23T16:40:20.687Z">
+<meta property="article:modified_time" content="2025-09-25T02:33:37.809Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="HTTP">
 <meta property="article:tag" content="状态码">
@@ -48,7 +48,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
@@ -333,7 +333,8 @@
 <p>505 Http Version Not Supported</p>
 <p>常见返回状态码有200(正常)、404(无法访问)、500(页面中PHP/ASP/ASPX等有错误)、301(永久重定向)、302(普通跳转如js跳转,http跳转,asp中respone.redirect跳转及PHP使用的header发送的普通跳转等)。</p>
 <p>常见Http Header返回状态详解：</p>
-<pre><code>当用户点击或搜索引擎向网站服务器发出浏览请求时，服务器将返回Http Header Http头信息状态码,常见几种如下: 1、Http/1.1 200 OK 访问正常</code></pre>
+<pre><code>当用户点击或搜索引擎向网站服务器发出浏览请求时，服务器将返回Http Header Http头信息状态码,常见几种如下: 1、Http/1.1 200 OK 访问正常
+</code></pre>
 <p>  表示成功访问,为网站可正常访问时的状态。</p>
 <p>2、Http/1.1 301 Moved Permanently301重定向永久重定向<br>  对搜索引擎相对友好的跳转方式，当网站更换域名时可将原域名作301永久重定向到新域名，原域名权重可传递到新域名，也常有将不含www的域名301跳转到含www的，如xxx.com通过301跳转到<a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a> </p>
 <p>3、Http/1.1 302 Found 为临时重定向<br>  易被搜索引擎判为作弊,比如asp程序的response.Redirect()跳转、js跳转或静态http跳转。</p>
@@ -491,7 +492,7 @@
 
     <div class="copyright">
     	
-        &copy; 2023 klavor.com
+        &copy; 2025 klavor.com
         
         <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
@@ -552,18 +553,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-<script src="https://giscus.klavor.com/client.js"
+<script src="https://giscus.app/client.js"
         data-repo="liyonghuan/liyonghuan.github.io"
         data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
-        data-category="General"
-        data-category-id="DIC_kwDOE9uths4CVAXO"
-        data-mapping="specific"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOE9uths4CVAXN"
+        data-mapping="pathname"
         data-term="Http状态码以及常见Http Header返回状态详解[转载][Klavor&#39;s Blog]"
         data-strict=""
         data-reactions-enabled="1"
         data-emit-metadata="1"
-        data-input-position="preferred_color_scheme"
-        data-theme="light"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -604,8 +605,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJN5H8SVM1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <script defer>
+  gtag('config', 'G-HJN5H8SVM1');
+</script>
+
+
+    <script>
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");

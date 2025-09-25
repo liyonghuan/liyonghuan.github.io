@@ -30,12 +30,12 @@
 <meta property="og:image" content="https://img.klavor.com/2019/03/gradles-dependency-cache-may-be-corrupt-03.png">
 <meta property="og:image" content="https://img.klavor.com/2019/03/gradles-dependency-cache-may-be-corrupt-04.png">
 <meta property="article:published_time" content="2019-03-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-20T19:02:31.578Z">
+<meta property="article:modified_time" content="2025-09-25T02:33:37.821Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="Android">
+<meta property="article:tag" content="解决方案">
 <meta property="article:tag" content="Gradle">
 <meta property="article:tag" content="依赖包">
-<meta property="article:tag" content="解决方案">
 <meta property="article:tag" content="dependency">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.klavor.com/2019/03/gradles-dependency-cache-may-be-corrupt-02.png">
@@ -56,7 +56,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
@@ -266,20 +266,25 @@
       
         <p>&emsp;&emsp;在打开一个别人项目的时候，由于每个人使用的Android Studio的版本都不一样，因此可能会从服务器去下载对应Gragle的版本，而这个时候常常会出现各种异常情况。如同本篇文章中所要讲述的下载Gradle版本失败的情况。在Android Studio中提示了Failed to open zip file.Gradle’s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)。具体的错误日志如下：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Download https:<span class="comment">//services.gradle.org/distributions/gradle-4.4-all.zip (94.25 MB)</span></span><br><span class="line">[ <span class="number">75</span>%] [ =========================================&gt;             ] <span class="number">71.01</span> MB</span><br><span class="line">Download https:<span class="comment">//services.gradle.org/distributions/gradle-4.4-all.zip succeeded, took 20 m 33 s 787 ms</span></span><br><span class="line">Unzipping ...</span><br><span class="line"></span><br><span class="line">Failed to open zip <span class="keyword">file</span>.</span><br><span class="line">Gradle<span class="string">&#x27;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)</span></span><br><span class="line"><span class="string">Re-download dependencies and sync project (requires network)</span></span><br><span class="line"><span class="string">Re-download dependencies and sync project (requires network)</span></span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;从错误日志中可以看出,这是由于网络不稳定导致了下载中断，下载的Gradle版本包不完整而导致了无法解压文件。这时如果点击“Re-download dependencies and sync project (requires network)”进行重新尝试的话也并不能解决问题，又会出现如下提示：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Failed to open zip <span class="keyword">file</span>.</span><br><span class="line">Gradle<span class="string">&#x27;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)</span></span><br><span class="line"><span class="string">Re-download dependencies and sync project (requires network)</span></span><br><span class="line"><span class="string">Re-download dependencies and sync project (requires network)</span></span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;原因应该是在路径下面已经存在了下载的Gradle包而运行的时候却无法解压导致的，需要手动的将不完整的Gradle包删除后再重新的尝试。</p>
 <p><img src="https://img.klavor.com/2019/03/gradles-dependency-cache-may-be-corrupt-02.png" alt="Gradle&#39;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)"></p>
 <p>&emsp;&emsp;根据每个人电脑的不同，定位到.gradle的文件夹下面。随后可以参考以下路径进行删除不完整的Gradle版本包。</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\KLAVOR\.gradle\wrapper\dists\gradle-<span class="number">4.4</span>-all\<span class="number">9</span>br9xq1tocpiv8o6njlyu5op1</span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;如下图所示，文件夹下包含了一个“gradle-4.4-all.zip”文件和一个“gradle-4.4-all.zip.lck”文件，然后如果将这两个文件删除后并点击Android Studio错误日志栏里面的“Re-download dependencies and sync project (requires network)”后，Android Studio将会重新下载这个版本的Gradle包。但是，由于网络原因可能还是会失败。</p>
 <p><img src="https://img.klavor.com/2019/03/gradles-dependency-cache-may-be-corrupt-01.png" alt="Gradle&#39;s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)"></p>
 <p>&emsp;&emsp;这个时候有两种方式解决这个问题。</p>
 <p><strong>方法一：</strong></p>
 <p>&emsp;&emsp;将项目中gradle目录下的子目录wrapper中的gradle-wrapper.properties文件从</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Mon Mar <span class="number">04</span> <span class="number">10</span>:<span class="number">16</span>:<span class="number">37</span> CST <span class="number">2019</span></span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line">distributionUrl=https\:<span class="comment">//services.gradle.org/distributions/gradle-4.4-all.zip</span></span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;改为</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Mon Mar <span class="number">04</span> <span class="number">10</span>:<span class="number">16</span>:<span class="number">37</span> CST <span class="number">2019</span></span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line">distributionUrl=http\:<span class="comment">//services.gradle.org/distributions/gradle-4.4-all.zip</span></span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;就是将https改成了http，然后同步一下gradle就可以了。</p>
 <p><strong>方法二：</strong></p>
 <p>&emsp;&emsp;和方法一类似，将失败的链接从<code>https://services.gradle.org/distributions/gradle-4.4-all.zip</code>改为<code>http://services.gradle.org/distributions/gradle-4.4-all.zip</code>后到浏览器地址栏里粘贴上去将这个文件下载下来。为什么要将https改成http呢？原因虽然不太清楚，但是改成http之后下载速度就变得极快了，个人猜测是https和http协议部署的服务器不一样又或者https校验根证书的时候证书提供商的地址被墙或者其他什么原因吧。</p>
@@ -430,7 +435,7 @@
 
     <div class="copyright">
     	
-        &copy; 2023 klavor.com
+        &copy; 2025 klavor.com
         
         <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
@@ -491,18 +496,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-<script src="https://giscus.klavor.com/client.js"
+<script src="https://giscus.app/client.js"
         data-repo="liyonghuan/liyonghuan.github.io"
         data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
-        data-category="General"
-        data-category-id="DIC_kwDOE9uths4CVAXO"
-        data-mapping="specific"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOE9uths4CVAXN"
+        data-mapping="pathname"
         data-term="「解决方案」Gradle’s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)[Klavor&#39;s Blog]"
         data-strict=""
         data-reactions-enabled="1"
         data-emit-metadata="1"
-        data-input-position="preferred_color_scheme"
-        data-theme="light"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -543,8 +548,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJN5H8SVM1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <script defer>
+  gtag('config', 'G-HJN5H8SVM1');
+</script>
+
+
+    <script>
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");

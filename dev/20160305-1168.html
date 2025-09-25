@@ -26,7 +26,7 @@
 <meta property="og:description" content="有一组人要购买同等人数的饮料，但是如果用三个瓶盖就可以兑换一瓶饮料，那么这一组人没人都喝到一瓶饮料需要购买多少瓶饮料？（可借瓶盖） 很早之前就有遇到了这样的题目，但是以前不是为了做编程什么的，只是在上专业课的时候老师用这个例子来说明工业工程的思想，额呵呵，就是这样。 123456789101112131415161718192021222324252627282930313233343536373">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-03-05T04:15:00.000Z">
-<meta property="article:modified_time" content="2023-03-23T16:52:57.062Z">
+<meta property="article:modified_time" content="2025-09-25T02:33:37.811Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="小程序">
@@ -49,7 +49,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
@@ -269,6 +269,7 @@
         <p>有一组人要购买同等人数的饮料，但是如果用三个瓶盖就可以兑换一瓶饮料，那么这一组人没人都喝到一瓶饮料需要购买多少瓶饮料？（可借瓶盖）</p>
 <p>很早之前就有遇到了这样的题目，但是以前不是为了做编程什么的，只是在上专业课的时候老师用这个例子来说明工业工程的思想，额呵呵，就是这样。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class AddSum &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        System.out.println(“一共有多少人需要喝飲料?”);</span><br><span class="line">        pinggai(sc.nextInt());</span><br><span class="line">    &#125;</span><br><span class="line">    public static int pinggai(int xMan) &#123;</span><br><span class="line">        int num = 0;</span><br><span class="line">        int count = 0;</span><br><span class="line">        int i = 1;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            num++;</span><br><span class="line">            count++;</span><br><span class="line">            System.out.println(“第” + num + “个人喝到了饮料!  还剩” + count + “个盖子!”);</span><br><span class="line">            if (num &gt;= xMan) &#123;</span><br><span class="line">                System.out.println(“一共买了” + i + “瓶饮料!”);</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">            if (xMan – num == 1 &amp;&amp; count == 2) &#123; // 借瓶盖</span><br><span class="line">                num++;</span><br><span class="line">                count = 1;</span><br><span class="line">                System.out.println(“借了一個盖子,换了一瓶饮料,第” + num + “个人喝到了饮料!  把剩下的” + count + “个盖子还了回去!”);</span><br><span class="line">                count = 0;</span><br><span class="line">                System.out.println(“一共买了” + i + “瓶饮料!”);</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">            if (count == 3) &#123;</span><br><span class="line">                num++;</span><br><span class="line">                count = 1;</span><br><span class="line">                System.out.println(“三個瓶盖换了一瓶饮料.第” + num + “个人喝到了饮料!  还剩” + count + “个盖子!”);</span><br><span class="line">            &#125;</span><br><span class="line">            if (num &gt;= xMan) &#123;</span><br><span class="line">                System.out.println(“一共买了” + i + “瓶饮料!”);</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果你发现本程序的BUG，请给我反馈。</p>
 
       
@@ -420,7 +421,7 @@
 
     <div class="copyright">
     	
-        &copy; 2023 klavor.com
+        &copy; 2025 klavor.com
         
         <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
@@ -481,18 +482,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-<script src="https://giscus.klavor.com/client.js"
+<script src="https://giscus.app/client.js"
         data-repo="liyonghuan/liyonghuan.github.io"
         data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
-        data-category="General"
-        data-category-id="DIC_kwDOE9uths4CVAXO"
-        data-mapping="specific"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOE9uths4CVAXN"
+        data-mapping="pathname"
         data-term="Java小程序：瓶盖换饮料的问题[Klavor&#39;s Blog]"
         data-strict=""
         data-reactions-enabled="1"
         data-emit-metadata="1"
-        data-input-position="preferred_color_scheme"
-        data-theme="light"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -533,8 +534,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJN5H8SVM1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <script defer>
+  gtag('config', 'G-HJN5H8SVM1');
+</script>
+
+
+    <script>
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");

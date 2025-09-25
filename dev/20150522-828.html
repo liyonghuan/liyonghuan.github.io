@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2gBAccFXXXXXWXpXXXXXXXXXX_!!760675169.png">
 <meta property="article:published_time" content="2015-05-22T09:30:00.000Z">
-<meta property="article:modified_time" content="2023-03-23T15:17:46.754Z">
+<meta property="article:modified_time" content="2025-09-25T02:33:37.801Z">
 <meta property="article:author" content="klavor.com">
 <meta property="article:tag" content="Wordpress">
 <meta property="article:tag" content="评论">
@@ -52,7 +52,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
@@ -273,10 +273,12 @@
 <p>之前找了直接更改主题文件中functions文件里的代码，但是总是出现白屏的现象，至今还是不知道到底出现了什么，也许是和主题中已存在的同种功能代码相抵触造成的错误。</p>
 <p>发现了是邮箱设置的密码错误后我又开始专心的看functions里面的代码，后来发现了如下的代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 评论通知  </span><br><span class="line">require get_template_directory() . ‘/inc/functions/notify.php’;  </span><br></pre></td></tr></table></figure>
+
 <p>于是根据上述代码的提示，我找到了相应的提醒文件notify.php，并查看了该文件里面的代码，基本上与网上找的是一致的，但是此时我完全看不懂这些代码是说的什么内容，至少里面的各种函数和变量是看不懂的。于是开始一步一步的将代码进行简化，知道最后，获取了最基本的几行代码，并将出现在该notify文件中的所有函数和变量进行了逐个的测试。</p>
 <p>经过测试，以及查看后台数据库中的数据库字段，很轻松的就了解了这些函数和变量的用途，茅塞顿开啊。</p>
 <p>下面是这这份评论提醒文件的源代码中出现的函数和变量的注解，基本上一看就能够明白其中的含义了，也能够更好的对notify文件进行需要的修改。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">get_bloginfo (‘admin_email’)    //管理员邮箱  </span><br><span class="line">$comment_id    //当前评论者评论ID  </span><br><span class="line">get_comment($comment_id)    //获取当前评论的记录内容  </span><br><span class="line">$comment-&gt;comment_parent        //当前评论的父（上级）评论ID  </span><br><span class="line">get_comment($parent_id)-&gt;comment_author_email       //上级评论的用户邮箱  </span><br><span class="line">$comment-&gt;comment_approved      //当前评论ID是否通过审核，1为通过  </span><br><span class="line">$_SERVER[‘SERVER_NAME’]     //没猜错的话是主机名称  </span><br><span class="line">get_option(‘blog_charset’)      //不用猜，网站网页的字符编码  </span><br><span class="line">get_the_title($comment-&gt;comment_post_ID)    //获取该评论的文章名  </span><br><span class="line">$comment-&gt;comment_author    //当前评论的作者  </span><br><span class="line">$comment-&gt;comment_content   //当前评论的内容  </span><br><span class="line">htmlspecialchars(get_comment_link($parent_id))  //评论的网址  </span><br><span class="line">get_option(‘home’)  //网站网址  </span><br><span class="line">get_option(‘blogname’)  //网站名称  </span><br></pre></td></tr></table></figure>
+
 <p>但是还有一点特别搞笑，经过各种捣鼓之后，我发现了，其实原来主题的作者所编写的这串代码是没有任何问题的，此时我真的好像笑，啊，傻逼，又浪费了一个下午的时间，毕业设计还没有做呢。</p>
 <p>其实最后还是将文件还原回了原主题作者所编写的代码，经过测试能够成功的发送邮件提醒。而此时这篇日志就当作是对这份notify评论提醒源代码中的内容的一个了解，毕竟现在我对这个notify的内容可以说完全可以看懂了，毕竟也是一种收获吧。<br><img src="http://img04.taobaocdn.com/imgextra/i4/760675169/TB2gBAccFXXXXXWXpXXXXXXXXXX_!!760675169.png" alt=" Wordpress评论回复自动提醒功能部分参数解释"/></p>
 
@@ -429,7 +431,7 @@
 
     <div class="copyright">
     	
-        &copy; 2023 klavor.com
+        &copy; 2025 klavor.com
         
         <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
@@ -490,18 +492,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-<script src="https://giscus.klavor.com/client.js"
+<script src="https://giscus.app/client.js"
         data-repo="liyonghuan/liyonghuan.github.io"
         data-repo-id="MDEwOlJlcG9zaXRvcnkzMzMxNjM5MTA="
-        data-category="General"
-        data-category-id="DIC_kwDOE9uths4CVAXO"
-        data-mapping="specific"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOE9uths4CVAXN"
+        data-mapping="pathname"
         data-term="Wordpress评论回复自动提醒功能部分参数解释[Klavor&#39;s Blog]"
         data-strict=""
         data-reactions-enabled="1"
         data-emit-metadata="1"
-        data-input-position="preferred_color_scheme"
-        data-theme="light"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -542,8 +544,18 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJN5H8SVM1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <script defer>
+  gtag('config', 'G-HJN5H8SVM1');
+</script>
+
+
+    <script>
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");
