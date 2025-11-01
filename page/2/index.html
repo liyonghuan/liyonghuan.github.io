@@ -1,723 +1,115 @@
-<!DOCTYPE html>
-<html lang=zh>
+
+<!doctype html>
+<html lang=&#34;zh&#34;>
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
-  <title>Klavor&#39;s Blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Klavor&#39;s Blog">
-<meta property="og:url" content="https://www.klavor.com/page/2/index.html">
-<meta property="og:site_name" content="Klavor&#39;s Blog">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="klavor.com">
-<meta name="twitter:card" content="summary">
-  <!-- Canonical links -->
-  <link rel="canonical" href="https://www.klavor.com/page/2/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Klavor&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="date=no">
+
+<title>Klavor&#39;s Blog</title>
+
+
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  
-  
-  
-    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
-  
-  
-<meta name="generator" content="Hexo 5.4.2"></head>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/liyonghuan" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">理幻</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">全栈开发工程师</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 广东省深圳市</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
 
 
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-dev">
-          <a href="/./categories/dev/">
-            
-            <i class="icon icon-code"></i>
-            
-            <span class="menu-title">开发</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-investment">
-          <a href="/./categories/investment/">
-            
-            <i class="icon icon-clock"></i>
-            
-            <span class="menu-title">投资</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-essay">
-          <a href="/./categories/essay/">
-            
-            <i class="icon icon-star-fill"></i>
-            
-            <span class="menu-title">随笔</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-repository">
-          <a href="/repository">
-            
-            <i class="icon icon-project"></i>
-            
-            <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
 
-    </nav>
-  </div>
-</header>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Klavor's Blog" type="application/atom+xml">
+</head>
+<body>
 
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>欢迎交流与分享经验!</p>
+
+
+
+<section class="">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="index_box">
+                    <div class="index_box_img">
+                        <img src="/images/avatar.jpg" alt="Klavor&#39;s Blog">
+                    </div>
+                    <h1>Klavor&#39;s Blog</h1>
+                    <p>欢迎交流与分享经验!</p>
+                    <address>
+                        
+                            
+                            <a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank">
+                            
+                            <svg t="1669988156759" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3471" width="200" height="200"><path d="M512 967.111111c170.666667-68.266667 284.444444-164.977778 341.333333-284.444444 73.955556-142.222222 91.022222-307.2 56.888889-500.622223L512 56.888889 113.777778 187.733333c-34.133333 187.733333-17.066667 352.711111 51.2 494.933334C227.555556 802.133333 341.333333 898.844444 512 967.111111z m-295.822222-307.2C153.6 534.755556 136.533333 392.533333 164.977778 227.555556L512 113.777778l347.022222 113.777778c22.755556 164.977778 5.688889 307.2-56.888889 426.666666-51.2 102.4-147.911111 182.044444-290.133333 244.622222-147.911111-56.888889-244.622222-142.222222-295.822222-238.933333z" fill="#333333" p-id="3472"></path><path d="M512 631.466667L318.577778 438.044444l45.511111-39.822222L512 546.133333 716.8 341.333333l45.511111 39.822223z" fill="#333333" p-id="3473"></path></svg>
+                            <span>粤ICP备18154924号-1</span>
+                            
+                            </a>
+                            
+                        
+                    </address>
+                    <nav class="primary">
+	<ul class="menu-ul ">
+		
+			<li>
+				<a href="/">首页</a>
+			</li>
+		
+			<li>
+				<a href="/categories/dev/">开发</a>
+			</li>
+		
+			<li>
+				<a href="/categories/investment/">理财</a>
+			</li>
+		
+			<li>
+				<a href="/categories/essay/">随笔</a>
+			</li>
+		
+			<li>
+				<a href="/categories/music/">音乐</a>
+			</li>
+		
+			<li>
+				<a href="/repository/">项目</a>
+			</li>
+		
+			<li>
+				<a href="/links/">友链</a>
+			</li>
+		
+			<li>
+				<a href="/about/">关于我</a>
+			</li>
+		
+	</ul>
+</nav>
+
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-    
-  </div>
-</aside>
 
-  
-  <main class="main" role="main">
-  
-  <div class="content article-list">
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190308-367.html">「JS教程」仿照CSDN的copyright.js实现复制文本自动添加版权声明功能</a>
-    </h1>
-  
 
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190308-367.html" class="article-date">
-	  <time datetime="2019-03-07T16:00:00.000Z" itemprop="datePublished">2019.03.08</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
 
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/CSDN%EF%BC%8Ccopyright/" rel="tag">CSDN，copyright</a>, <a class="article-tag-link-link" href="/tags/JS%E6%95%99%E7%A8%8B/" rel="tag">JS教程</a>, <a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="article-tag-link-link" href="/tags/%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E/" rel="tag">版权声明</a>
-  </span>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190308-367.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190307-344.html">「解决方案」Gradle’s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.)</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190307-344.html" class="article-date">
-	  <time datetime="2019-03-06T16:00:00.000Z" itemprop="datePublished">2019.03.07</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="article-tag-link-link" href="/tags/Gradle/" rel="tag">Gradle</a>, <a class="article-tag-link-link" href="/tags/dependency/" rel="tag">dependency</a>, <a class="article-tag-link-link" href="/tags/%E4%BE%9D%E8%B5%96%E5%8C%85/" rel="tag">依赖包</a>, <a class="article-tag-link-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190307-344.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190227-335.html">「探索发现」Java反汇编字节码指令分析String和StringBuffer字符串拼接的区别</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190227-335.html" class="article-date">
-	  <time datetime="2019-02-26T16:00:00.000Z" itemprop="datePublished">2019.02.27</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="article-tag-link-link" href="/tags/String/" rel="tag">String</a>, <a class="article-tag-link-link" href="/tags/StringBuffer/" rel="tag">StringBuffer</a>, <a class="article-tag-link-link" href="/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/" rel="tag">反汇编</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" rel="tag">字符串拼接</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" rel="tag">字节码指令</a>, <a class="article-tag-link-link" href="/tags/%E6%8E%A2%E7%B4%A2%E5%8F%91%E7%8E%B0/" rel="tag">探索发现</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190227-335.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190221-331.html">「WP教程」WordPress文章页面首尾添加自定义内容</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190221-331.html" class="article-date">
-	  <time datetime="2019-02-20T16:00:00.000Z" itemprop="datePublished">2019.02.21</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/WP%E6%95%99%E7%A8%8B/" rel="tag">WP教程</a>, <a class="article-tag-link-link" href="/tags/Wordpress/" rel="tag">Wordpress</a>, <a class="article-tag-link-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="tag">自定义</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190221-331.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190221-332.html">「WP教程」WordPress通过自定义字段控制指定页面功能的开关</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190221-332.html" class="article-date">
-	  <time datetime="2019-02-20T16:00:00.000Z" itemprop="datePublished">2019.02.21</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/WP%E6%95%99%E7%A8%8B/" rel="tag">WP教程</a>, <a class="article-tag-link-link" href="/tags/Wordpress/" rel="tag">Wordpress</a>, <a class="article-tag-link-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="tag">自定义</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190221-332.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190220-310.html">「探索发现」通过反汇编Java字节码文件输出字节码指令探索有关i++的问题</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190220-310.html" class="article-date">
-	  <time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019.02.20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="article-tag-link-link" href="/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/" rel="tag">反汇编</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%97%E8%8A%82%E7%A0%81/" rel="tag">字节码</a>, <a class="article-tag-link-link" href="/tags/%E6%8E%A2%E7%B4%A2%E5%8F%91%E7%8E%B0/" rel="tag">探索发现</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190220-310.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/music/20190511-540.html">「五月天」天使</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/music/20190511-540.html" class="article-date">
-	  <time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019.02.20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/music/">music</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E4%BA%94%E6%9C%88%E5%A4%A9/" rel="tag">五月天</a>, <a class="article-tag-link-link" href="/tags/%E5%90%89%E4%BB%96%E8%B0%B1/" rel="tag">吉他谱</a>, <a class="article-tag-link-link" href="/tags/%E5%A4%A9%E4%BD%BF/" rel="tag">天使</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/music/20190511-540.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/music/20190220-320.html">「吉他谱」天使的项链_野人看夕阳</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/music/20190220-320.html" class="article-date">
-	  <time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019.02.20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/music/">music</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E5%90%89%E4%BB%96%E8%B0%B1/" rel="tag">吉他谱</a>, <a class="article-tag-link-link" href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E9%A1%B9%E9%93%BE/" rel="tag">天使的项链</a>, <a class="article-tag-link-link" href="/tags/%E9%87%8E%E4%BA%BA%E7%9C%8B%E5%A4%95%E9%98%B3/" rel="tag">野人看夕阳</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/music/20190220-320.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190219-307.html">「开源文档」Android JsBridge使用教程</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190219-307.html" class="article-date">
-	  <time datetime="2019-02-18T16:00:00.000Z" itemprop="datePublished">2019.02.19</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="article-tag-link-link" href="/tags/JsBridge/" rel="tag">JsBridge</a>, <a class="article-tag-link-link" href="/tags/%E5%BC%80%E6%BA%90%E6%96%87%E6%A1%A3/" rel="tag">开源文档</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190219-307.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/dev/20190117-163.html">「解决方案」命令行执行flutter doctor无响应原因追踪及解决</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/dev/20190117-163.html" class="article-date">
-	  <time datetime="2019-01-16T16:00:00.000Z" itemprop="datePublished">2019.01.17</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/flutter/" rel="tag">flutter</a>, <a class="article-tag-link-link" href="/tags/git/" rel="tag">git</a>, <a class="article-tag-link-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%97%A0%E5%93%8D%E5%BA%94/" rel="tag">命令行无响应</a>, <a class="article-tag-link-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/dev/20190117-163.html#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-  </div>
-
-  
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <div class="pager pull-left">
-            
-            <a class="extend prev" rel="prev" href="/"><i class="icon icon-angle-left"></i> 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/3/">下一页 <i class="icon icon-angle-right"></i></a>
-            
-        </div>
-        <div class="total-article bar-right">Page 2 of 19</div>
-        </div>
-    </nav>
-    
- 
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/liyonghuan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    <div class="copyright">
-    	
-        &copy; 2025 klavor.com
-        
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
-
-<script src="/js/plugin.min.js"></script>
-
-
-<script src="/js/application.js"></script>
-
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-
-    <script>
-(function ($) {
-    $('.search-form').on('submit', function (e) {
-        var keyword = $('.search-form-input[name="wd"]').val();
-        window.location = 'https://www.baidu.com/s?wd=site:www.klavor.com ' + keyword;
-        return false;
-    });
-})(jQuery);
-</script>
-
-
-
-
-   
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
-  <script>
-  //利用 FancyBox 实现点击图片放大
-  $(document).ready(function() {
-    $('article img').not('[hidden]').not('.panel-body img').each(function() {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('src');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
-      }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-    });
-  });
-  </script>
-
-
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJN5H8SVM1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HJN5H8SVM1');
-</script>
-
-
-    <script>
-var _hmt = _hmt || [];
-(function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?e8a2636e207f8d1b68659592923fc82b";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
 
 </body>
 </html>
+
