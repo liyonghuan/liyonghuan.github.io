@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.hnholdtech.android.hkx",
+    "sha256_cert_fingerprints": [
+      "E2:1E:0B:CA:05:9F:79:52:F8:64:50:03:98:45:DE:4B:A4:24:79:BF:78:19:2D:2A:37:C7:73:5F:8F:40:66:7A",
+      "F2:D2:E8:5F:E3:63:47:1F:71:02:FF:8E:7A:14:14:AE:1C:43:C1:53:BE:5A:2B:E6:1C:F3:9F:37:80:58:95:D4"
+    ]
+  }
+}]
